@@ -25,7 +25,7 @@ do
   $CURRENT_DIR/../end-to-end.sh --buggy_file=$BUG_PROJECT/$col3 --buggy_line=$col4 --beam_size=50 --output=$DEFECTS4J_PATCHES_DIR/${col1}_${col2}
 
   echo "Running test on all patches for ${col1}_${col2}"
-  python3 $CURRENT_DIR/src/validatePatch.py $DEFECTS4J_PATCHES_DIR/${col1}_${col2} $BUG_PROJECT $BUG_PROJECT/$col3
+  python3 $CURRENT_DIR/../src/validatePatch.py $DEFECTS4J_PATCHES_DIR/${col1}_${col2} $BUG_PROJECT $BUG_PROJECT/$col3
 
   echo "Deleting ${BUG_PROJECT}"
   rm -rf $BUG_PROJECT
