@@ -1,0 +1,137 @@
+#! /bin/bash
+
+echo "end-to-end.sh start"
+
+CURRENT_DIR=$(pwd)
+HELP_MESSAGE=$'Usage: ./end-to-end.sh --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
+buggy_file: Absolute path to the buggy file
+buggy_line: Line number of buggy line
+beam_size: Beam size used in seq2seq model
+output: Absolute path for output'
+for i in "$@"
+do
+case $i in
+    --buggy_file=*)
+    BUGGY_FILE_PATH="${i#*=}"
+    shift # past argument=value
+    ;;
+    --buggy_line=*)
+    BUGGY_LINE="${i#*=}"
+    shift # past argument=value
+    ;;
+    --beam_size=*)
+    BEAM_SIZE="${i#*=}"
+    shift # past argument=value
+    ;;
+    --output=*)
+    OUTPUT="${i#*=}"
+    shift # past argument=value
+    ;;
+    *)
+          # unknown option
+    ;;
+esac
+done
+
+if [ -z "$BUGGY_FILE_PATH" ]; then
+  echo "BUGGY_FILE_PATH unset!"
+  echo "$HELP_MESSAGE"
+  exit 1
+elif [[ "$BUGGY_FILE_PATH" != /* ]]; then
+  echo "BUGGY_FILE_PATH must be absolute path"
+  echo "$HELP_MESSAGE"
+  exit 1
+fi
+
+if [ -z "$BUGGY_LINE" ]; then
+  echo "BUGGY_LINE unset!"
+  echo "$HELP_MESSAGE"
+  exit 1
+fi
+
+if [ -z "$BEAM_SIZE" ]; then
+  echo "BEAM_SIZE unset!"
+  echo "$HELP_MESSAGE"
+  exit 1
+fi
+
+if [ -z "$OUTPUT" ]; then
+  echo "OUTPUT unset!"
+  echo "$HELP_MESSAGE"
+  exit 1
+elif [[ "$OUTPUT" != /* ]]; then
+  echo "OUTPUT must be absolute path"
+  echo "$HELP_MESSAGE"
+  exit 1
+fi
+
+echo "Input parameter:"
+echo "BUGGY_FILE_PATH = ${BUGGY_FILE_PATH}"
+echo "BUGGY_LINE = ${BUGGY_LINE}"
+echo "BEAM_SIZE = ${BEAM_SIZE}"
+echo "OUTPUT = ${OUTPUT}"
+echo
+
+BUGGY_FILE_NAME=${BUGGY_FILE_PATH##*/}
+BUGGY_FILE_BASENAME=${BUGGY_FILE_NAME%.*}
+
+echo "Creating temporary working folder"
+mkdir -p $CURRENT_DIR/tmp
+echo
+
+echo "Abstracting the source file"
+java -jar $CURRENT_DIR/lib/abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar $BUGGY_FILE_PATH $BUGGY_LINE $CURRENT_DIR/tmp
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Cannot generate abstraction for the buggy file"
+  rm -rf $CURRENT_DIR/tmp
+  exit 1
+fi
+echo
+
+echo "Tokenizing the abstraction"
+python $CURRENT_DIR/src/tokenize.py $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract.java $CURRENT_DIR/tmp
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Tokenization failed"
+  rm -rf $CURRENT_DIR/tmp
+  exit 1
+fi
+echo
+
+echo "Generating predictions"
+python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $CURRENT_DIR/model/model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE&>/dev/null
+echo
+
+echo "Post process predictions"
+python3 $CURRENT_DIR/src/postPrcoessPredictions.py $CURRENT_DIR/tmp/predictions.txt $CURRENT_DIR/tmp
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Post process generates none valid predictions"
+  rm -rf $CURRENT_DIR/tmp
+  exit 1
+fi
+echo
+
+echo "Creating output directory ${OUTPUT}"
+mkdir -p $OUTPUT
+echo
+
+echo "Generating patches"
+python3 $CURRENT_DIR/src/generatePatches.py $BUGGY_FILE_PATH $BUGGY_LINE $CURRENT_DIR/tmp/predictions_JavaSource.txt $OUTPUT
+echo
+
+echo "Generating diffs"
+for patch in $OUTPUT/*; do
+  diff -u -w $BUGGY_FILE_PATH $patch/$BUGGY_FILE_NAME > $patch/diff
+done
+echo
+
+
+echo "Cleaning tmp folder"
+rm -rf $CURRENT_DIR/tmp
+echo
+
+echo "Found $(ls $OUTPUT | wc -l | awk '{print $1}') patches for $BUGGY_FILE_NAME stored in $OUTPUT"
+echo "end-to-end.sh done"
+exit 0
