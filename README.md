@@ -22,6 +22,8 @@ Then run `end-to-end.sh` with the following parameters:
 
 # Defects4J experiment
 
+In `Defects4J_patches/` you can find all patches that are found by SequencerR, In `Defects4J_patches/Defects4J_patches_beam[x]` means that the beam size was set to `x` during the execution. Patches that are stored in `*_compiled` are patches that compiled. Patches that are stored in `*_passed` are patches that compiled and passed the test suite. 
+
 To rerun our experiment of SequenceR over [Defects4J](https://github.com/rjust/defects4j). Run `Defects4J/Defects4J_oneLinerFix.sh`, make sure you have `defects4j` installed.
 
-`Defects4J_oneLiner_metadata.csv` contains metadata for all Defects4J bugs that we consider, `Defects4J_oneLiner_metadata_ignored.csv` contains metadata for Defects4J bugs that meet out requirement (bug fixed by one line replacement), but we failed to execute them.
+`Defects4J_oneLiner_metadata.csv` contains metadata for all Defects4J bugs that we consider. `src/validatePatch.py` contains the precedure for running Defects4J test, we have time limit on compile time (30s) and test running time (120s).
