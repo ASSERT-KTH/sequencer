@@ -59,6 +59,7 @@ Math,75,src/main/java/org/apache/commons/math/stat/Frequency.java,303
 Math,80,src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java,1135
 Math,82,src/main/java/org/apache/commons/math/optimization/linear/SimplexSolver.java,82
 Math,85,src/java/org/apache/commons/math/analysis/solvers/UnivariateRealSolverUtils.java,198
+Math,94,src/java/org/apache/commons/math/util/MathUtils.java,412
 Math,96,src/java/org/apache/commons/math/complex/Complex.java,258
 Math,104,src/java/org/apache/commons/math/special/Gamma.java,37
 Math,105,src/java/org/apache/commons/math/stat/regression/SimpleRegression.java,264
