@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_63/src/main/java/org/apache/commons/math/util/MathUtils.java	2018-11-25 02:15:58.558421109 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_63/28/MathUtils.java	2018-11-25 02:16:08.034487509 +0000
+@@ -414,7 +414,7 @@
+      * @return {@code true} if the values are equal.
+      */
+     public static boolean equals(double x, double y) {
+-        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
++        return(x.isNaN(x))||(Double.isNaN(y));
+     }
+ 
+     /**

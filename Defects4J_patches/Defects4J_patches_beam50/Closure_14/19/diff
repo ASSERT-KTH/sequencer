@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Closure_14/src/com/google/javascript/jscomp/ControlFlowAnalysis.java	2018-11-24 11:03:19.680919564 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Closure_14/19/ControlFlowAnalysis.java	2018-11-24 11:03:31.737000967 +0000
+@@ -764,7 +764,7 @@
+         } else if (parent.getLastChild() == node){
+           if (cfa != null) {
+             for (Node finallyNode : cfa.finallyMap.get(parent)) {
+-              cfa.createEdge(fromNode, Branch.UNCOND, finallyNode);
++              cfa.createEdge(fromNode,finallyNode);
+             }
+           }
+           return computeFollowNode(fromNode, parent, cfa);

@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Chart_1/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2018-11-25 21:17:16.053631319 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Chart_1/13/AbstractCategoryItemRenderer.java	2018-11-25 21:17:28.921720608 +0000
+@@ -1794,7 +1794,7 @@
+         }
+         int index = this.plot.getIndexOf(this);
+         CategoryDataset dataset = this.plot.getDataset(index);
+-        if (dataset != null) {
++        if(isSeriesVisibleInLegend!=null){
+             return result;
+         }
+         int seriesCount = dataset.getRowCount();

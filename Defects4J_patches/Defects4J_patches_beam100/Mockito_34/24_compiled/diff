@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Mockito_34/src/org/mockito/internal/invocation/InvocationMatcher.java	2018-11-27 07:32:52.516905836 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Mockito_34/24/InvocationMatcher.java	2018-11-27 07:33:07.848925310 +0000
+@@ -103,7 +103,7 @@
+     public void captureArgumentsFrom(Invocation i) {
+         int k = 0;
+         for (Matcher m : matchers) {
+-            if (m instanceof CapturesArguments) {
++            if((m)!=null){
+                 ((CapturesArguments) m).captureFrom(i.getArguments()[k]);
+             }
+             k++;

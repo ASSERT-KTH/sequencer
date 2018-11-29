@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_5/src/main/java/org/apache/commons/math3/complex/Complex.java	2018-11-26 19:40:40.621522521 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_5/20/Complex.java	2018-11-26 19:40:52.845534445 +0000
+@@ -302,7 +302,7 @@
+         }
+ 
+         if (real == 0.0 && imaginary == 0.0) {
+-            return NaN;
++            return Complex;
+         }
+ 
+         if (isInfinite) {

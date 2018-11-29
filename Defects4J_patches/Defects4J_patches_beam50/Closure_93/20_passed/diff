@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Closure_93/src/com/google/javascript/jscomp/ProcessClosurePrimitives.java	2018-11-24 17:29:55.518387697 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Closure_93/20/ProcessClosurePrimitives.java	2018-11-24 17:30:07.026480989 +0000
+@@ -786,7 +786,7 @@
+         } else {
+           // In this case, the name was implicitly provided by two independent
+           // modules. We need to move this code up to a common module.
+-          int indexOfDot = namespace.indexOf('.');
++          int indexOfDot=namespace.indexOf("JSC_LATE_PROVIDE_ERROR");
+           if (indexOfDot == -1) {
+             // Any old place is fine.
+             compiler.getNodeForCodeInsertion(minimumModule)

@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Closure_10/src/com/google/javascript/jscomp/NodeUtil.java	2018-11-25 22:05:40.989987575 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Closure_10/18/NodeUtil.java	2018-11-25 22:05:49.214045506 +0000
+@@ -1414,7 +1414,7 @@
+ 
+   static boolean mayBeString(Node n, boolean recurse) {
+     if (recurse) {
+-      return allResultsMatch(n, MAY_BE_STRING_PREDICATE);
++      return NodeUtil.allResultsMatch(n,recurse);
+     } else {
+       return mayBeStringHelper(n);
+     }

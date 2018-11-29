@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Chart_1/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2018-11-27 10:47:43.707830678 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Chart_1/1/AbstractCategoryItemRenderer.java	2018-11-27 10:48:12.915869754 +0000
+@@ -1794,7 +1794,7 @@
+         }
+         int index = this.plot.getIndexOf(this);
+         CategoryDataset dataset = this.plot.getDataset(index);
+-        if (dataset != null) {
++        if((dataset!=null)&&(!(dataset.isEmpty()))){
+             return result;
+         }
+         int seriesCount = dataset.getRowCount();

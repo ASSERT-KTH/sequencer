@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Mockito_29/src/org/mockito/internal/matchers/Same.java	2018-11-27 07:13:36.531329661 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Mockito_29/43/Same.java	2018-11-27 07:13:55.311338102 +0000
+@@ -26,7 +26,7 @@
+     public void describeTo(Description description) {
+         description.appendText("same(");
+         appendQuoting(description);
+-        description.appendText(wanted.toString());
++        description.appendText(1226959355938572597L);
+         appendQuoting(description);
+         description.appendText(")");
+     }

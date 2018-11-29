@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_59/src/main/java/org/apache/commons/math/util/FastMath.java	2018-11-27 02:06:03.196116216 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_59/11/FastMath.java	2018-11-27 02:06:19.388109055 +0000
+@@ -3479,7 +3479,7 @@
+      * @return b if a is lesser or equal to b, a otherwise
+      */
+     public static float max(final float a, final float b) {
+-        return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);
++        return a<=b?b:Float.isNaN((a+b))?a.NaN:b;
+     }
+ 
+     /** Compute the maximum of two values

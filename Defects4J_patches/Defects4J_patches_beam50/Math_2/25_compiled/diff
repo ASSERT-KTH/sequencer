@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_2/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java	2018-11-24 22:14:55.655498608 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_2/25/HypergeometricDistribution.java	2018-11-24 22:15:03.419547106 +0000
+@@ -265,7 +265,7 @@
+      * size {@code n}, the mean is {@code n * m / N}.
+      */
+     public double getNumericalMean() {
+-        return (double) (getSampleSize() * getNumberOfSuccesses()) / (double) getPopulationSize();
++        return((double)((getSampleSize())+((double)(getPopulationSize())))/1000);
+     }
+ 
+     /**

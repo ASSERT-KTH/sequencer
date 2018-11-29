@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Closure_86/src/com/google/javascript/jscomp/NodeUtil.java	2018-11-24 16:48:54.552582166 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Closure_86/28/NodeUtil.java	2018-11-24 16:49:03.400644505 +0000
+@@ -2462,7 +2462,7 @@
+         // TODO(nicksantos): This needs to be changed so that it
+         // returns true iff we're sure the value was never aliased from inside
+         // the constructor (similar to callHasLocalResult)
+-        return true;
++        return Token(value.getFirstChild());
+       case Token.FUNCTION:
+       case Token.REGEXP:
+       case Token.ARRAYLIT:
