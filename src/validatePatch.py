@@ -3,8 +3,14 @@ import subprocess
 from shutil import copyfile
 import os
 
+MAX_COMPILE_TIME = 30
+MAX_TEST_TIME = 120
+
 def main(argv):
+    global MAX_COMPILE_TIME,MAX_TEST_TIME
     if(not os.path.exists(argv[0])):
+        sys.stderr.write("Found no patch in " + argv[0] + "\n")
+        sys.stderr.flush()
         sys.exit(0)
 
     trigger_tests = []
@@ -27,8 +33,17 @@ def main(argv):
     cmd = ""
     cmd += "cd " + argv[1] + ";"
     cmd += "defects4j test"
-    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, shell=True)
-    result = result.stdout.decode('utf-8')
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, shell=True)
+    try:
+        output, error = process.communicate(timeout=MAX_TEST_TIME)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.wait()
+        sys.stderr.write("Time limit exceeded when running the original bug version on " + argv[1] +"\n")
+        sys.stderr.flush()
+        sys.exit(1)
+    result = output
+    result = result.decode('utf-8')
     result = result.split("\n")
     result = list(filter(None, result))
     for i in range(len(result)):
@@ -50,8 +65,15 @@ def main(argv):
         cmd = ""
         cmd += "cd " + argv[1] + ";"
         cmd += "defects4j compile"
-        result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, shell=True)
-        result = result.stderr.decode('utf-8')
+        process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        try:
+            output, error = process.communicate(timeout=MAX_COMPILE_TIME)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+            continue
+        result = error
+        result = result.decode('utf-8')
         result = result.split("\n")
         result = list(filter(None, result))
         compile_error = False
@@ -64,8 +86,15 @@ def main(argv):
         cmd = ""
         cmd += "cd " + argv[1] + ";"
         cmd += "defects4j test"
-        result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, shell=True)
-        result = result.stdout.decode('utf-8')
+        process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        try:
+            output, error = process.communicate(timeout=MAX_TEST_TIME)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+            continue
+        result = output
+        result = result.decode('utf-8')
         result = result.split("\n")
         result = list(filter(None, result))
 
