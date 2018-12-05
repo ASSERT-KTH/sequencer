@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Closure_51/src/com/google/javascript/jscomp/CodeConsumer.java	2018-11-30 12:12:54.685573362 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Closure_51/115/CodeConsumer.java	2018-11-30 12:15:09.645667680 +0000
+@@ -238,7 +238,7 @@
+       add(" ");
+     }
+ 
+-    if ((long) x == x) {
++    if(((long)(100))==x){
+       long value = (long) x;
+       long mantissa = value;
+       int exp = 0;

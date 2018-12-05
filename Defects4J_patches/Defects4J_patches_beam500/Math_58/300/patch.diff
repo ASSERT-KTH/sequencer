@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_58/src/main/java/org/apache/commons/math/optimization/fitting/GaussianFitter.java	2018-12-04 03:27:10.624818651 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_58/300/GaussianFitter.java	2018-12-04 03:29:29.128880586 +0000
+@@ -118,7 +118,7 @@
+      */
+     public double[] fit() {
+         final double[] guess = (new ParameterGuesser(getObservations())).guess();
+-        return fit(new Gaussian.Parametric(), guess);
++        return fit(Gaussian.Parametric(),guess,guess);
+     }
+ 
+     /**

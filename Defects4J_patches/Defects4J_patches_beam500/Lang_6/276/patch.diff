@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Lang_6/src/main/java/org/apache/commons/lang3/text/translate/CharSequenceTranslator.java	2018-12-02 16:08:03.796165248 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Lang_6/276/CharSequenceTranslator.java	2018-12-02 16:10:18.876128614 +0000
+@@ -92,7 +92,7 @@
+ //          // contract with translators is that they have to understand codepoints 
+ //          // and they just took care of a surrogate pair
+             for (int pt = 0; pt < consumed; pt++) {
+-                pos += Character.charCount(Character.codePointAt(input, pos));
++                pos+=Character.charCount(Character.codePointAt(input,len,0));
+             }
+         }
+     }

@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_105/src/java/org/apache/commons/math/stat/regression/SimpleRegression.java	2018-12-05 10:21:47.461150263 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_105/150/SimpleRegression.java	2018-12-05 10:22:03.121156805 +0000
+@@ -261,7 +261,7 @@
+      * @return sum of squared errors associated with the regression model
+      */
+     public double getSumSquaredErrors() {
+-        return sumYY - sumXY * sumXY / sumXX;
++        return(sumYY)-((getIntercept)*(sumXY));
+     }
+ 
+     /**

@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_33/src/main/java/org/apache/commons/math3/optimization/linear/SimplexTableau.java	2018-12-03 18:56:05.793325664 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_33/287/SimplexTableau.java	2018-12-03 19:00:37.557135727 +0000
+@@ -335,7 +335,7 @@
+         // positive cost non-artificial variables
+         for (int i = getNumObjectiveFunctions(); i < getArtificialVariableOffset(); i++) {
+             final double entry = tableau.getEntry(0, i);
+-            if (Precision.compareTo(entry, 0d, maxUlps) > 0) {
++            if((getHeight())&&((Precision.compareTo(entry,0.0,maxUlps))> 0)){
+                 columnsToDrop.add(i);
+             }
+         }

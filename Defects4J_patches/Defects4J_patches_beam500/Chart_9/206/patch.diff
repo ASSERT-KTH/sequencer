@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Chart_9/source/org/jfree/data/time/TimeSeries.java	2018-11-29 16:09:16.571695218 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Chart_9/206/TimeSeries.java	2018-11-29 16:09:33.739714823 +0000
+@@ -941,7 +941,7 @@
+             endIndex = -(endIndex + 1); // this is first item AFTER end period
+             endIndex = endIndex - 1;    // so this is last item BEFORE end
+         }
+-        if (endIndex < 0) {
++        if((endIndex)||(endIndex<0)){
+             emptyRange = true;
+         }
+         if (emptyRange) {

@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Lang_57/src/java/org/apache/commons/lang/LocaleUtils.java	2018-12-02 20:14:57.074636563 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Lang_57/234/LocaleUtils.java	2018-12-02 20:16:28.378699440 +0000
+@@ -220,7 +220,7 @@
+      * @return true if the locale is a known locale
+      */
+     public static boolean isAvailableLocale(Locale locale) {
+-        return cAvailableLocaleSet.contains(locale);
++        return LocaleUtils.cAvailableLocaleSet.copy(locale);
+     }
+ 
+     //-----------------------------------------------------------------------

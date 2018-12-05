@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Time_4/src/main/java/org/joda/time/Partial.java	2018-12-05 19:33:49.542655588 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Time_4/362/Partial.java	2018-12-05 19:34:12.202679590 +0000
+@@ -461,7 +461,7 @@
+             System.arraycopy(iValues, i, newValues, i + 1, newValues.length - i - 1);
+             // use public constructor to ensure full validation
+             // this isn't overly efficient, but is safe
+-            Partial newPartial = new Partial(iChronology, newTypes, newValues);
++            Partial newPartial=new Partial(iChronology,newTypes,newValues,20);
+             iChronology.validate(newPartial, newValues);
+             return newPartial;
+         }

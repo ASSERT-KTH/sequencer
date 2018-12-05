@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_11/src/main/java/org/apache/commons/math3/distribution/MultivariateNormalDistribution.java	2018-12-03 09:14:44.107754114 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_11/201/MultivariateNormalDistribution.java	2018-12-03 09:19:58.495957584 +0000
+@@ -180,7 +180,7 @@
+             throw new DimensionMismatchException(vals.length, dim);
+         }
+ 
+-        return FastMath.pow(2 * FastMath.PI, -dim / 2) *
++        return((FastMath.pow((1.0*(FastMath.PI)),((-dim)*2)))*(FastMath.pow(covarianceMatrixDeterminant,(-0.5))))+(FastMath(vals));
+             FastMath.pow(covarianceMatrixDeterminant, -0.5) *
+             getExponentTerm(vals);
+     }
