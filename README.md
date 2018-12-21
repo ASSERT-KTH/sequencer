@@ -1,10 +1,19 @@
 # SequenceR
 
+Todos:
+
+* upload golden model
+* upload 950 successfull diffs in CR4
+* create real end-2-end sequencer.py
+* add arxiv info in bibtex below
+
 SequenceR is a seq2seq model designed to predict source code change on line level. (TODO, add result from our paper).
 
 If you use SequenceR for academic purposes, please cite the following publication:
 ```
-TODO
+@techreport{sequencer2018,
+
+}
 ```
 
 # Usage
