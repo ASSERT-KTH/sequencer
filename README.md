@@ -2,7 +2,8 @@
 
 Todos:
 
-* upload golden model
+* ~~upload golden model~~
+* Update Defects4J result with golden model
 * upload 950 successfull diffs in CR4
 * create real end-2-end sequencer.py
 * add arxiv info in bibtex below
