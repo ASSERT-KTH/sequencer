@@ -3,8 +3,8 @@ import subprocess
 from shutil import copyfile
 import os
 
-MAX_COMPILE_TIME = 30
-MAX_TEST_TIME = 120
+MAX_COMPILE_TIME = 60
+MAX_TEST_TIME = 300
 
 def main(argv):
     global MAX_COMPILE_TIME,MAX_TEST_TIME
