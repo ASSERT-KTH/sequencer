@@ -34,7 +34,7 @@ python3 -c "import javalang"
 if [ $? -ne 0 ]; then
   echo "javalang module not installed"
   echo "Cloning javalang"
-  git clone https://github.com/c2nes/javalang.git $CURRENT_DIR/lib
+  git clone https://github.com/c2nes/javalang.git $CURRENT_DIR/lib/javalang
   echo "Installing requirements for javalang"
   pip3 install -r $CURRENT_DIR/lib/javalang/requirements.txt
   echo "Installing javalang"
