@@ -38,7 +38,8 @@ if [ $? -ne 0 ]; then
   echo "Installing requirements for javalang"
   pip3 install -r $CURRENT_DIR/lib/javalang/requirements.txt
   echo "Installing javalang"
-  python3 $CURRENT_DIR/lib/javalang/setup.py install --force
+  cd $CURRENT_DIR/lib/javalang
+  python3 setup.py install --force
   echo "Removing javalang repo"
   rm -rf $CURRENT_DIR/lib/javalang
   echo

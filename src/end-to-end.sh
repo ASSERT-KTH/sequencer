@@ -92,7 +92,7 @@ fi
 echo
 
 echo "Tokenizing the abstraction"
-python $CURRENT_DIR/Buggy_Context_Abstraction/tokenize.py $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract.java $CURRENT_DIR/tmp
+python3 $CURRENT_DIR/Buggy_Context_Abstraction/tokenize.py $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract.java $CURRENT_DIR/tmp
 retval=$?
 if [ $retval -ne 0 ]; then
   echo "Tokenization failed"
