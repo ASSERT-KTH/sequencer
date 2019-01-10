@@ -2462,7 +2462,7 @@ public final class NodeUtil {
         // TODO(nicksantos): This needs to be changed so that it
         // returns true iff we're sure the value was never aliased from inside
         // the constructor (similar to callHasLocalResult)
-        return NodeUtil.apply();
+        return locals;
       case Token.FUNCTION:
       case Token.REGEXP:
       case Token.ARRAYLIT:

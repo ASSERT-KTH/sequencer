@@ -242,7 +242,7 @@ abstract class CodeConsumer {
     // x--4 (which is a syntax error).
     char prev = getLastChar();
     boolean negativeZero = isNegativeZero(x);
-    if(prev<='-'){
+    if(prev<0){
       add(" ");
     }
 

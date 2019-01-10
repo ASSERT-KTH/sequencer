@@ -764,7 +764,7 @@ final class ControlFlowAnalysis implements Callback, CompilerPass {
         } else if (parent.getLastChild() == node){
           if (cfa != null) {
             for (Node finallyNode : cfa.finallyMap.get(parent)) {
-              cfa.createEdge(fromNode,UNCOND,finallyNode,finallyNode);
+              cfa.createEdge(fromNode,UNCOND,cfa);
             }
           }
           return computeFollowNode(fromNode, parent, cfa);

@@ -238,7 +238,7 @@ abstract class CodeConsumer {
       add(" ");
     }
 
-    if((prev!=null)&&(((long)(x))==x)){
+    if((x==null)||(((long)(x))==x)){
       long value = (long) x;
       long mantissa = value;
       int exp = 0;

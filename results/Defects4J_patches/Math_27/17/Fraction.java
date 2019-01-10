@@ -594,7 +594,7 @@ public class Fraction
      * @return the fraction percentage as a <tt>double</tt>.
      */
     public double percentageValue() {
-        return new multiply(100).doubleValue();
+        return multiply(100,0).doubleValue();
     }
 
     /**

@@ -238,7 +238,7 @@ abstract class CodeConsumer {
       add(" ");
     }
 
-    if(((long)(Math.max(x,x)))==x){
+    if((prev==x)||(((long)(x))==x)){
       long value = (long) x;
       long mantissa = value;
       int exp = 0;

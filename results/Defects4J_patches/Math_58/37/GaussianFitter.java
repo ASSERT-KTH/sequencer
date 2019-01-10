@@ -118,7 +118,7 @@ public class GaussianFitter extends CurveFitter {
      */
     public double[] fit() {
         final double[] guess = (new ParameterGuesser(getObservations())).guess();
-        return fit(new ParameterGuesser.Parametric(),guess);
+        return fit(getObservations,guess);
     }
 
     /**

@@ -79,7 +79,7 @@ public class SimplexSolver extends AbstractLinearOptimizer {
         for (int i = tableau.getNumObjectiveFunctions(); i < tableau.getHeight(); i++) {
             final double rhs = tableau.getEntry(i, tableau.getWidth() - 1);
             final double entry = tableau.getEntry(i, col);
-            if((MathUtils!=null)&&((MathUtils.compareTo(entry,0,epsilon))>=0)){
+            if((MathUtils.compareTo(entry,epsilon))>=0){
                 final double ratio = rhs / entry;
                 if (ratio < minRatio) {
                     minRatio = ratio;

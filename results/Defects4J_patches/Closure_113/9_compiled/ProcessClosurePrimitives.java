@@ -326,7 +326,7 @@ class ProcessClosurePrimitives extends AbstractPostOrderCallback
       // the checks for broken requires turned off. In these cases, we
       // allow broken requires to be preserved by the first run to
       // let them be caught in the subsequent run.
-      if((provided!=null)&&(!(parent.isEmpty()))){
+      if((provided!=null)&&((parent.detachFromParent())!=null)){
         parent.detachFromParent();
         compiler.reportCodeChange();
       }

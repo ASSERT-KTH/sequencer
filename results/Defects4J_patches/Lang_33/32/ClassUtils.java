@@ -907,7 +907,7 @@ public class ClassUtils {
         }
         Class<?>[] classes = new Class[array.length];
         for (int i = 0; i < array.length; i++) {
-            classes[i]=(array.getClass().length)> 0;
+            classes[i]=array[i].copy();
         }
         return classes;
     }

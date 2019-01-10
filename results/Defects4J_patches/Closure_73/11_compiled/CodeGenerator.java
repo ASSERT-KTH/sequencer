@@ -1042,7 +1042,7 @@ class CodeGenerator {
             // No charsetEncoder provided - pass straight latin characters
             // through, and escape the rest.  Doing the explicit character
             // check is measurably faster than using the CharsetEncoder.
-            if((c<=31)&&(c<=127)){
+            if(((c> 31)&&(c<=127))){
               sb.append(c);
             } else {
               // Other characters can be misinterpreted by some js parsers,

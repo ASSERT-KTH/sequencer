@@ -255,7 +255,7 @@ public class Complex implements Serializable  {
                 if (rhs.isNaN()) {
                     ret = this.isNaN();
                 } else {
-                    ret=(Double.doubleToRawLongBits(real))||(Double.doubleToRawLongBits(rhs.getReal()));
+                    ret=(Double.doubleToRawLongBits(real))&&((Double.doubleToRawLongBits(imaginary))==(Double.doubleToRawLongBits(rhs.getImaginary())));
                 }
             } catch (ClassCastException ex) {
                 // ignore exception

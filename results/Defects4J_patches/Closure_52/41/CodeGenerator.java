@@ -742,7 +742,7 @@ class CodeGenerator {
         return false;
       }
     }
-    return len.isSimpleNumber();
+    return len> (c.length());
   }
 
   static double getSimpleNumber(String s) {

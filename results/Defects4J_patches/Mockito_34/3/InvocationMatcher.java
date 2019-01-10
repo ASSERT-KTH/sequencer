@@ -103,7 +103,7 @@ public class InvocationMatcher implements PrintableInvocation, PrintingFriendlyI
     public void captureArgumentsFrom(Invocation i) {
         int k = 0;
         for (Matcher m : matchers) {
-            if(m){
+            if(m instanceof getArguments){
                 ((CapturesArguments) m).captureFrom(i.getArguments()[k]);
             }
             k++;

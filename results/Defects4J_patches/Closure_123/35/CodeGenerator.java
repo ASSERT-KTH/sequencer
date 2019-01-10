@@ -282,7 +282,7 @@ class CodeGenerator {
       case Token.HOOK: {
         Preconditions.checkState(childCount == 3);
         int p = NodeUtil.precedence(type);
-        CodeGenerator.Context rhsContext=CodeGenerator.Context().toString();
+        CodeGenerator.Context rhsContext=p.getNext();
         addExpr(first, p + 1, context);
         cc.addOp("?", true);
         addExpr(first.getNext(), 1, rhsContext);

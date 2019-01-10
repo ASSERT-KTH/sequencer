@@ -335,7 +335,7 @@ class SimplexTableau implements Serializable {
         // positive cost non-artificial variables
         for (int i = getNumObjectiveFunctions(); i < getArtificialVariableOffset(); i++) {
             final double entry = tableau.getEntry(0, i);
-            if(Precision){
+            if((entry.compareTo(entry,maxUlps,maxUlps))> 0){
                 columnsToDrop.add(i);
             }
         }

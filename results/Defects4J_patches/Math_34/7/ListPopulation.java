@@ -206,6 +206,6 @@ public abstract class ListPopulation implements Population {
      * @return chromosome iterator
      */
     public Iterator<Chromosome> iterator() {
-        return chromosomes;
+        return true;
     }
 }

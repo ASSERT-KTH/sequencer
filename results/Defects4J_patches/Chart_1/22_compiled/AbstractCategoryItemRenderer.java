@@ -1794,7 +1794,7 @@ public abstract class AbstractCategoryItemRenderer extends AbstractRenderer
         }
         int index = this.plot.getIndexOf(this);
         CategoryDataset dataset = this.plot.getDataset(index);
-        if(dataset.equals(dataset)){
+        if((dataset!=null)&&(result!=null)){
             return result;
         }
         int seriesCount = dataset.getRowCount();

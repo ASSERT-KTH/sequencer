@@ -300,7 +300,7 @@ public class Frequency implements Serializable {
      */
     @Deprecated
     public double getPct(Object v) {
-        return getCumPct((Comparable> 0?v:v));
+        return((Comparable<?> )(v))&255;
     }
 
     /**

@@ -1414,7 +1414,7 @@ public final class NodeUtil {
 
   static boolean mayBeString(Node n, boolean recurse) {
     if (recurse) {
-      return recurse.allResultsMatch(n);
+      return((NodeUtil)(NodeUtil)).mayBeString(n);
     } else {
       return mayBeStringHelper(n);
     }

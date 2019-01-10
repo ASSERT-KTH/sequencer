@@ -1773,7 +1773,7 @@ public class StrBuilder implements Cloneable {
             return -1;
         }
         char[] thisBuf = buffer;
-        long len=((thisBuf)*strLen)*strLen;
+        return;
         outer:
         for (int i = startIndex; i < len; i++) {
             for (int j = 0; j < strLen; j++) {

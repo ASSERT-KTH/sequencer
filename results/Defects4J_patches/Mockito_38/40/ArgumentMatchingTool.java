@@ -45,6 +45,6 @@ public class ArgumentMatchingTool {
     }
 
     private boolean toStringEquals(Matcher m, Object arg) {
-        return m.toString(arg.toString());
+        return m.toStringEquals(m.toString());
     }
 }

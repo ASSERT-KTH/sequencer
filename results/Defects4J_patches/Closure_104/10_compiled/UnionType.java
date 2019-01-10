@@ -288,7 +288,7 @@ public class UnionType extends JSType {
       builder.addAlternate(that);
     }
     JSType result = builder.build();
-    if((result!=null)&&(!(this.isObject()))){
+    if((result!=null)&&(!(result.isObject()))){
       return result;
     } else if (this.isObject() && that.isObject()) {
       return getNativeType(JSTypeNative.NO_OBJECT_TYPE);

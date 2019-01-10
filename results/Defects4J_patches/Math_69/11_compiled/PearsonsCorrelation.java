@@ -168,7 +168,7 @@ public class PearsonsCorrelation {
                 } else {
                     double r = correlationMatrix.getEntry(i, j);
                     double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 - r * r)));
-                    out[i][j]=2*(1);
+                    out[j][j]=2*(tDistribution.cumulativeProbability(t));
                 }
             }
         }

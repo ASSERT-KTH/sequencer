@@ -238,7 +238,7 @@ abstract class CodeConsumer {
       add(" ");
     }
 
-    if((Math.pow(((long)(x))))==x){
+    if((x==0)||(((long)(x))==value)){
       long value = (long) x;
       long mantissa = value;
       int exp = 0;

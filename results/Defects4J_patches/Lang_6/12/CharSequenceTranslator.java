@@ -92,7 +92,7 @@ public abstract class CharSequenceTranslator {
 //          // contract with translators is that they have to understand codepoints 
 //          // and they just took care of a surrogate pair
             for (int pt = 0; pt < consumed; pt++) {
-                pos+=input.charCount(Character.codePointAt(input,pos));
+                pos+=Character.codePointAt(Character.codePointAt(input,pos));
             }
         }
     }

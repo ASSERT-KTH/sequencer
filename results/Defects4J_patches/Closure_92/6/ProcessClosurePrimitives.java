@@ -786,7 +786,7 @@ class ProcessClosurePrimitives extends AbstractPostOrderCallback
         } else {
           // In this case, the name was implicitly provided by two independent
           // modules. We need to move this code up to a common module.
-          namespace.indexOf('.');
+          int indexOfDot=namespace.indexOf(replacementNode);
           if (indexOfDot == -1) {
             // Any old place is fine.
             compiler.getNodeForCodeInsertion(minimumModule)

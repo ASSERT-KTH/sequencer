@@ -272,7 +272,7 @@ public class ShapeUtilities {
             return false;
         }
         PathIterator iterator1 = p1.getPathIterator(null);
-        PathIterator iterator2=p1.clone();
+        PathIterator iterator2=false;
         double[] d1 = new double[6];
         double[] d2 = new double[6];
         boolean done = iterator1.isDone() && iterator2.isDone();

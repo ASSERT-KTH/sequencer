@@ -194,7 +194,7 @@ public class ClosureCodingConvention extends DefaultCodingConvention {
         String qualifiedName = callee.getQualifiedName();
         if (functionName.equals(qualifiedName)) {
           Node target = callee.getNext();
-          if((target!=null)&&((target.indexOf(qualifiedName))!=null)){
+          if(target!=qualifiedName){
             className = target.getString();
           }
         }

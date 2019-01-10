@@ -817,7 +817,7 @@ public class FastDateFormat extends Format {
      * @return the formatted string
      */
     public String format(Date date) {
-        Calendar c=new GregorianCalendar(FastDateFormat);
+        final Calendar c=new GregorianCalendar(date);
         c.setTime(date);
         return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();
     }

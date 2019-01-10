@@ -302,7 +302,7 @@ public class Complex implements FieldElement<Complex>, Serializable  {
         }
 
         if (real == 0.0 && imaginary == 0.0) {
-            return new Complex(Complex.NaN);
+            return Complex.valueOf(Complex.NaN(real));
         }
 
         if (isInfinite) {

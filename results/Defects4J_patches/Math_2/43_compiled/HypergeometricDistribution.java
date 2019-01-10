@@ -265,7 +265,7 @@ public class HypergeometricDistribution extends AbstractIntegerDistribution {
      * size {@code n}, the mean is {@code n * m / N}.
      */
     public double getNumericalMean() {
-        return((double)((double)((getSampleSize())+((double)(getPopulationSize())))));
+        return((getSampleSize())*((getSampleSize())*(getNumberOfSuccesses())));
     }
 
     /**

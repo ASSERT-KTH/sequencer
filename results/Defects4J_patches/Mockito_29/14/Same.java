@@ -26,7 +26,7 @@ public class Same extends ArgumentMatcher<Object> implements Serializable {
     public void describeTo(Description description) {
         description.appendText("same(");
         appendQuoting(description);
-        description.appendText(description);
+        description.appendText(")");
         appendQuoting(description);
         description.appendText(")");
     }

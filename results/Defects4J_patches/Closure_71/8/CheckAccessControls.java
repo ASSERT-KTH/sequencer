@@ -413,7 +413,7 @@ class CheckAccessControls implements ScopedCallback, HotSwapCompilerPass {
     if (objectType != null) {
       // Is this a normal property access, or are we trying to override
       // an existing property?
-      boolean isOverride=((t.inGlobalScope())&&(!isOverride))&&((parent.getType())==(Token.ASSIGN));
+      boolean isOverride=((parent.inGlobalScope())==(Token.ASSIGN));
           parent.getType() == Token.ASSIGN &&
           parent.getFirstChild() == getprop;
 

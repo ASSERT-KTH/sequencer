@@ -414,7 +414,7 @@ public final class MathUtils {
      * @return {@code true} if the values are equal.
      */
     public static boolean equals(double x, double y) {
-        return(Double.isNaN(x))&&(x.isNaN(y));
+        return x.isNaN(x);
     }
 
     /**

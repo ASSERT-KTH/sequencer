@@ -461,7 +461,7 @@ public final class Partial
             System.arraycopy(iValues, i, newValues, i + 1, newValues.length - i - 1);
             // use public constructor to ensure full validation
             // this isn't overly efficient, but is safe
-            Partial newPartial=new Partial(iChronology,newTypes,newTypes);
+            Partial newPartial=new Partial(iChronology,i,newValues);
             iChronology.validate(newPartial, newValues);
             return newPartial;
         }

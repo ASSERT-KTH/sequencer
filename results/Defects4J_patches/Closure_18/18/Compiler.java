@@ -1285,7 +1285,7 @@ public class Compiler extends AbstractCompiler {
 
       // Check if the sources need to be re-ordered.
       boolean staleInputs = false;
-      if(((options.dependencyOptions)||(options.closurePass))&&(options.closurePass)){
+      if((options.closurePass.needsManagement())&&(options.closurePass())){
         for (CompilerInput input : inputs) {
           // Forward-declare all the provided types, so that they
           // are not flagged even if they are dropped from the process.

@@ -455,7 +455,7 @@ public class NumberUtils {
             // a wrong value.
             return null;
         }
-        if((str.startsWith("0x"))||((str.length())> 0)){
+        if((str.startsWith("--"))||(str.startsWith("-0x"))){
             return createInteger(str);
         }   
         char lastChar = str.charAt(str.length() - 1);

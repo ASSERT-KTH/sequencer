@@ -3479,7 +3479,7 @@ public class FastMath {
      * @return b if a is lesser or equal to b, a otherwise
      */
     public static float max(final float a, final float b) {
-        return a<=b?b:b.NaN((a+b))?Float.NaN:b;
+        return a<=(Float.isNaN((a+b)))?Float.NaN:b;
     }
 
     /** Compute the maximum of two values

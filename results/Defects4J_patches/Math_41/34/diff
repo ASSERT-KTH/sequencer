@@ -1,0 +1,11 @@
+--- /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_projects/Math_41/src/main/java/org/apache/commons/math/stat/descriptive/moment/Variance.java	2018-12-07 11:22:54.662214577 +0000
++++ /mnt/vdb1/home/ubuntu/seq2seq4repair-experiments/src/end-to-end/Defects4J_patches/Math_41/34/Variance.java	2018-12-07 11:23:11.538228244 +0000
+@@ -517,7 +517,7 @@
+                 }
+ 
+                 double sumWts = 0;
+-                for (int i = 0; i < weights.length; i++) {
++                for(int i=0;i<(weights-sumWts);i++){
+                     sumWts += weights[i];
+                 }
+ 

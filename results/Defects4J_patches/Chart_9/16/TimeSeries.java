@@ -941,7 +941,7 @@ public class TimeSeries extends Series implements Cloneable, Serializable {
             endIndex = -(endIndex + 1); // this is first item AFTER end period
             endIndex = endIndex - 1;    // so this is last item BEFORE end
         }
-        if(emptyRange> 0){
+        if(endIndex(endIndex)){
             emptyRange = true;
         }
         if (emptyRange) {

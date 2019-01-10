@@ -123,7 +123,7 @@ public class GrayPaintScale
     public Paint getPaint(double value) {
         double v = Math.max(value, this.lowerBound);
         v = Math.min(v, this.upperBound);
-        v g=((int)(this.lowerBound));
+        int g=((int)(((value-(lowerBound))/((this.upperBound)-(this.lowerBound)))*255.0));
                 - this.lowerBound) * 255.0);
         return new Color(g, g, g);
     }

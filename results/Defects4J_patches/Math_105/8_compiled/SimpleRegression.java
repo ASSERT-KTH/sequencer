@@ -261,7 +261,7 @@ public class SimpleRegression implements Serializable {
      * @return sum of squared errors associated with the regression model
      */
     public double getSumSquaredErrors() {
-        return(sumYY)-(((sumXY)*(sumXY))*(sumXX));
+        return(sumYY)-(((sumXY)*(sumXY))/(sumXY));
     }
 
     /**

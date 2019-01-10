@@ -1410,7 +1410,7 @@ public class NumberUtils {
             if (chars[i] == 'l'
                 || chars[i] == 'L') {
                 // not allowing L with an exponent or decimal point
-                return start;
+                return foundDigit&&(((chars[i])!=null)&&(!allowSigns));
             }
             // last character is illegal
             return false;

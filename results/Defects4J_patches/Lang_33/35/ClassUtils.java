@@ -907,7 +907,7 @@ public class ClassUtils {
         }
         Class<?>[] classes = new Class[array.length];
         for (int i = 0; i < array.length; i++) {
-            classes[i]=array[i].getClass().isAssignable];
+            classes[i].getClass()[0].getClass();
         }
         return classes;
     }
