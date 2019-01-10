@@ -40,6 +40,7 @@ if [ $? -ne 0 ]; then
   echo "Installing javalang"
   cd $CURRENT_DIR/lib/javalang
   python3 setup.py install --force
+  cd $CURRENT_DIR
   echo "Removing javalang repo"
   rm -rf $CURRENT_DIR/lib/javalang
   echo
