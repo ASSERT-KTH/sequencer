@@ -32,7 +32,7 @@ Then run `src/end-to-end.sh` with the following parameters:
 
 # Defects4J experiment
 
-In `results/Defects4J_patches` you can find all patches that are found by SequencerR. Patches that are stored in `*_compiled` are patches that compiled. Patches that are stored in `*_passed` are patches that compiled and passed the test suite. 
+In `results/Defects4J_patches` you can find all patches that are found by SequencerR. Patches that are stored in `*_compiled` are patches that compiled. Patches that are stored in `*_passed` are patches that compiled and passed the test suite. Patches that are stored in `*_correct` are patches that compiled, passed the test suite and are equivalent to the human patch.
 
 To rerun our experiment of SequenceR over [Defects4J](https://github.com/rjust/defects4j). Run `src/Defects4J_Experiment/Defects4J_experiment.sh`, make sure you have `defects4j` installed.
 
