@@ -12,8 +12,11 @@ SequenceR is a seq2seq model designed to predict source code change on line leve
 
 If you use SequenceR for academic purposes, please cite the following publication:
 ```
-@techreport{sequencer2018,
-
+@article{chen2018sequencer,
+  title={SequenceR: Sequence-to-Sequence Learning for End-to-End Program Repair},
+  author={Chen, Zimin and Kommrusch, Steve and Tufano, Michele and Pouchet, Louis-No{\"e}l and Poshyvanyk, Denys and Monperrus, Martin},
+  journal={arXiv preprint arXiv:1901.01808},
+  year={2018}
 }
 ```
 
