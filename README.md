@@ -3,10 +3,10 @@
 Todos:
 
 * ~~upload golden model~~
-* Update Defects4J result with golden model
+* ~~Update Defects4J result with golden model~~
 * upload 950 successfull diffs in CR4
 * create real end-2-end sequencer.py
-* add arxiv info in bibtex below
+* ~~add arxiv info in bibtex below~~
 
 SequenceR is a seq2seq model designed to predict source code change on line level. (TODO, add result from our paper).
 
@@ -22,7 +22,23 @@ If you use SequenceR for academic purposes, please cite the following publicatio
 
 # Usage
 
+## Docker
+
+Simply run the following two commands:
+```bash
+docker build -tag=sequencer .
+docker run -it sequencer
+```
+
+And now all dependecies are installed (including defects4j).
+
+## Without docker
+
+### Install dependencies
+
 First run `src/setup_env.sh` to setup enviroment and clone/compile project. Please view `src/setup_env.sh` for more details.
+
+### Usage
 
 Then run `src/end-to-end.sh` with the following parameters:
 ```bash
@@ -33,7 +49,7 @@ Then run `src/end-to-end.sh` with the following parameters:
 * --beam_size: Beam size for prediction
 * --output: Output directory to store the generated patches
 
-# Defects4J experiment
+### Defects4J experiment
 
 In `results/Defects4J_patches` you can find all patches that are found by SequencerR. Patches that are stored in `*_compiled` are patches that compiled. Patches that are stored in `*_passed` are patches that compiled and passed the test suite. Patches that are stored in `*_correct` are patches that compiled, passed the test suite and are equivalent to the human patch.
 
