@@ -1,0 +1,272 @@
+./Chart_1/12_correct: Syntacticaly equivalent
+           - if (dataset != null) {            
+           + if (dataset == null) {        
+  SequenceR: if(dataset==null){        
+./Chart_9/15_passed: Semantically equivalent, but deleted uneeded term when method reviewed.
+           - if (endIndex < 0) {            
+           + if ((endIndex < 0)  || (endIndex < startIndex)) {
+  SequenceR: if(endIndex<startIndex){
+./Chart_11/19_correct: Syntactically equivalent
+           - PathIterator iterator2 = p1.getPathIterator(null);            
+           + PathIterator iterator2 = p2.getPathIterator(null);
+  SequenceR: PathIterator iterator2=p2.getPathIterator(null);
+./Closure_10/10_passed: Likely incorrect
+           - return allResultsMatch(n, MAY_BE_STRING_PREDICATE);            
+           + return anyResultsMatch(n, MAY_BE_STRING_PREDICATE);
+  SequenceR: return NodeUtil.mayBeStringHelper(n);
+./Closure_18/5_correct: Syntactically equivalent
+           - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
+           + if (options.dependencyOptions.needsManagement()) {
+  SequenceR: if(options.dependencyOptions.needsManagement()){
+./Closure_18/13_passed: Likely incorrect
+           - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
+           + if (options.dependencyOptions.needsManagement()) {
+  SequenceR: if((options.dependencyOptions.needsManagement())||(options.closurePass)){
+./Closure_18/23_passed: Inconclusive (depends on how 'try' handles things or if null can occur)
+           - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
+           + if (options.dependencyOptions.needsManagement()) {
+  SequenceR: if(((options.dependencyOptions)!=null)&&(options.dependencyOptions.needsManagement())){
+./Closure_18/25_passed: Semantically equivalent but duplicates expression (assume no sideeffects)
+           - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
+           + if (options.dependencyOptions.needsManagement()) {
+  SequenceR: if((options.dependencyOptions.needsManagement())&&(options.dependencyOptions.needsManagement())){
+./Closure_18/38_passed: Inconclusive (depends on how 'try' handles things or if null can occur)
+           - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
+           + if (options.dependencyOptions.needsManagement()) {
+  SequenceR: if(((options.dependencyOptions)!=null)&&((options.dependencyOptions.needsManagement())&&(options.dependencyOptions.needsManagement()))){
+./Closure_38/1_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+           - if (x < 0 && prev == '-') {            
+           + if ((x < 0 || negativeZero) && prev == '-') {        
+  SequenceR: if(prev=='-'){
+./Closure_38/5_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+           - if (x < 0 && prev == '-') {            
+           + if ((x < 0 || negativeZero) && prev == '-') {        
+  SequenceR: if((prev=='-')||(prev=='-')){
+./Closure_38/11_passed: Semantically equivalent? (adds innocuous space to some positive number printing)
+           - if (x < 0 && prev == '-') {            
+           + if ((x < 0 || negativeZero) && prev == '-') {        
+  SequenceR: if((x<'-')&&(prev=='-')){
+./Closure_38/12_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+           - if (x < 0 && prev == '-') {            
+           + if ((x < 0 || negativeZero) && prev == '-') {        
+  SequenceR: if((prev=='-')&&(prev=='-')){
+./Closure_38/27_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+           - if (x < 0 && prev == '-') {            
+           + if ((x < 0 || negativeZero) && prev == '-') {        
+  SequenceR: if((x<x)||(prev=='-')){
+./Closure_38/38_passed: Semantically equivalent? (adds innocuous space to positive 0 printing)
+           - if (x < 0 && prev == '-') {            
+           + if ((x < 0 || negativeZero) && prev == '-') {        
+  SequenceR: if((x<=0)&&(prev=='-')){
+./Closure_73/13_correct: Symantically equivalent, but changed 0x1f to 31 due to print formatting
+           - if (c > 0x1f && c <= 0x7f) {            
+           + if (c > 0x1f && c < 0x7f) {
+  SequenceR: if((c> 31)&&(c<127)){
+./Closure_73/21_passed: Semantically equivalent, but keeps unecessary term 
+           - if (c > 0x1f && c <= 0x7f) {            
+           + if (c > 0x1f && c < 0x7f) {
+  SequenceR: if(((c> 31)&&(c<=127))&&(c<127)){
+./Closure_73/31_correct: Semantically equivalent, but added parens and changed 0x1f to 31
+           - if (c > 0x1f && c <= 0x7f) {            
+           + if (c > 0x1f && c < 0x7f) {
+  SequenceR: if(((c> 31)&&(c<127))){
+./Closure_86/2_correct: Syntactically equivalent
+           - return true;            
+           + return false;
+  SequenceR: return false;
+./Closure_86/6_passed: Likely incorrect
+           - return true;            
+           + return false;
+  SequenceR: return locals.apply(value);
+./Closure_86/15_passed: Likely incorrect
+           - return true;            
+           + return false;
+  SequenceR: return NodeUtil.isToStringMethodCall(value);
+./Closure_86/21_passed: Likely incorrect
+           - return true;            
+           + return false;
+  SequenceR: return NodeUtil.isImmutableValue(value);
+./Closure_86/23_passed: Likely incorrect
+           - return true;            
+           + return false;
+  SequenceR: return NodeUtil.evaluatesToLocalValue(value.getFirstChild());
+./Closure_86/25_passed: Likely incorrect
+           - return true;            
+           + return false;
+  SequenceR: return NodeUtil.evaluatesToLocalValue(value.getLastChild());
+./Closure_86/26_passed: Likely incorrect
+           - return true;            
+           + return false;
+  SequenceR: return locals.apply(value.getFirstChild());
+./Closure_92/19_passed: Incorrect
+           - int indexOfDot = namespace.indexOf('.');            
+           + int indexOfDot = namespace.lastIndexOf('.');
+  SequenceR: int indexOfDot=namespace.indexOf(0);
+./Closure_93/19_passed: Incorrect
+           - int indexOfDot = namespace.indexOf('.');            
+           + int indexOfDot = namespace.lastIndexOf('.');        
+  SequenceR: int indexOfDot=namespace.indexOf(0);
+./Closure_123/18_passed: Incorrect
+           - Context rhsContext = Context.OTHER;            
+           + Context rhsContext = getContextForNoInOperator(context);        
+  SequenceR: CodeGenerator.Context rhsContext=CodeGenerator.Context.IN_FOR_INIT_CLAUSE;
+./Closure_125/17_passed: Semantically equivalent? (Hard to say)
+           - if (fnType != null) {            
+           + if (fnType != null && fnType.hasInstanceType()) {        
+  SequenceR: if((fnType!=null)&&(!(type.isEmptyType()))){
+./Closure_125/26_passed: Incorrect
+           - if (fnType != null) {            
+           + if (fnType != null && fnType.hasInstanceType()) {        
+  SequenceR: if(type.isConstructor()){
+./Lang_6/3_correct: Syntactically equivalent
+           - pos += Character.charCount(Character.codePointAt(input, pos)); 
+           + pos += Character.charCount(Character.codePointAt(input, pt));
+  SequenceR: pos+=Character.charCount(Character.codePointAt(input,pt));
+./Lang_6/41_correct: Semantically equivalent: parens OK
+           - pos += Character.charCount(Character.codePointAt(input, pos)); 
+           + pos += Character.charCount(Character.codePointAt(input, pt));
+  SequenceR: pos+=(Character.charCount(Character.codePointAt(input,pt)));
+./Lang_59/6_correct: Syntactically equivalent
+           - str.getChars(0, strLen, buffer, size);            
+           + str.getChars(0, width, buffer, size);        
+  SequenceR: str.getChars(0,width,buffer,size);
+./Math_30/23_correct: Syntactically equivalent
+           - final int n1n2prod = n1 * n2;            
+           + final double n1n2prod = n1 * n2;        
+  SequenceR: final double n1n2prod=n1*n2;
+./Math_57/3_correct: Syntactically equivalent
+           - int sum = 0;            
+           + double sum = 0;
+  SequenceR: double sum=0;
+./Math_57/21_passed: Incorrect
+           - int sum = 0;            
+           + double sum = 0;
+  SequenceR: int sum=-1;
+./Math_58/7_correct: Syntactically equivalent
+           - return fit(new Gaussian.Parametric(), guess);            
+           + return fit(guess);
+  SequenceR: return fit(guess);
+./Math_59/39_correct: Semantically equivalent, parens OK
+           - return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);   
+           + return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : a);
+  SequenceR: return a<=b?b:Float.isNaN((a+b))?Float.NaN:a;
+./Math_63/2_passed: Incorrect
+           - return (Double.isNaN(x) && Double.isNaN(y)) || x == y;            
+           + return equals(x, y, 1);
+  SequenceR: return(x==y)||(x==y);
+./Math_63/9_passed: Incorrect
+           - return (Double.isNaN(x) && Double.isNaN(y)) || x == y;            
+           + return equals(x, y, 1);
+  SequenceR: return x==y;
+./Math_63/35_passed: Incorrect
+           - return (Double.isNaN(x) && Double.isNaN(y)) || x == y;            
+           + return equals(x, y, 1);
+  SequenceR: return(x==y)&&(x==y);
+./Math_63/38_passed: Incorrect
+           - return (Double.isNaN(x) && Double.isNaN(y)) || x == y;            
+           + return equals(x, y, 1);
+  SequenceR: return((Double.isNaN(x))&&(x==y))||(x==y);
+./Math_70/24_passed: Incorrect
+           - return solve(min, max);            
+           + return solve(f, min, max);
+  SequenceR: return solve(f,initial,max);
+./Math_75/16_correct: Semantically equivalent, parens OK
+           - return getCumPct((Comparable<?>) v);            
+           + return getPct((Comparable<?>) v);
+  SequenceR: return getPct(((Comparable<?> )(v)));
+./Math_80/30_passed: Incorrect
+           - int j = 4 * n - 1;            
+           + int j = 4 * (n - 1);        
+  SequenceR: int j=(4*1)-2;
+./Math_80/37_passed: Incorrect
+           - int j = 4 * n - 1;            
+           + int j = 4 * (n - 1);        
+  SequenceR: int j=(4*0)-1;
+./Math_80/41_passed: Incorrect
+           - int j = 4 * n - 1;            
+           + int j = 4 * (n - 1);        
+  SequenceR: int j=(1*1)-1;
+./Math_82/5_passed: Incorrect
+           - if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {            
+           + if (MathUtils.compareTo(entry, 0, epsilon) > 0) {        
+  SequenceR: if((MathUtils.compareTo(entry,epsilon,epsilon))>=0){
+./Math_82/27_correct: Semantically equivalent, parens OK
+           - if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {            
+           + if (MathUtils.compareTo(entry, 0, epsilon) > 0) {        
+  SequenceR: if((MathUtils.compareTo(entry,0,epsilon))> 0){
+./Math_82/40_passed: Incorrect
+           - if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {            
+           + if (MathUtils.compareTo(entry, 0, epsilon) > 0) {        
+  SequenceR: if((MathUtils.compareTo(entry,0,0))>=0){
+./Math_82/46_passed: Semantically equivalent: for int, >0 same as >=1
+           - if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {            
+           + if (MathUtils.compareTo(entry, 0, epsilon) > 0) {        
+  SequenceR: if((MathUtils.compareTo(entry,0,epsilon))>=1){
+./Math_85/6_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=20){
+./Math_85/8_correct: Semantically equivalent: parens OK
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)> 0.0){
+./Math_85/10_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=2){
+./Math_85/11_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if(fa>=0.0){
+./Math_85/12_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*upperBound)>=0.0){
+./Math_85/13_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*maximumIterations)>=0.0){
+./Math_85/14_passed
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*numIterations)>=0.0){
+./Math_85/18_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=1){
+./Math_85/19_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=15){
+./Math_85/20_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=10){
+./Math_85/23_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if(fa>=fb){
+./Math_85/27_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=9){
+./Math_85/29_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=3){
+./Math_85/30_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*fb)>=6){
+./Math_85/32_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if((fa*1.0)>=0.0){
+./Math_85/37_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if(((fa*fb)>=0.0)&&((fa)>=0.0)){
+./Math_85/38_passed: Incorrect
+           - if (fa * fb >= 0.0 ) {            
+           + if (fa * fb > 0.0 ) {
+  SequenceR: if(((fa*fb)>=0.0)&&((fa)> 0.0)){
