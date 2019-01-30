@@ -26,7 +26,7 @@
            - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
            + if (options.dependencyOptions.needsManagement()) {
   SequenceR: if(((options.dependencyOptions)!=null)&&(options.dependencyOptions.needsManagement())){
-./Closure_18/25_passed: Semantically equivalent but duplicates expression (assume no sideeffects)
+./Closure_18/25_passed: Inconclusive (depends of if method has side effects)
            - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
            + if (options.dependencyOptions.needsManagement()) {
   SequenceR: if((options.dependencyOptions.needsManagement())&&(options.dependencyOptions.needsManagement())){
@@ -34,27 +34,27 @@
            - if (options.dependencyOptions.needsManagement() && options.closurePass) {            
            + if (options.dependencyOptions.needsManagement()) {
   SequenceR: if(((options.dependencyOptions)!=null)&&((options.dependencyOptions.needsManagement())&&(options.dependencyOptions.needsManagement()))){
-./Closure_38/1_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+./Closure_38/1_passed: Inconclusive (adds innocuous space to positive number printing)
            - if (x < 0 && prev == '-') {            
            + if ((x < 0 || negativeZero) && prev == '-') {        
   SequenceR: if(prev=='-'){
-./Closure_38/5_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+./Closure_38/5_passed: Inconclusive (adds innocuous space to positive number printing)
            - if (x < 0 && prev == '-') {            
            + if ((x < 0 || negativeZero) && prev == '-') {        
   SequenceR: if((prev=='-')||(prev=='-')){
-./Closure_38/11_passed: Semantically equivalent? (adds innocuous space to some positive number printing)
+./Closure_38/11_passed: Inconclusive (adds innocuous space to some positive number printing)
            - if (x < 0 && prev == '-') {            
            + if ((x < 0 || negativeZero) && prev == '-') {        
   SequenceR: if((x<'-')&&(prev=='-')){
-./Closure_38/12_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+./Closure_38/12_passed: Inconclusive (adds innocuous space to positive number printing)
            - if (x < 0 && prev == '-') {            
            + if ((x < 0 || negativeZero) && prev == '-') {        
   SequenceR: if((prev=='-')&&(prev=='-')){
-./Closure_38/27_passed: Semantically equivalent? (adds innocuous space to positive number printing)
+./Closure_38/27_passed: Inconclusive (adds innocuous space to positive number printing)
            - if (x < 0 && prev == '-') {            
            + if ((x < 0 || negativeZero) && prev == '-') {        
   SequenceR: if((x<x)||(prev=='-')){
-./Closure_38/38_passed: Semantically equivalent? (adds innocuous space to positive 0 printing)
+./Closure_38/38_passed: Inconclusive (adds innocuous space to positive 0 printing)
            - if (x < 0 && prev == '-') {            
            + if ((x < 0 || negativeZero) && prev == '-') {        
   SequenceR: if((x<=0)&&(prev=='-')){
@@ -110,7 +110,7 @@
            - Context rhsContext = Context.OTHER;            
            + Context rhsContext = getContextForNoInOperator(context);        
   SequenceR: CodeGenerator.Context rhsContext=CodeGenerator.Context.IN_FOR_INIT_CLAUSE;
-./Closure_125/17_passed: Semantically equivalent? (Hard to say)
+./Closure_125/17_passed: Inconclusive (Depends of if methods happen to be inverse of each other in this case)
            - if (fnType != null) {            
            + if (fnType != null && fnType.hasInstanceType()) {        
   SequenceR: if((fnType!=null)&&(!(type.isEmptyType()))){
