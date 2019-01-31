@@ -92,7 +92,7 @@ fi
 echo
 
 echo "Tokenizing the abstraction"
-python3 $CURRENT_DIR/Buggy_Context_Abstraction/tokenize.py $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract.java $CURRENT_DIR/tmp
+python3 $CURRENT_DIR/Buggy_Context_Abstraction/tokenize.py $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract.java $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized.txt
 retval=$?
 if [ $retval -ne 0 ]; then
   echo "Tokenization failed"
@@ -101,8 +101,18 @@ if [ $retval -ne 0 ]; then
 fi
 echo
 
+echo "Truncate the abstraction to 1000 tokens"
+perl $CURRENT_DIR/Buggy_Context_Abstraction/trimCon.pl $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized.txt $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt 1000
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Truncation failed"
+  rm -rf $CURRENT_DIR/tmp
+  exit 1
+fi
+echo
+
 echo "Generating predictions"
-python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $ROOT_DIR/model/model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE &>/dev/null
+python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $ROOT_DIR/model/model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE &>/dev/null
 echo
 
 echo "Post process predictions"

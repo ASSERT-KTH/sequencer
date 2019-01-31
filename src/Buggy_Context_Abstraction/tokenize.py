@@ -34,11 +34,10 @@ def main(argv):
         sys.stderr.write("Tokenization failed\n")
         sys.exit(1)
 
-    tokenized_file = open(os.path.join(argv[1], os.path.splitext(os.path.basename(argv[0]))[0]+"_tokenized.txt"), "w")
+    tokenized_file = open(argv[1], "w")
     tokenized_file.write(tokens_string + '\n')
     tokenized_file.close()
     sys.exit(0)
-
 
 
 if __name__=="__main__":
