@@ -26,7 +26,7 @@ If you use SequenceR for academic purposes, please cite the following publicatio
 
 Simply run the following two commands:
 ```bash
-docker build -tag=sequencer .
+docker build --tag=sequencer .
 docker run -it sequencer
 ```
 
