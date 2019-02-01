@@ -1,3 +1,16 @@
+# This file analyzes all plausible Defects4J results.
+# The patch list for analysis is provided with this command:
+#  find . -name '*_[pc][ao][sr][sr]e*'
+# The analysis should only include the word 'equivalent' for semantically or
+# syntactically equivalent patches.
+# The number of plausible patches is returned with:
+#  grep -c "^\." PassComments.txt
+# The number of bugs with plausible patches is returned with:
+#  perl -ne '/^\..(\w+)/ && print "$1\n"' PassComments.txt | sort -u | wc
+# The number of correct patches is returned with:
+#  grep -c "^\..*equivalent" PassComments.txt
+# The number of bugs with correct patches is returned with: 
+#  perl -ne '/^\..(\w+).*equivalent/ && print "$1\n"' PassComments.txt | sort -u | wc
 ./Chart_1/12_correct: Syntacticaly equivalent
            - if (dataset != null) {            
            + if (dataset == null) {        
