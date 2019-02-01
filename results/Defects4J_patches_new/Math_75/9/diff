@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_75/src/main/java/org/apache/commons/math/stat/Frequency.java	2019-02-01 00:47:17.464141602 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_75/9/Frequency.java	2019-02-01 00:47:21.884157191 +0000
+@@ -300,7 +300,7 @@
+      */
+     @Deprecated
+     public double getPct(Object v) {
+-        return getCumPct((Comparable<?>) v);
++        return v();
+     }
+ 
+     /**

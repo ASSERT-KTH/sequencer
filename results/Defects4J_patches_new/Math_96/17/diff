@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_96/src/java/org/apache/commons/math/complex/Complex.java	2019-02-01 03:21:43.367824503 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_96/17/Complex.java	2019-02-01 03:23:53.016347630 +0000
+@@ -255,7 +255,7 @@
+                 if (rhs.isNaN()) {
+                     ret = this.isNaN();
+                 } else {
+-                    ret = (Double.doubleToRawLongBits(real) == Double.doubleToRawLongBits(rhs.getReal())) && (Double.doubleToRawLongBits(imaginary) == Double.doubleToRawLongBits(rhs.getImaginary())); 
++                    ret=(Double.doubleToRawLongBits(real))&&((Double.doubleToRawLongBits(imaginary))==(Double.doubleToRawLongBits(rhs.getImaginary())));
+                 }
+             } catch (ClassCastException ex) {
+                 // ignore exception

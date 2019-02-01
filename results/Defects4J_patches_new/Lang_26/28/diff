@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Lang_26/src/main/java/org/apache/commons/lang3/time/FastDateFormat.java	2019-01-31 20:39:43.333807479 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Lang_26/28/FastDateFormat.java	2019-01-31 20:39:47.617824592 +0000
+@@ -817,7 +817,7 @@
+      * @return the formatted string
+      */
+     public String format(Date date) {
+-        Calendar c = new GregorianCalendar(mTimeZone);
++        Calendar c=date;
+         c.setTime(date);
+         return applyRules(c, new StringBuffer(mMaxLengthEstimate)).toString();
+     }

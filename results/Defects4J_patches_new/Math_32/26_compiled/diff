@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_32/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java	2019-01-31 22:37:30.857151583 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_32/26/PolygonsSet.java	2019-01-31 22:37:34.853164936 +0000
+@@ -133,7 +133,7 @@
+ 
+         if (v.length == 0) {
+             final BSPTree<Euclidean2D> tree = getTree(false);
+-            if ((Boolean) tree.getAttribute()) {
++            if((v)!=null){
+                 // the instance covers the whole space
+                 setSize(Double.POSITIVE_INFINITY);
+                 setBarycenter(Vector2D.NaN);

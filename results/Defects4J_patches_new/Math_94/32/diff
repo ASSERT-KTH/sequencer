@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_94/src/java/org/apache/commons/math/util/MathUtils.java	2019-02-01 01:13:40.186126446 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_94/32/MathUtils.java	2019-02-01 01:13:44.854144084 +0000
+@@ -409,7 +409,7 @@
+      * @since 1.1
+      */
+     public static int gcd(int u, int v) {
+-        if (u * v == 0) {
++        if((u==null)||((u*v)==0)){
+             return (Math.abs(u) + Math.abs(v));
+         }
+         // keep u and v negative, as negative integers range down to

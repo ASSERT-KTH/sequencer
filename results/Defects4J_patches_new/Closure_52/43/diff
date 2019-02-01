@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_52/src/com/google/javascript/jscomp/CodeGenerator.java	2019-01-31 16:39:27.307292466 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_52/43/CodeGenerator.java	2019-01-31 16:39:31.595307656 +0000
+@@ -742,7 +742,7 @@
+         return false;
+       }
+     }
+-    return len > 0;
++    return len> (len.charAt(s));
+   }
+ 
+   static double getSimpleNumber(String s) {

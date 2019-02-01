@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_80/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-02-01 00:50:10.112749237 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_80/3/EigenDecompositionImpl.java	2019-02-01 00:50:14.648765170 +0000
+@@ -1132,7 +1132,7 @@
+     private boolean flipIfWarranted(final int n, final int step) {
+         if (1.5 * work[pingPong] < work[4 * (n - 1) + pingPong]) {
+             // flip array
+-            int j = 4 * n - 1;
++            int j=4*1;
+             for (int i = 0; i < j; i += 4) {
+                 for (int k = 0; k < 4; k += step) {
+                     final double tmp = work[i + k];

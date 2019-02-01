@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Lang_16/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-01-31 20:27:55.302764874 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Lang_16/10/NumberUtils.java	2019-01-31 20:28:01.854796101 +0000
+@@ -455,7 +455,7 @@
+             // a wrong value.
+             return null;
+         }
+-        if (str.startsWith("0x") || str.startsWith("-0x")) {
++        if(((str.startsWith("0x"))||(str.startsWith("-0x")))||(str.startsWith("0x"))){
+             return createInteger(str);
+         }   
+         char lastChar = str.charAt(str.length() - 1);

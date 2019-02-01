@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_57/src/com/google/javascript/jscomp/ClosureCodingConvention.java	2019-01-31 17:02:19.907893919 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_57/4/ClosureCodingConvention.java	2019-01-31 17:02:24.031909523 +0000
+@@ -194,7 +194,7 @@
+         String qualifiedName = callee.getQualifiedName();
+         if (functionName.equals(qualifiedName)) {
+           Node target = callee.getNext();
+-          if (target != null) {
++          if((target!=null)&&(target!=null)){
+             className = target.getString();
+           }
+         }

@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_113/src/com/google/javascript/jscomp/ProcessClosurePrimitives.java	2019-01-31 18:58:02.496627493 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_113/5/ProcessClosurePrimitives.java	2019-01-31 18:58:06.928643989 +0000
+@@ -326,7 +326,7 @@
+       // the checks for broken requires turned off. In these cases, we
+       // allow broken requires to be preserved by the first run to
+       // let them be caught in the subsequent run.
+-      if (provided != null) {
++      if((provided!=null)&&((provided.getName())!=null)){
+         parent.detachFromParent();
+         compiler.reportCodeChange();
+       }

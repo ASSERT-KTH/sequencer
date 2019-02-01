@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Lang_24/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-01-31 20:33:36.036295718 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Lang_24/29/NumberUtils.java	2019-01-31 20:34:06.096423568 +0000
+@@ -1410,7 +1410,7 @@
+             if (chars[i] == 'l'
+                 || chars[i] == 'L') {
+                 // not allowing L with an exponent or decimal point
+-                return foundDigit && !hasExp;
++                return(foundDigit&&(!hasExp))&&((!foundDigit)||(!foundDigit));
+             }
+             // last character is illegal
+             return false;

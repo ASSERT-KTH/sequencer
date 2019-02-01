@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_70/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java	2019-02-01 00:40:33.522706120 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_70/34/BisectionSolver.java	2019-02-01 00:40:37.102718964 +0000
+@@ -69,7 +69,7 @@
+     /** {@inheritDoc} */
+     public double solve(final UnivariateRealFunction f, double min, double max, double initial)
+         throws MaxIterationsExceededException, FunctionEvaluationException {
+-        return solve(min, max);
++        return min);
+     }
+ 
+     /** {@inheritDoc} */

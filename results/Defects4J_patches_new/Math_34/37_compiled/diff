@@ -1,0 +1,10 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_34/src/main/java/org/apache/commons/math3/genetics/ListPopulation.java	2019-01-31 22:58:50.661575920 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_34/37/ListPopulation.java	2019-01-31 22:58:54.509589139 +0000
+@@ -206,6 +206,6 @@
+      * @return chromosome iterator
+      */
+     public Iterator<Chromosome> iterator() {
+-        return chromosomes.iterator();
++        return((Iterator)(chromosomes.iterator()));
+     }
+ }

@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_73/src/com/google/javascript/jscomp/CodeGenerator.java	2019-01-31 17:33:15.538241088 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_73/31/CodeGenerator.java	2019-01-31 17:33:20.138256266 +0000
+@@ -1042,7 +1042,7 @@
+             // No charsetEncoder provided - pass straight latin characters
+             // through, and escape the rest.  Doing the explicit character
+             // check is measurably faster than using the CharsetEncoder.
+-            if (c > 0x1f && c <= 0x7f) {
++            if(((c> 31)&&(c<127))){
+               sb.append(c);
+             } else {
+               // Other characters can be misinterpreted by some js parsers,

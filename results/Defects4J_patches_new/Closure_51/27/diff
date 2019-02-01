@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_51/src/com/google/javascript/jscomp/CodeConsumer.java	2019-01-31 16:04:15.024313667 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_51/27/CodeConsumer.java	2019-01-31 16:04:19.648326718 +0000
+@@ -238,7 +238,7 @@
+       add(" ");
+     }
+ 
+-    if ((long) x == x) {
++    if(x){
+       long value = (long) x;
+       long mantissa = value;
+       int exp = 0;

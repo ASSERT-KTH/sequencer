@@ -1,0 +1,487 @@
+./Chart_1/13_passed: Syntactically equivalent
+  Human patch:
+    -        if (dataset != null) {
+    +        if (dataset == null) {
+  SequenceR patch:
+    -        if (dataset != null) {
+    +        if(dataset==null){
+
+./Chart_9/15_passed: Incorrect
+  Human patch:
+    -        if (endIndex < 0) {
+    +        if ((endIndex < 0)  || (endIndex < startIndex)) {
+  SequenceR patch:
+    -        if (endIndex < 0) {
+    +        if(endIndex<startIndex){
+
+./Chart_11/19_passed: Syntactically equivalent
+  Human patch:
+    -        PathIterator iterator2 = p1.getPathIterator(null);
+    +        PathIterator iterator2 = p2.getPathIterator(null);
+  SequenceR patch:
+    -        PathIterator iterator2 = p1.getPathIterator(null);
+    +        PathIterator iterator2=p2.getPathIterator(null);
+
+./Closure_18/5_passed:Syntactically equivalent
+  Human patch:
+    -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
+    +      if (options.dependencyOptions.needsManagement()) {
+  SequenceR patch:
+    -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
+    +      if(options.dependencyOptions.needsManagement()){
+
+./Closure_18/11_passed: Incorrect
+  Human patch:
+    -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
+    +      if (options.dependencyOptions.needsManagement()) {
+  SequenceR patch:
+    -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
+    +      if((options.dependencyOptions.needsManagement())||(options.closurePass)){
+
+./Closure_18/19_passed: Incorrect
+  Human patch:
+    -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
+    +      if (options.dependencyOptions.needsManagement()) {
+  SequenceR patch:
+    -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
+    +      if((options.dependencyOptions.needsManagement())&&(options.dependencyOptions.needsManagement())){
+
+./Closure_38/1_passed: Incorrect
+  Human patch:
+    -    if (x < 0 && prev == '-') {
+    +    if ((x < 0 || negativeZero) && prev == '-') {
+  SequenceR patch:
+    -    if (x < 0 && prev == '-') {
+    +    if(prev=='-'){
+
+./Closure_38/5_passed: Incorrect
+  Human patch:
+    -    if (x < 0 && prev == '-') {
+    +    if ((x < 0 || negativeZero) && prev == '-') {
+  SequenceR patch:
+    -    if (x < 0 && prev == '-') {
+    +    if((prev=='-')||(prev=='-')){
+
+./Closure_38/11_passed: Incorrect
+  Human patch:
+    -    if (x < 0 && prev == '-') {
+    +    if ((x < 0 || negativeZero) && prev == '-') {
+  SequenceR patch:
+    -    if (x < 0 && prev == '-') {
+    +    if((x<'-')&&(prev=='-')){
+
+./Closure_38/12_passed: Incorrect
+  Human patch:
+    -    if (x < 0 && prev == '-') {
+    +    if ((x < 0 || negativeZero) && prev == '-') {
+  SequenceR patch:
+    -    if (x < 0 && prev == '-') {
+    +    if((prev=='-')&&(prev=='-')){
+
+./Closure_38/27_passed: Incorrect
+  Human patch:
+    -    if (x < 0 && prev == '-') {
+    +    if ((x < 0 || negativeZero) && prev == '-') {
+  SequenceR patch:
+    -    if (x < 0 && prev == '-') {
+    +    if((x<x)||(prev=='-')){
+
+./Closure_38/38_passed: Incorrect
+  Human patch:
+    -    if (x < 0 && prev == '-') {
+    +    if ((x < 0 || negativeZero) && prev == '-') {
+  SequenceR patch:
+    -    if (x < 0 && prev == '-') {
+    +    if((x<=0)&&(prev=='-')){
+
+./Closure_73/13_passed: Semantically equivalent, 0x1f and 0x7f are converted due to AST pretty print
+  Human patch:
+    -            if (c > 0x1f && c <= 0x7f) {
+    +            if (c > 0x1f && c < 0x7f) {
+  SequenceR patch:
+    -            if (c > 0x1f && c <= 0x7f) {
+    +            if((c> 31)&&(c<127)){
+
+./Closure_73/21_passed: Semantically equivalent, (c<=127))&&(c<127) is the same as (c<127)
+  Human patch:
+    -            if (c > 0x1f && c <= 0x7f) {
+    +            if (c > 0x1f && c < 0x7f) {
+  SequenceR patch:
+    -            if (c > 0x1f && c <= 0x7f) {
+    +            if(((c> 31)&&(c<=127))&&(c<127)){
+
+./Closure_73/31_passed: Semantically equivalent, only added unnecessary parentheses
+  Human patch:
+    -            if (c > 0x1f && c <= 0x7f) {
+    +            if (c > 0x1f && c < 0x7f) {
+  SequenceR patch:
+    -            if (c > 0x1f && c <= 0x7f) {
+    +            if(((c> 31)&&(c<127))){
+
+./Closure_86/2_passed: Syntactically equivalent
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return false;
+
+./Closure_86/6_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return locals.apply(value);
+
+./Closure_86/10_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return NodeUtil.isToStringMethodCall(value);
+
+./Closure_86/13_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return NodeUtil.isImmutableValue(value);
+
+./Closure_86/24_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return NodeUtil.evaluatesToLocalValue(value.getFirstChild());
+
+./Closure_86/25_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return NodeUtil.evaluatesToLocalValue(value.getLastChild());
+
+./Closure_86/26_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return locals.apply(value.getFirstChild());
+
+./Closure_86/27_passed: Incorrect
+  Human patch:
+    -        return true;
+    +        return false;
+  SequenceR patch:
+    -        return true;
+    +        return locals.apply(value.getLastChild());
+
+./Closure_125/16_passed: Incorrect
+  Human patch:
+    -      if (fnType != null) {
+    +      if (fnType != null && fnType.hasInstanceType()) {
+  SequenceR patch:
+    -      if (fnType != null) {
+    +      if((fnType!=null)&&(!(type.isEmptyType()))){
+
+./Lang_6/3_passed: Syntactically equivalent
+  Human patch:
+    -                pos += Character.charCount(Character.codePointAt(input, pos));
+    +                pos += Character.charCount(Character.codePointAt(input, pt));
+  SequenceR patch:
+    -                pos += Character.charCount(Character.codePointAt(input, pos));
+    +                pos+=Character.charCount(Character.codePointAt(input,pt));
+
+./Lang_6/41_passed: Semantically equivalent, only added unnecessary parentheses
+  Human patch:
+    -                pos += Character.charCount(Character.codePointAt(input, pos));
+    +                pos += Character.charCount(Character.codePointAt(input, pt));
+  SequenceR patch:
+    -                pos += Character.charCount(Character.codePointAt(input, pos));
+    +                pos+=(Character.charCount(Character.codePointAt(input,pt)));
+
+./Lang_59/10_passed: Syntactically equivalent
+  Human patch:
+    -                str.getChars(0, strLen, buffer, size);
+    +                str.getChars(0, width, buffer, size);
+  SequenceR patch:
+    -                str.getChars(0, strLen, buffer, size);
+    +                str.getChars(0,width,buffer,size);
+
+./Math_30/23_passed: Syntactically equivalent
+  Human patch:
+    -                    final int n1n2prod = n1 * n2;
+    +                    final double n1n2prod = n1 * n2;
+  SequenceR patch:
+    -        final int n1n2prod = n1 * n2;
+    +        final double n1n2prod=n1*n2;
+
+./Math_57/3_passed: Syntactically equivalent
+  Human patch:
+    -            int sum = 0;
+    +            double sum = 0;
+  SequenceR patch:
+    -            int sum = 0;
+    +            double sum=0;
+
+./Math_57/21_passed: Incorrect
+  Human patch:
+    -            int sum = 0;
+    +            double sum = 0;
+  SequenceR patch:
+    -            int sum = 0;
+    +            int sum=-1;
+
+./Math_58/7_passed: Syntactically equivalent
+  Human patch:
+    -        return fit(new Gaussian.Parametric(), guess);
+    +        return fit(guess);
+  SequenceR patch:
+    -        return fit(new Gaussian.Parametric(), guess);
+    +        return fit(guess);
+
+./Math_63/1_passed: Incorrect
+  Human patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return equals(x, y, 1);
+  SequenceR patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return(x==y)||(x==y);
+
+./Math_63/4_passed: Incorrect
+  Human patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return equals(x, y, 1);
+  SequenceR patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return x==y;
+
+./Math_63/27_passed: Incorrect
+  Human patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return equals(x, y, 1);
+  SequenceR patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return(x==y)&&(x==y);
+
+./Math_63/40_passed: Incorrect
+  Human patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return equals(x, y, 1);
+  SequenceR patch:
+    -        return (Double.isNaN(x) && Double.isNaN(y)) || x == y;
+    +        return(x==y)||((x==y)||(x==y));
+
+./Math_70/24_passed: Incorrect
+  Human patch:
+    -        return solve(min, max);
+    +        return solve(f, min, max);
+  SequenceR patch:
+    -        return solve(min, max);
+    +        return solve(f,initial,max);
+
+./Math_75/16_passed: Semantically equivalent, only added unnecessary parentheses
+  Human patch:
+    -        return getCumPct((Comparable<?>) v);
+    +        return getPct((Comparable<?>) v);
+  SequenceR patch:
+    -        return getCumPct((Comparable<?>) v);
+    +        return getPct(((Comparable<?> )(v)));
+
+./Math_80/30_passed: Incorrect
+  Human patch:
+    -            int j = 4 * n - 1;
+    +            int j = 4 * (n - 1);
+  SequenceR patch:
+    -            int j = 4 * n - 1;
+    +            int j=(4*1)-2;
+
+./Math_80/37_passed: Incorrect
+  Human patch:
+    -            int j = 4 * n - 1;
+    +            int j = 4 * (n - 1);
+  SequenceR patch:
+    -            int j = 4 * n - 1;
+    +            int j=(4*0)-1;
+
+./Math_80/41_passed: Incorrect
+  Human patch:
+    -            int j = 4 * n - 1;
+    +            int j = 4 * (n - 1);
+  SequenceR patch:
+    -            int j = 4 * n - 1;
+    +            int j=(1*1)-1;
+
+./Math_82/5_passed: Incorrect
+  Human patch:
+    -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+    +            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+  SequenceR patch:
+    -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+    +            if((MathUtils.compareTo(entry,epsilon,epsilon))>=0){
+
+./Math_82/27_passed: Semantically equivalent, only added unnecessary parentheses
+  Human patch:
+    -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+    +            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+  SequenceR patch:
+    -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+    +            if((MathUtils.compareTo(entry,0,epsilon))> 0){
+
+./Math_82/40_passed: Incorrect
+Human patch:
+  -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+  +            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+SequenceR patch:
+  -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+  +            if((MathUtils.compareTo(entry,0,0))>=0){
+
+./Math_82/46_passed: Semantically equivalent, MathUtils.compareTo returns integer, therefore > 0 and >= 1 are the same
+  Human patch:
+    -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+    +            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
+  SequenceR patch:
+    -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
+    +            if((MathUtils.compareTo(entry,0,epsilon))>=1){
+
+./Math_85/6_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=20){
+
+./Math_85/8_passed: Semantically equivalent, only added unnecessary parentheses
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)> 0.0){
+
+./Math_85/10_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=2){
+
+./Math_85/11_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if(fa>=0.0){
+
+./Math_85/12_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*upperBound)>=0.0){
+
+./Math_85/13_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*maximumIterations)>=0.0){
+
+./Math_85/14_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*numIterations)>=0.0){
+
+./Math_85/18_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=1){
+
+./Math_85/19_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=15){
+
+./Math_85/20_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=10){
+
+./Math_85/23_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if(fa>=fb){
+
+./Math_85/27_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=9){
+
+./Math_85/29_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=3){
+
+./Math_85/30_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*fb)>=6){
+
+./Math_85/32_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if((fa*1.0)>=0.0){
+
+./Math_85/37_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if(((fa*fb)>=0.0)&&((fa)>=0.0)){
+
+./Math_85/38_passed: Incorrect
+  Human patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if (fa * fb > 0.0 ) {
+  SequenceR patch:
+    -        if (fa * fb >= 0.0 ) {
+    +        if(((fa*fb)>=0.0)&&((fa)> 0.0)){

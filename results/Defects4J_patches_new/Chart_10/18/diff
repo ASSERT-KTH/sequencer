@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Chart_10/source/org/jfree/chart/imagemap/StandardToolTipTagFragmentGenerator.java	2019-01-31 14:26:07.132031523 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Chart_10/18/StandardToolTipTagFragmentGenerator.java	2019-01-31 14:26:10.656043229 +0000
+@@ -62,7 +62,7 @@
+      * @return The formatted HTML area tag attribute(s).
+      */
+     public String generateToolTipFragment(String toolTipText) {
+-        return " title=\"" + toolTipText
++        return"\"+toolTipText;
+             + "\" alt=\"\"";
+     }
+ 

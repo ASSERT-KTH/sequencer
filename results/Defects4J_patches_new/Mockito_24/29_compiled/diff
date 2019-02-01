@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Mockito_24/src/org/mockito/internal/stubbing/defaultanswers/ReturnsEmptyValues.java	2019-02-01 03:52:47.082671512 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Mockito_24/29/ReturnsEmptyValues.java	2019-02-01 03:53:38.314785623 +0000
+@@ -73,7 +73,7 @@
+             //see issue 184.
+             //mocks by default should return 0 if references are the same, otherwise some other value because they are not the same. Hence we return 1 (anything but 0 is good).
+             //Only for compareTo() method by the Comparable interface
+-            return 1;
++            return((invocation.getMethod())!=null)?1:0;
+         }
+         
+         Class<?> returnType = invocation.getMethod().getReturnType();

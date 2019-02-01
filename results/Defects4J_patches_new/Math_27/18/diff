@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Math_27/src/main/java/org/apache/commons/math3/fraction/Fraction.java	2019-01-31 22:00:36.942029036 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Math_27/18/Fraction.java	2019-01-31 22:00:41.146043586 +0000
+@@ -594,7 +594,7 @@
+      * @return the fraction percentage as a <tt>double</tt>.
+      */
+     public double percentageValue() {
+-        return multiply(100).doubleValue();
++        return multiply(100);
+     }
+ 
+     /**

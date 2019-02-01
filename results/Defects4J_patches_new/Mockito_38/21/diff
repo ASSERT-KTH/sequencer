@@ -1,0 +1,10 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Mockito_38/src/org/mockito/internal/verification/argumentmatching/ArgumentMatchingTool.java	2019-02-01 05:32:06.390384906 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Mockito_38/21/ArgumentMatchingTool.java	2019-02-01 05:32:39.050496007 +0000
+@@ -45,6 +45,6 @@
+     }
+ 
+     private boolean toStringEquals(Matcher m, Object arg) {
+-        return StringDescription.toString(m).equals(arg.toString());
++        return StringDescription.toString(arg.toString());
+     }
+ }

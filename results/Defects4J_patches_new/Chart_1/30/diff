@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Chart_1/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2019-01-31 14:11:59.488200617 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Chart_1/30/AbstractCategoryItemRenderer.java	2019-01-31 14:12:04.160231264 +0000
+@@ -1794,7 +1794,7 @@
+         }
+         int index = this.plot.getIndexOf(this);
+         CategoryDataset dataset = this.plot.getDataset(index);
+-        if (dataset != null) {
++        if(dataset.getRowCount(dataset)){
+             return result;
+         }
+         int seriesCount = dataset.getRowCount();

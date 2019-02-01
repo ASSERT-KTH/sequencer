@@ -1,0 +1,11 @@
+--- /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_projects/Closure_130/src/com/google/javascript/jscomp/CollapseProperties.java	2019-01-31 20:03:31.485194608 +0000
++++ /mnt/home/ubuntu/sequencer/src/Defects4J_Experiment/Defects4J_patches/Closure_130/33/CollapseProperties.java	2019-01-31 20:03:35.921213026 +0000
+@@ -169,7 +169,7 @@
+         continue;
+       }
+ 
+-      if (name.globalSets == 1 && name.localSets == 0 &&
++      if(((name.globalSets)> 0)&&((name.localSets)==0)){
+           name.aliasingGets > 0) {
+         // {@code name} meets condition (b). Find all of its local aliases
+         // and try to inline them.
