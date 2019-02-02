@@ -1,4 +1,17 @@
-./Chart_1/13_passed: Syntactically equivalent
+# This file analyzes all plausible Defects4J results.
+# The patch list for analysis is provided with this command:
+#  find . -name '*_[pc][ao][sr][sr]e*'
+# The analysis should only include the word 'equivalent' for semantically or
+# syntactically equivalent patches.
+# The number of plausible patches is returned with:
+#  grep -c "^\." PassComments.txt
+# The number of bugs with plausible patches is returned with:
+#  perl -ne '/^\..(\w+)/ && print "$1\n"' PassComments.txt | sort -u | wc
+# The number of correct patches is returned with:
+#  grep -c "^\..*equivalent" PassComments.txt
+# The number of bugs with correct patches is returned with:
+#  perl -ne '/^\..(\w+).*equivalent/ && print "$1\n"' PassComments.txt | sort -u | wc
+./Chart_1/13_correct: Syntactically equivalent
   Human patch:
     -        if (dataset != null) {
     +        if (dataset == null) {
@@ -6,7 +19,7 @@
     -        if (dataset != null) {
     +        if(dataset==null){
 
-./Chart_9/15_passed: Incorrect
+./Chart_9/15_correct: Semantically equivalent (startIndex >= 0 at this line in method)
   Human patch:
     -        if (endIndex < 0) {
     +        if ((endIndex < 0)  || (endIndex < startIndex)) {
@@ -14,7 +27,7 @@
     -        if (endIndex < 0) {
     +        if(endIndex<startIndex){
 
-./Chart_11/19_passed: Syntactically equivalent
+./Chart_11/19_correct: Syntactically equivalent
   Human patch:
     -        PathIterator iterator2 = p1.getPathIterator(null);
     +        PathIterator iterator2 = p2.getPathIterator(null);
@@ -22,7 +35,7 @@
     -        PathIterator iterator2 = p1.getPathIterator(null);
     +        PathIterator iterator2=p2.getPathIterator(null);
 
-./Closure_18/5_passed:Syntactically equivalent
+./Closure_18/5_correct:Syntactically equivalent
   Human patch:
     -      if (options.dependencyOptions.needsManagement() && options.closurePass) {
     +      if (options.dependencyOptions.needsManagement()) {
@@ -94,7 +107,7 @@
     -    if (x < 0 && prev == '-') {
     +    if((x<=0)&&(prev=='-')){
 
-./Closure_73/13_passed: Semantically equivalent, 0x1f and 0x7f are converted due to AST pretty print
+./Closure_73/13_correct: Semantically equivalent, 0x1f and 0x7f are converted due to AST pretty print
   Human patch:
     -            if (c > 0x1f && c <= 0x7f) {
     +            if (c > 0x1f && c < 0x7f) {
@@ -102,7 +115,7 @@
     -            if (c > 0x1f && c <= 0x7f) {
     +            if((c> 31)&&(c<127)){
 
-./Closure_73/21_passed: Semantically equivalent, (c<=127))&&(c<127) is the same as (c<127)
+./Closure_73/21_correct: Semantically equivalent, (c<=127))&&(c<127) is the same as (c<127)
   Human patch:
     -            if (c > 0x1f && c <= 0x7f) {
     +            if (c > 0x1f && c < 0x7f) {
@@ -110,7 +123,7 @@
     -            if (c > 0x1f && c <= 0x7f) {
     +            if(((c> 31)&&(c<=127))&&(c<127)){
 
-./Closure_73/31_passed: Semantically equivalent, only added unnecessary parentheses
+./Closure_73/31_correct: Semantically equivalent, only added unnecessary parentheses
   Human patch:
     -            if (c > 0x1f && c <= 0x7f) {
     +            if (c > 0x1f && c < 0x7f) {
@@ -118,7 +131,7 @@
     -            if (c > 0x1f && c <= 0x7f) {
     +            if(((c> 31)&&(c<127))){
 
-./Closure_86/2_passed: Syntactically equivalent
+./Closure_86/2_correct: Syntactically equivalent
   Human patch:
     -        return true;
     +        return false;
@@ -190,7 +203,7 @@
     -      if (fnType != null) {
     +      if((fnType!=null)&&(!(type.isEmptyType()))){
 
-./Lang_6/3_passed: Syntactically equivalent
+./Lang_6/3_correct: Syntactically equivalent
   Human patch:
     -                pos += Character.charCount(Character.codePointAt(input, pos));
     +                pos += Character.charCount(Character.codePointAt(input, pt));
@@ -198,7 +211,7 @@
     -                pos += Character.charCount(Character.codePointAt(input, pos));
     +                pos+=Character.charCount(Character.codePointAt(input,pt));
 
-./Lang_6/41_passed: Semantically equivalent, only added unnecessary parentheses
+./Lang_6/41_correct: Semantically equivalent, only added unnecessary parentheses
   Human patch:
     -                pos += Character.charCount(Character.codePointAt(input, pos));
     +                pos += Character.charCount(Character.codePointAt(input, pt));
@@ -206,7 +219,7 @@
     -                pos += Character.charCount(Character.codePointAt(input, pos));
     +                pos+=(Character.charCount(Character.codePointAt(input,pt)));
 
-./Lang_59/10_passed: Syntactically equivalent
+./Lang_59/10_correct: Syntactically equivalent
   Human patch:
     -                str.getChars(0, strLen, buffer, size);
     +                str.getChars(0, width, buffer, size);
@@ -214,7 +227,7 @@
     -                str.getChars(0, strLen, buffer, size);
     +                str.getChars(0,width,buffer,size);
 
-./Math_30/23_passed: Syntactically equivalent
+./Math_30/23_correct: Syntactically equivalent
   Human patch:
     -                    final int n1n2prod = n1 * n2;
     +                    final double n1n2prod = n1 * n2;
@@ -222,7 +235,7 @@
     -        final int n1n2prod = n1 * n2;
     +        final double n1n2prod=n1*n2;
 
-./Math_57/3_passed: Syntactically equivalent
+./Math_57/3_correct: Syntactically equivalent
   Human patch:
     -            int sum = 0;
     +            double sum = 0;
@@ -238,7 +251,7 @@
     -            int sum = 0;
     +            int sum=-1;
 
-./Math_58/7_passed: Syntactically equivalent
+./Math_58/7_correct: Syntactically equivalent
   Human patch:
     -        return fit(new Gaussian.Parametric(), guess);
     +        return fit(guess);
@@ -286,7 +299,7 @@
     -        return solve(min, max);
     +        return solve(f,initial,max);
 
-./Math_75/16_passed: Semantically equivalent, only added unnecessary parentheses
+./Math_75/16_correct: Semantically equivalent, only added unnecessary parentheses
   Human patch:
     -        return getCumPct((Comparable<?>) v);
     +        return getPct((Comparable<?>) v);
@@ -326,7 +339,7 @@
     -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
     +            if((MathUtils.compareTo(entry,epsilon,epsilon))>=0){
 
-./Math_82/27_passed: Semantically equivalent, only added unnecessary parentheses
+./Math_82/27_correct: Semantically equivalent, only added unnecessary parentheses
   Human patch:
     -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
     +            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
@@ -342,7 +355,7 @@ SequenceR patch:
   -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
   +            if((MathUtils.compareTo(entry,0,0))>=0){
 
-./Math_82/46_passed: Semantically equivalent, MathUtils.compareTo returns integer, therefore > 0 and >= 1 are the same
+./Math_82/46_correct: Semantically equivalent, MathUtils.compareTo returns integer, therefore > 0 and >= 1 are the same
   Human patch:
     -            if (MathUtils.compareTo(entry, 0, epsilon) >= 0) {
     +            if (MathUtils.compareTo(entry, 0, epsilon) > 0) {
@@ -358,7 +371,7 @@ SequenceR patch:
     -        if (fa * fb >= 0.0 ) {
     +        if((fa*fb)>=20){
 
-./Math_85/8_passed: Semantically equivalent, only added unnecessary parentheses
+./Math_85/8_correct: Semantically equivalent, only added unnecessary parentheses
   Human patch:
     -        if (fa * fb >= 0.0 ) {
     +        if (fa * fb > 0.0 ) {
