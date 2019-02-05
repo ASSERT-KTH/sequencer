@@ -229,8 +229,8 @@
 
 ./Math_30/23_correct: Syntactically equivalent
   Human patch:
-    -                    final int n1n2prod = n1 * n2;
-    +                    final double n1n2prod = n1 * n2;
+    -        final int n1n2prod = n1 * n2;
+    +        final double n1n2prod = n1 * n2;
   SequenceR patch:
     -        final int n1n2prod = n1 * n2;
     +        final double n1n2prod=n1*n2;
