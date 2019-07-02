@@ -1,0 +1,19 @@
+[2018-11-28 08:45:11,550 INFO] Extracting features...
+[2018-11-28 08:45:11,580 INFO]  * number of source features: 0.
+[2018-11-28 08:45:11,580 INFO]  * number of target features: 0.
+[2018-11-28 08:45:11,580 INFO] Building `Fields` object...
+[2018-11-28 08:45:11,580 INFO] Building & saving training data...
+[2018-11-28 08:45:11,589 INFO] Reading source and target files: /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/src-train.txt /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/tgt-train.txt.
+[2018-11-28 08:45:12,727 INFO] Splitting shard 0.
+[2018-11-28 08:45:13,897 INFO] Building shard 0.
+[2018-11-28 08:45:41,024 INFO]  * saving 0th train data shard to /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt.
+[2018-11-28 08:46:04,091 INFO] Building & saving validation data...
+[2018-11-28 08:46:04,092 INFO] Reading source and target files: /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/src-val.txt /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/tgt-val.txt.
+[2018-11-28 08:46:04,154 INFO] Splitting shard 0.
+[2018-11-28 08:46:04,219 INFO] Building shard 0.
+[2018-11-28 08:46:05,513 INFO]  * saving 0th valid data shard to /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.valid.0.pt.
+[2018-11-28 08:46:06,735 INFO] Building & saving vocabulary...
+[2018-11-28 08:46:10,925 INFO]  * reloading /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt.
+[2018-11-28 08:46:12,526 INFO]  * tgt vocab size: 1004.
+[2018-11-28 08:46:13,286 INFO]  * src vocab size: 1002.
+[2018-11-28 08:46:13,286 INFO]  * merging src and tgt vocab...

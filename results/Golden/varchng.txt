@@ -1,0 +1,68 @@
+> return c1Type . isAssignableFrom ( c2Type ) ; <SEP> return c2Type . isAssignableFrom ( c1Type ) ;
+> return c2Type . isAssignableFrom ( c1Type ) ; <SEP> return c1Type . isAssignableFrom ( c2Type ) ;
+> if ( DirectoryReader . indexExists ( store . directory ( ) ) ) { <SEP> if ( Lucene . indexExists ( store . directory ( ) ) ) {
+> main . bold ( event . getRepo ( ) . getName ( ) ) ; <SEP> main . bold ( repoName ) ;
+> if ( ! ( executorService . isTerminated ( ) ) ) { <SEP> if ( ! ( scheduledExecutorService . isTerminated ( ) ) ) {
+> ( ( IOSInput ) ( Gdx . input ) ) . processEvents ( ) ; <SEP> input . processEvents ( ) ;
+> String rateLimitingType = indexSettings . get ( AbstractIndexStore . INDEX_STORE_THROTTLE_TYPE , AbstractIndexStore . this . rateLimitingType ) ; <SEP> String rateLimitingType = settings . get ( AbstractIndexStore . INDEX_STORE_THROTTLE_TYPE , AbstractIndexStore . this . rateLimitingType ) ;
+> RecoveryStatus recoveryStatus = recoveryTarget . recoveryStatus ( indexShard . shardId ( ) ) ; <SEP> RecoveryStatus recoveryStatus = recoveryTarget . recoveryStatus ( indexShard ) ;
+> return new PlainShardsIterator ( allShards , Math . abs ( counter . incrementAndGet ( ) ) ) ; <SEP> return new PlainShardsIterator ( allShards , counter . incrementAndGet ( ) ) ;
+> knownType = OrderedMap . class ; <SEP> knownType = ObjectMap . class ;
+> filter = fieldMapper . termsFilter ( parseContext . fieldData ( ) , terms , parseContext ) ; <SEP> filter = fieldMapper . termsFilter ( parseContext , terms , parseContext ) ;
+> if ( ( token == ( Token . START_OBJECT ) ) && ( ! ( parser . hasTextCharacters ( ) ) ) ) { <SEP> if ( token == ( Token . START_OBJECT ) ) {
+> if ( ( request . searchType ( ) ) != ( SearchType . COUNT ) ) { <SEP> if ( ( context . searchType ( ) ) != ( SearchType . COUNT ) ) {
+> onGoingRecovery . recoveryState . getIndex ( ) . addRecoveredByteCount ( request . length ( ) ) ; <SEP> onGoingRecovery . recoveryState . getIndex ( ) . addRecoveredByteCount ( content . length ( ) ) ;
+> Actor actor = stage . hit ( stageCoords . x , stageCoords . y , true ) ; <SEP> Actor actor = stage . hit ( stageCoords . x , stageCoords . y ) ;
+> Actor actor = stage . hit ( stageCoords . x , stageCoords . y ) ; <SEP> Actor actor = stage . hit ( stageCoords . x , stageCoords . y , true ) ;
+> result = t . getCause ( ) ; <SEP> result = result . getCause ( ) ;
+zzz reviewed to here
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . setViewport ( width , height , false ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . setViewport ( width , height , true ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . setViewport ( width , height , true ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . setViewport ( width , height , false ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . setViewport ( width , height , true ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . setViewport ( width , height , true ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> stage . getViewport ( ) . update ( width , height ) ; <SEP> stage . getViewport ( ) . update ( width , height , true ) ;
+> String propName = Strings . toUnderscoreCase ( entry . getKey ( ) ) ; <SEP> String propName = entry . getKey ( ) ;
+> if ( ! ( this . name . equals ( name ) ) ) <SEP> if ( ! ( name . equals ( name ) ) )
+> if ( ( this . type ) != ( other . type ) ) <SEP> if ( ( other . type ) != ( other . type ) )
+> assertThat ( routingNode . shards ( ) . size ( ) , equalTo ( 1 ) ) ; <SEP> assertThat ( routingNode . size ( ) , equalTo ( 1 ) ) ;
+> builder . prettyPrint ( ) . lfAtEnd ( ) ; <SEP> builder . prettyPrint ( ) ;
+> ( ( IndicesAdminClient ) ( client ) ) . aliasesExist ( request , listener ) ; <SEP> client . aliasesExist ( request , listener ) ;
+> ( ( IndicesAdminClient ) ( client ) ) . getAliases ( request , listener ) ; <SEP> client . getAliases ( request , listener ) ;
+> FieldMapper fieldMapper = context . mapperService ( ) . smartNameFieldMapper ( fieldName ) ; <SEP> FieldMapper fieldMapper = context . smartNameFieldMapper ( fieldName ) ;
+> FieldMapper fieldMapper = context . mapperService ( ) . smartNameFieldMapper ( field ) ; <SEP> FieldMapper fieldMapper = context . smartNameFieldMapper ( field ) ;
+> FieldMapper keyFieldMapper = context . mapperService ( ) . smartNameFieldMapper ( keyField ) ; <SEP> FieldMapper keyFieldMapper = context . smartNameFieldMapper ( keyField ) ;
+> FieldMapper mapper = context . mapperService ( ) . smartNameFieldMapper ( keyField ) ; <SEP> FieldMapper mapper = context . smartNameFieldMapper ( keyField ) ;
+> FieldMapper mapper = context . mapperService ( ) . smartNameFieldMapper ( keyField ) ; <SEP> FieldMapper mapper = context . smartNameFieldMapper ( keyField ) ;
+> FieldMappers x = context . mapperService ( ) . smartNameFieldMappers ( fieldName ) ; <SEP> FieldMappers x = context . smartNameFieldMappers ( fieldName ) ;
+> if ( ( ( context . fieldNames ( ) ) == null ) || ( ( context . fieldNames ( ) . length ) == 0 ) ) { <SEP> if ( ( context . fieldNames ( ) ) == null ) {
+> if ( file ( ) . exists ( ) ) <SEP> if ( file . exists ( ) )
+> if ( ! ( NewsEventViewHolder . isValid ( iter . next ( ) . getType ( ) ) ) ) <SEP> if ( ! ( NewsEventViewHolder . isValid ( iter . next ( ) ) ) )
+> ( ( LwjglInput ) ( Gdx . input ) ) . processEvents ( ) ; <SEP> input . processEvents ( ) ;
+> ( ( IOSInput ) ( Gdx . input ) ) . processEvents ( ) ; <SEP> input . processEvents ( ) ;
+> ( ( LwjglInput ) ( Gdx . input ) ) . processEvents ( ) ; <SEP> input . processEvents ( ) ;
+> logoSprite . getRegion ( ) . flip ( false , true ) ; <SEP> logoSprite . flip ( false , true ) ;
+> logoSprite . getRegion ( ) . flip ( false , true ) ; <SEP> logoSprite . flip ( false , true ) ;
+> main . bold ( event . getRepo ( ) . getName ( ) ) ; <SEP> main . bold ( repoName ) ;
+> return file ( ) . exists ( ) ; <SEP> return file . exists ( ) ;
+> return out . toString ( ) . trim ( ) ; <SEP> return out . toString ( ) ;
+> ids [ i ] = ( ( int ) ( Long . parseLong ( array [ i ] . trim ( ) ) ) ) ; <SEP> ids [ i ] = ( ( int ) ( Long . parseLong ( array [ i ] ) ) ) ;

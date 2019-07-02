@@ -1,0 +1,480 @@
+bonito
+[2018-11-28 08:46:22,041 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 08:46:22,251 INFO]  * vocabulary size. source = 1004; target = 1004
+[2018-11-28 08:46:22,251 INFO] Building model...
+[2018-11-28 08:46:29,447 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(1004, 256, padding_idx=1)
+        )
+      )
+    )
+    (rnn): LSTM(256, 128, num_layers=2, dropout=0.3, bidirectional=True)
+    (bridge): ModuleList(
+      (0): Linear(in_features=256, out_features=256, bias=True)
+      (1): Linear(in_features=256, out_features=256, bias=True)
+    )
+  )
+  (decoder): InputFeedRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(1004, 256, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.3)
+    (rnn): StackedLSTM(
+      (dropout): Dropout(p=0.3)
+      (layers): ModuleList(
+        (0): LSTMCell(512, 256)
+        (1): LSTMCell(256, 256)
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_in): Linear(in_features=256, out_features=256, bias=False)
+      (linear_out): Linear(in_features=512, out_features=256, bias=False)
+    )
+  )
+  (generator): CopyGenerator(
+    (linear): Linear(in_features=256, out_features=1004, bias=True)
+    (linear_copy): Linear(in_features=256, out_features=1, bias=True)
+    (softmax): Softmax()
+    (sigmoid): Sigmoid()
+  )
+)
+[2018-11-28 08:46:29,448 INFO] encoder: 1179136
+[2018-11-28 08:46:29,448 INFO] decoder: 2026733
+[2018-11-28 08:46:29,448 INFO] * number of parameters: 3205869
+[2018-11-28 08:46:29,449 INFO] Start training...
+[2018-11-28 08:46:34,119 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 08:46:55,356 INFO] Step 50/20000; acc:  15.57; ppl: 35.05; xent: 3.56; lr: 1.00000; 27323/2450 tok/s;     21 sec
+[2018-11-28 08:47:12,006 INFO] Step 100/20000; acc:  16.46; ppl: 24.96; xent: 3.22; lr: 1.00000; 26905/2017 tok/s;     38 sec
+[2018-11-28 08:47:31,720 INFO] Step 150/20000; acc:  43.23; ppl:  6.93; xent: 1.94; lr: 1.00000; 30520/2724 tok/s;     58 sec
+[2018-11-28 08:47:51,104 INFO] Step 200/20000; acc:  65.78; ppl:  4.28; xent: 1.45; lr: 1.00000; 29130/1381 tok/s;     77 sec
+[2018-11-28 08:48:11,755 INFO] Step 250/20000; acc:  67.27; ppl:  3.55; xent: 1.27; lr: 1.00000; 33245/1285 tok/s;     98 sec
+[2018-11-28 08:48:30,238 INFO] Step 300/20000; acc:  79.51; ppl:  2.41; xent: 0.88; lr: 1.00000; 21181/3214 tok/s;    116 sec
+[2018-11-28 08:48:49,765 INFO] Step 350/20000; acc:  72.63; ppl:  3.88; xent: 1.35; lr: 1.00000; 49273/1233 tok/s;    136 sec
+[2018-11-28 08:49:08,503 INFO] Step 400/20000; acc:  79.48; ppl:  2.32; xent: 0.84; lr: 1.00000; 18367/2508 tok/s;    154 sec
+[2018-11-28 08:49:27,434 INFO] Step 450/20000; acc:  77.09; ppl:  3.21; xent: 1.16; lr: 1.00000; 46831/1476 tok/s;    173 sec
+[2018-11-28 08:49:47,777 INFO] Step 500/20000; acc:  80.28; ppl:  2.50; xent: 0.91; lr: 1.00000; 31823/1063 tok/s;    194 sec
+[2018-11-28 08:50:05,521 INFO] Step 550/20000; acc:  80.78; ppl:  2.50; xent: 0.92; lr: 1.00000; 37409/2153 tok/s;    211 sec
+[2018-11-28 08:50:27,087 INFO] Step 600/20000; acc:  81.60; ppl:  2.20; xent: 0.79; lr: 1.00000; 28054/2659 tok/s;    233 sec
+[2018-11-28 08:50:46,855 INFO] Step 650/20000; acc:  82.79; ppl:  2.33; xent: 0.84; lr: 1.00000; 38039/2653 tok/s;    253 sec
+[2018-11-28 08:51:05,217 INFO] Step 700/20000; acc:  80.66; ppl:  2.16; xent: 0.77; lr: 1.00000; 29365/2899 tok/s;    271 sec
+[2018-11-28 08:51:24,790 INFO] Step 750/20000; acc:  80.83; ppl:  2.15; xent: 0.76; lr: 1.00000; 25747/3322 tok/s;    291 sec
+[2018-11-28 08:51:43,472 INFO] Step 800/20000; acc:  73.87; ppl:  3.03; xent: 1.11; lr: 1.00000; 39621/900 tok/s;    309 sec
+[2018-11-28 08:52:00,525 INFO] Step 850/20000; acc:  81.38; ppl:  2.25; xent: 0.81; lr: 1.00000; 43402/914 tok/s;    326 sec
+[2018-11-28 08:52:22,135 INFO] Step 900/20000; acc:  82.04; ppl:  2.02; xent: 0.70; lr: 1.00000; 41691/1148 tok/s;    348 sec
+[2018-11-28 08:52:41,229 INFO] Step 950/20000; acc:  80.19; ppl:  2.65; xent: 0.97; lr: 1.00000; 10500/3743 tok/s;    367 sec
+[2018-11-28 08:53:00,364 INFO] Step 1000/20000; acc:  82.03; ppl:  2.06; xent: 0.72; lr: 1.00000; 34458/1089 tok/s;    386 sec
+[2018-11-28 08:53:24,252 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 08:53:25,690 INFO] Step 1050/20000; acc:  81.23; ppl:  2.26; xent: 0.82; lr: 1.00000; 43460/1690 tok/s;    412 sec
+[2018-11-28 08:53:47,065 INFO] Step 1100/20000; acc:  87.60; ppl:  1.75; xent: 0.56; lr: 1.00000; 45534/1195 tok/s;    433 sec
+[2018-11-28 08:54:03,707 INFO] Step 1150/20000; acc:  80.33; ppl:  2.28; xent: 0.82; lr: 1.00000; 43019/1379 tok/s;    450 sec
+[2018-11-28 08:54:24,150 INFO] Step 1200/20000; acc:  85.13; ppl:  1.75; xent: 0.56; lr: 1.00000; 32019/1225 tok/s;    470 sec
+[2018-11-28 08:54:42,897 INFO] Step 1250/20000; acc:  82.00; ppl:  2.18; xent: 0.78; lr: 1.00000; 26811/2574 tok/s;    489 sec
+[2018-11-28 08:55:03,213 INFO] Step 1300/20000; acc:  85.61; ppl:  1.82; xent: 0.60; lr: 1.00000; 40575/2168 tok/s;    509 sec
+[2018-11-28 08:55:22,163 INFO] Step 1350/20000; acc:  86.78; ppl:  1.71; xent: 0.53; lr: 1.00000; 30578/1027 tok/s;    528 sec
+[2018-11-28 08:55:41,111 INFO] Step 1400/20000; acc:  84.59; ppl:  1.87; xent: 0.63; lr: 1.00000; 47505/1893 tok/s;    547 sec
+[2018-11-28 08:56:00,721 INFO] Step 1450/20000; acc:  84.10; ppl:  1.99; xent: 0.69; lr: 1.00000; 18796/1875 tok/s;    567 sec
+[2018-11-28 08:56:19,754 INFO] Step 1500/20000; acc:  82.62; ppl:  1.94; xent: 0.66; lr: 1.00000; 16417/2362 tok/s;    586 sec
+[2018-11-28 08:56:39,443 INFO] Step 1550/20000; acc:  87.36; ppl:  1.68; xent: 0.52; lr: 1.00000; 30904/2266 tok/s;    605 sec
+[2018-11-28 08:56:57,489 INFO] Step 1600/20000; acc:  86.90; ppl:  1.64; xent: 0.49; lr: 1.00000; 26154/1449 tok/s;    623 sec
+[2018-11-28 08:57:18,567 INFO] Step 1650/20000; acc:  85.13; ppl:  1.69; xent: 0.52; lr: 1.00000; 32311/2287 tok/s;    644 sec
+[2018-11-28 08:57:38,840 INFO] Step 1700/20000; acc:  84.19; ppl:  1.88; xent: 0.63; lr: 1.00000; 27397/1996 tok/s;    665 sec
+[2018-11-28 08:57:57,753 INFO] Step 1750/20000; acc:  83.45; ppl:  1.92; xent: 0.65; lr: 1.00000; 39503/797 tok/s;    684 sec
+[2018-11-28 08:58:16,507 INFO] Step 1800/20000; acc:  86.92; ppl:  1.68; xent: 0.52; lr: 1.00000; 29677/3144 tok/s;    702 sec
+[2018-11-28 08:58:35,122 INFO] Step 1850/20000; acc:  77.17; ppl:  2.37; xent: 0.86; lr: 1.00000; 48887/970 tok/s;    721 sec
+[2018-11-28 08:58:52,705 INFO] Step 1900/20000; acc:  79.44; ppl:  2.12; xent: 0.75; lr: 1.00000; 30898/1152 tok/s;    739 sec
+[2018-11-28 08:59:13,842 INFO] Step 1950/20000; acc:  86.68; ppl:  1.70; xent: 0.53; lr: 1.00000; 38158/1902 tok/s;    760 sec
+[2018-11-28 08:59:32,427 INFO] Step 2000/20000; acc:  88.95; ppl:  1.64; xent: 0.50; lr: 1.00000; 29706/1748 tok/s;    778 sec
+[2018-11-28 08:59:52,137 INFO] Step 2050/20000; acc:  88.25; ppl:  1.70; xent: 0.53; lr: 1.00000; 20079/1614 tok/s;    798 sec
+[2018-11-28 09:00:14,529 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:00:17,551 INFO] Step 2100/20000; acc:  85.69; ppl:  1.75; xent: 0.56; lr: 1.00000; 31475/1356 tok/s;    823 sec
+[2018-11-28 09:00:38,906 INFO] Step 2150/20000; acc:  83.33; ppl:  1.97; xent: 0.68; lr: 1.00000; 16860/3637 tok/s;    845 sec
+[2018-11-28 09:00:55,795 INFO] Step 2200/20000; acc:  86.22; ppl:  1.76; xent: 0.57; lr: 1.00000; 28393/935 tok/s;    862 sec
+[2018-11-28 09:01:16,982 INFO] Step 2250/20000; acc:  88.78; ppl:  1.67; xent: 0.51; lr: 1.00000; 29009/1496 tok/s;    883 sec
+[2018-11-28 09:01:34,934 INFO] Step 2300/20000; acc:  81.85; ppl:  1.96; xent: 0.67; lr: 1.00000; 33461/1414 tok/s;    901 sec
+[2018-11-28 09:01:55,092 INFO] Step 2350/20000; acc:  82.90; ppl:  1.87; xent: 0.62; lr: 1.00000; 36394/2321 tok/s;    921 sec
+[2018-11-28 09:02:14,759 INFO] Step 2400/20000; acc:  86.54; ppl:  1.74; xent: 0.56; lr: 1.00000; 34833/1974 tok/s;    941 sec
+[2018-11-28 09:02:32,826 INFO] Step 2450/20000; acc:  85.40; ppl:  1.74; xent: 0.55; lr: 1.00000; 22357/3171 tok/s;    959 sec
+[2018-11-28 09:02:52,728 INFO] Step 2500/20000; acc:  88.17; ppl:  1.74; xent: 0.55; lr: 1.00000; 26716/2208 tok/s;    979 sec
+[2018-11-28 09:03:12,464 INFO] Step 2550/20000; acc:  86.65; ppl:  1.73; xent: 0.55; lr: 1.00000; 41347/1300 tok/s;    998 sec
+[2018-11-28 09:03:31,429 INFO] Step 2600/20000; acc:  88.47; ppl:  1.51; xent: 0.41; lr: 1.00000; 23689/3316 tok/s;   1017 sec
+[2018-11-28 09:03:50,369 INFO] Step 2650/20000; acc:  88.52; ppl:  1.58; xent: 0.46; lr: 1.00000; 33149/1788 tok/s;   1036 sec
+[2018-11-28 09:04:11,581 INFO] Step 2700/20000; acc:  85.39; ppl:  1.77; xent: 0.57; lr: 1.00000; 47816/929 tok/s;   1057 sec
+[2018-11-28 09:04:31,388 INFO] Step 2750/20000; acc:  87.36; ppl:  1.60; xent: 0.47; lr: 1.00000; 29654/1081 tok/s;   1077 sec
+[2018-11-28 09:04:50,241 INFO] Step 2800/20000; acc:  83.90; ppl:  1.92; xent: 0.65; lr: 1.00000; 26303/1805 tok/s;   1096 sec
+[2018-11-28 09:05:09,400 INFO] Step 2850/20000; acc:  85.38; ppl:  1.97; xent: 0.68; lr: 1.00000; 41322/884 tok/s;   1115 sec
+[2018-11-28 09:05:28,125 INFO] Step 2900/20000; acc:  83.98; ppl:  1.95; xent: 0.67; lr: 1.00000; 33871/1059 tok/s;   1134 sec
+[2018-11-28 09:05:45,724 INFO] Step 2950/20000; acc:  88.10; ppl:  1.63; xent: 0.49; lr: 1.00000; 44711/864 tok/s;   1152 sec
+[2018-11-28 09:06:06,851 INFO] Step 3000/20000; acc:  86.91; ppl:  1.66; xent: 0.51; lr: 1.00000; 38674/1066 tok/s;   1173 sec
+[2018-11-28 09:06:25,858 INFO] Step 3050/20000; acc:  89.35; ppl:  1.56; xent: 0.45; lr: 1.00000; 32876/2009 tok/s;   1192 sec
+[2018-11-28 09:06:45,220 INFO] Step 3100/20000; acc:  88.55; ppl:  1.55; xent: 0.44; lr: 1.00000; 37428/2397 tok/s;   1211 sec
+[2018-11-28 09:07:06,328 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:07:11,525 INFO] Step 3150/20000; acc:  85.40; ppl:  1.79; xent: 0.58; lr: 1.00000; 40355/2552 tok/s;   1237 sec
+[2018-11-28 09:07:32,412 INFO] Step 3200/20000; acc:  87.82; ppl:  1.63; xent: 0.49; lr: 1.00000; 23651/1439 tok/s;   1258 sec
+[2018-11-28 09:07:48,945 INFO] Step 3250/20000; acc:  90.07; ppl:  1.45; xent: 0.37; lr: 1.00000; 32197/2303 tok/s;   1275 sec
+[2018-11-28 09:08:09,614 INFO] Step 3300/20000; acc:  90.93; ppl:  1.52; xent: 0.42; lr: 1.00000; 18149/4285 tok/s;   1295 sec
+[2018-11-28 09:08:28,373 INFO] Step 3350/20000; acc:  82.52; ppl:  1.85; xent: 0.61; lr: 1.00000; 55567/904 tok/s;   1314 sec
+[2018-11-28 09:08:48,316 INFO] Step 3400/20000; acc:  86.75; ppl:  1.76; xent: 0.56; lr: 1.00000; 30960/2120 tok/s;   1334 sec
+[2018-11-28 09:09:07,428 INFO] Step 3450/20000; acc:  83.40; ppl:  2.02; xent: 0.70; lr: 1.00000; 27950/2671 tok/s;   1353 sec
+[2018-11-28 09:09:26,302 INFO] Step 3500/20000; acc:  85.62; ppl:  1.85; xent: 0.62; lr: 1.00000; 38289/863 tok/s;   1372 sec
+[2018-11-28 09:09:46,247 INFO] Step 3550/20000; acc:  88.30; ppl:  1.59; xent: 0.46; lr: 1.00000; 22036/2380 tok/s;   1392 sec
+[2018-11-28 09:10:06,066 INFO] Step 3600/20000; acc:  88.55; ppl:  1.62; xent: 0.48; lr: 1.00000; 46409/1177 tok/s;   1412 sec
+[2018-11-28 09:10:24,262 INFO] Step 3650/20000; acc:  84.21; ppl:  1.79; xent: 0.58; lr: 1.00000; 15057/3296 tok/s;   1430 sec
+[2018-11-28 09:10:43,840 INFO] Step 3700/20000; acc:  91.65; ppl:  1.43; xent: 0.36; lr: 1.00000; 20171/2936 tok/s;   1450 sec
+[2018-11-28 09:11:04,840 INFO] Step 3750/20000; acc:  87.95; ppl:  1.69; xent: 0.52; lr: 1.00000; 43060/799 tok/s;   1471 sec
+[2018-11-28 09:11:24,876 INFO] Step 3800/20000; acc:  84.37; ppl:  1.82; xent: 0.60; lr: 1.00000; 40039/842 tok/s;   1491 sec
+[2018-11-28 09:11:42,997 INFO] Step 3850/20000; acc:  85.94; ppl:  1.92; xent: 0.65; lr: 1.00000; 32683/2863 tok/s;   1509 sec
+[2018-11-28 09:12:02,606 INFO] Step 3900/20000; acc:  89.96; ppl:  1.45; xent: 0.37; lr: 1.00000; 25154/1412 tok/s;   1528 sec
+[2018-11-28 09:12:21,126 INFO] Step 3950/20000; acc:  90.57; ppl:  1.37; xent: 0.32; lr: 1.00000; 29327/1899 tok/s;   1547 sec
+[2018-11-28 09:12:38,623 INFO] Step 4000/20000; acc:  86.60; ppl:  1.69; xent: 0.53; lr: 1.00000; 29075/2839 tok/s;   1565 sec
+[2018-11-28 09:12:59,831 INFO] Step 4050/20000; acc:  89.63; ppl:  1.62; xent: 0.48; lr: 1.00000; 39804/779 tok/s;   1586 sec
+[2018-11-28 09:13:18,741 INFO] Step 4100/20000; acc:  81.78; ppl:  2.08; xent: 0.73; lr: 1.00000; 46928/1024 tok/s;   1605 sec
+[2018-11-28 09:13:37,797 INFO] Step 4150/20000; acc:  88.07; ppl:  1.68; xent: 0.52; lr: 1.00000; 35869/1595 tok/s;   1624 sec
+[2018-11-28 09:13:57,900 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:14:04,651 INFO] Step 4200/20000; acc:  84.11; ppl:  1.89; xent: 0.63; lr: 1.00000; 47717/1468 tok/s;   1651 sec
+[2018-11-28 09:14:25,238 INFO] Step 4250/20000; acc:  87.79; ppl:  1.59; xent: 0.47; lr: 1.00000; 31592/2298 tok/s;   1671 sec
+[2018-11-28 09:14:41,850 INFO] Step 4300/20000; acc:  88.24; ppl:  1.57; xent: 0.45; lr: 1.00000; 9060/3810 tok/s;   1688 sec
+[2018-11-28 09:15:02,399 INFO] Step 4350/20000; acc:  85.40; ppl:  1.82; xent: 0.60; lr: 1.00000; 23087/2736 tok/s;   1708 sec
+[2018-11-28 09:15:22,650 INFO] Step 4400/20000; acc:  90.27; ppl:  1.53; xent: 0.42; lr: 1.00000; 34217/872 tok/s;   1729 sec
+[2018-11-28 09:15:40,332 INFO] Step 4450/20000; acc:  86.32; ppl:  1.68; xent: 0.52; lr: 1.00000; 27784/3011 tok/s;   1746 sec
+[2018-11-28 09:15:59,682 INFO] Step 4500/20000; acc:  84.77; ppl:  1.96; xent: 0.68; lr: 1.00000; 21291/3484 tok/s;   1766 sec
+[2018-11-28 09:16:18,931 INFO] Step 4550/20000; acc:  82.78; ppl:  1.89; xent: 0.64; lr: 1.00000; 34775/3575 tok/s;   1785 sec
+[2018-11-28 09:16:39,071 INFO] Step 4600/20000; acc:  85.67; ppl:  1.87; xent: 0.63; lr: 1.00000; 40560/837 tok/s;   1805 sec
+[2018-11-28 09:16:59,568 INFO] Step 4650/20000; acc:  88.94; ppl:  1.68; xent: 0.52; lr: 1.00000; 38498/843 tok/s;   1825 sec
+[2018-11-28 09:17:17,378 INFO] Step 4700/20000; acc:  87.85; ppl:  1.63; xent: 0.49; lr: 1.00000; 24265/2505 tok/s;   1843 sec
+[2018-11-28 09:17:37,562 INFO] Step 4750/20000; acc:  90.26; ppl:  1.51; xent: 0.41; lr: 1.00000; 42084/1066 tok/s;   1863 sec
+[2018-11-28 09:17:58,027 INFO] Step 4800/20000; acc:  91.04; ppl:  1.35; xent: 0.30; lr: 1.00000; 20953/1924 tok/s;   1884 sec
+[2018-11-28 09:18:17,154 INFO] Step 4850/20000; acc:  86.04; ppl:  1.99; xent: 0.69; lr: 1.00000; 43283/1396 tok/s;   1903 sec
+[2018-11-28 09:18:36,292 INFO] Step 4900/20000; acc:  86.99; ppl:  1.67; xent: 0.51; lr: 1.00000; 45994/1102 tok/s;   1922 sec
+[2018-11-28 09:18:55,061 INFO] Step 4950/20000; acc:  87.64; ppl:  1.73; xent: 0.55; lr: 1.00000; 29700/3075 tok/s;   1941 sec
+[2018-11-28 09:19:13,687 INFO] Step 5000/20000; acc:  92.19; ppl:  1.36; xent: 0.30; lr: 1.00000; 33043/2031 tok/s;   1960 sec
+[2018-11-28 09:19:32,218 INFO] Step 5050/20000; acc:  85.49; ppl:  1.77; xent: 0.57; lr: 1.00000; 38007/838 tok/s;   1978 sec
+[2018-11-28 09:19:52,770 INFO] Step 5100/20000; acc:  84.07; ppl:  1.89; xent: 0.64; lr: 1.00000; 47438/1448 tok/s;   1999 sec
+[2018-11-28 09:20:12,616 INFO] Step 5150/20000; acc:  88.43; ppl:  1.52; xent: 0.42; lr: 1.00000; 32986/697 tok/s;   2018 sec
+[2018-11-28 09:20:30,913 INFO] Step 5200/20000; acc:  86.25; ppl:  1.72; xent: 0.54; lr: 1.00000; 22251/2254 tok/s;   2037 sec
+[2018-11-28 09:20:49,480 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:20:58,306 INFO] Step 5250/20000; acc:  88.44; ppl:  1.60; xent: 0.47; lr: 1.00000; 32303/2273 tok/s;   2064 sec
+[2018-11-28 09:21:17,986 INFO] Step 5300/20000; acc:  89.32; ppl:  1.60; xent: 0.47; lr: 1.00000; 15343/2118 tok/s;   2084 sec
+[2018-11-28 09:21:35,972 INFO] Step 5350/20000; acc:  90.77; ppl:  1.40; xent: 0.34; lr: 1.00000; 39609/814 tok/s;   2102 sec
+[2018-11-28 09:21:55,556 INFO] Step 5400/20000; acc:  87.92; ppl:  1.72; xent: 0.54; lr: 1.00000; 42584/765 tok/s;   2121 sec
+[2018-11-28 09:22:16,849 INFO] Step 5450/20000; acc:  84.93; ppl:  1.78; xent: 0.58; lr: 1.00000; 29993/1197 tok/s;   2143 sec
+[2018-11-28 09:22:33,476 INFO] Step 5500/20000; acc:  85.46; ppl:  1.63; xent: 0.49; lr: 1.00000; 34892/2358 tok/s;   2159 sec
+[2018-11-28 09:22:53,050 INFO] Step 5550/20000; acc:  89.94; ppl:  1.50; xent: 0.41; lr: 1.00000; 26494/1933 tok/s;   2179 sec
+[2018-11-28 09:23:12,833 INFO] Step 5600/20000; acc:  84.43; ppl:  1.82; xent: 0.60; lr: 1.00000; 49389/949 tok/s;   2199 sec
+[2018-11-28 09:23:32,366 INFO] Step 5650/20000; acc:  87.10; ppl:  1.73; xent: 0.55; lr: 1.00000; 47082/868 tok/s;   2218 sec
+[2018-11-28 09:23:52,670 INFO] Step 5700/20000; acc:  89.05; ppl:  1.54; xent: 0.43; lr: 1.00000; 35973/2211 tok/s;   2239 sec
+[2018-11-28 09:24:10,642 INFO] Step 5750/20000; acc:  89.94; ppl:  1.51; xent: 0.42; lr: 1.00000; 29732/2768 tok/s;   2257 sec
+[2018-11-28 09:24:31,418 INFO] Step 5800/20000; acc:  85.53; ppl:  1.79; xent: 0.58; lr: 1.00000; 40947/691 tok/s;   2277 sec
+[2018-11-28 09:24:50,884 INFO] Step 5850/20000; acc:  86.00; ppl:  1.75; xent: 0.56; lr: 1.00000; 47416/994 tok/s;   2297 sec
+[2018-11-28 09:25:10,720 INFO] Step 5900/20000; acc:  90.68; ppl:  1.43; xent: 0.36; lr: 1.00000; 17715/2449 tok/s;   2317 sec
+[2018-11-28 09:25:29,758 INFO] Step 5950/20000; acc:  90.18; ppl:  1.48; xent: 0.39; lr: 1.00000; 41062/1223 tok/s;   2336 sec
+[2018-11-28 09:25:48,680 INFO] Step 6000/20000; acc:  86.64; ppl:  1.59; xent: 0.47; lr: 1.00000; 47697/986 tok/s;   2355 sec
+[2018-11-28 09:26:07,300 INFO] Step 6050/20000; acc:  87.80; ppl:  1.63; xent: 0.49; lr: 1.00000; 14335/3269 tok/s;   2373 sec
+[2018-11-28 09:26:25,917 INFO] Step 6100/20000; acc:  87.45; ppl:  1.56; xent: 0.44; lr: 1.00000; 21870/3319 tok/s;   2392 sec
+[2018-11-28 09:26:46,417 INFO] Step 6150/20000; acc:  85.80; ppl:  1.76; xent: 0.56; lr: 1.00000; 29288/834 tok/s;   2412 sec
+[2018-11-28 09:27:05,815 INFO] Step 6200/20000; acc:  85.06; ppl:  1.81; xent: 0.59; lr: 1.00000; 53342/1619 tok/s;   2432 sec
+[2018-11-28 09:27:24,853 INFO] Step 6250/20000; acc:  86.14; ppl:  1.64; xent: 0.50; lr: 1.00000; 40229/1378 tok/s;   2451 sec
+[2018-11-28 09:27:41,541 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:27:51,782 INFO] Step 6300/20000; acc:  87.04; ppl:  1.75; xent: 0.56; lr: 1.00000; 28674/4694 tok/s;   2478 sec
+[2018-11-28 09:28:10,813 INFO] Step 6350/20000; acc:  87.33; ppl:  1.60; xent: 0.47; lr: 1.00000; 32689/2397 tok/s;   2497 sec
+[2018-11-28 09:28:29,220 INFO] Step 6400/20000; acc:  88.44; ppl:  1.64; xent: 0.49; lr: 1.00000; 24754/1737 tok/s;   2515 sec
+[2018-11-28 09:28:49,594 INFO] Step 6450/20000; acc:  87.41; ppl:  1.66; xent: 0.51; lr: 1.00000; 34679/1404 tok/s;   2535 sec
+[2018-11-28 09:29:11,013 INFO] Step 6500/20000; acc:  88.29; ppl:  1.56; xent: 0.44; lr: 1.00000; 50499/1093 tok/s;   2557 sec
+[2018-11-28 09:29:27,896 INFO] Step 6550/20000; acc:  87.17; ppl:  1.58; xent: 0.46; lr: 1.00000; 45490/866 tok/s;   2574 sec
+[2018-11-28 09:29:47,161 INFO] Step 6600/20000; acc:  87.38; ppl:  1.58; xent: 0.45; lr: 1.00000; 38421/884 tok/s;   2593 sec
+[2018-11-28 09:30:06,609 INFO] Step 6650/20000; acc:  84.17; ppl:  1.82; xent: 0.60; lr: 1.00000; 46336/1017 tok/s;   2612 sec
+[2018-11-28 09:30:25,282 INFO] Step 6700/20000; acc:  90.33; ppl:  1.53; xent: 0.42; lr: 1.00000; 19410/4631 tok/s;   2631 sec
+[2018-11-28 09:30:46,542 INFO] Step 6750/20000; acc:  86.30; ppl:  1.63; xent: 0.49; lr: 1.00000; 27112/1146 tok/s;   2652 sec
+[2018-11-28 09:31:04,190 INFO] Step 6800/20000; acc:  86.46; ppl:  1.74; xent: 0.55; lr: 1.00000; 47496/1258 tok/s;   2670 sec
+[2018-11-28 09:31:24,887 INFO] Step 6850/20000; acc:  88.09; ppl:  1.57; xent: 0.45; lr: 1.00000; 38427/2633 tok/s;   2691 sec
+[2018-11-28 09:31:45,069 INFO] Step 6900/20000; acc:  87.27; ppl:  1.69; xent: 0.52; lr: 1.00000; 31832/1168 tok/s;   2711 sec
+[2018-11-28 09:32:05,078 INFO] Step 6950/20000; acc:  87.97; ppl:  1.59; xent: 0.46; lr: 1.00000; 35982/752 tok/s;   2731 sec
+[2018-11-28 09:32:23,597 INFO] Step 7000/20000; acc:  86.94; ppl:  1.70; xent: 0.53; lr: 1.00000; 53264/874 tok/s;   2749 sec
+[2018-11-28 09:32:41,905 INFO] Step 7050/20000; acc:  87.37; ppl:  1.77; xent: 0.57; lr: 1.00000; 40581/2458 tok/s;   2768 sec
+[2018-11-28 09:33:00,747 INFO] Step 7100/20000; acc:  88.48; ppl:  1.63; xent: 0.49; lr: 1.00000; 23377/2911 tok/s;   2787 sec
+[2018-11-28 09:33:19,707 INFO] Step 7150/20000; acc:  82.21; ppl:  1.99; xent: 0.69; lr: 1.00000; 40346/1451 tok/s;   2806 sec
+[2018-11-28 09:33:40,495 INFO] Step 7200/20000; acc:  85.69; ppl:  1.82; xent: 0.60; lr: 1.00000; 37507/1610 tok/s;   2826 sec
+[2018-11-28 09:34:00,824 INFO] Step 7250/20000; acc:  89.17; ppl:  1.51; xent: 0.41; lr: 1.00000; 40946/1143 tok/s;   2847 sec
+[2018-11-28 09:34:20,562 INFO] Step 7300/20000; acc:  87.11; ppl:  1.63; xent: 0.49; lr: 1.00000; 46690/924 tok/s;   2866 sec
+[2018-11-28 09:34:35,417 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:34:47,092 INFO] Step 7350/20000; acc:  88.26; ppl:  1.57; xent: 0.45; lr: 1.00000; 41159/1311 tok/s;   2893 sec
+[2018-11-28 09:35:06,719 INFO] Step 7400/20000; acc:  85.67; ppl:  1.66; xent: 0.50; lr: 1.00000; 25573/2073 tok/s;   2913 sec
+[2018-11-28 09:35:25,181 INFO] Step 7450/20000; acc:  90.67; ppl:  1.41; xent: 0.34; lr: 1.00000; 21827/1783 tok/s;   2931 sec
+[2018-11-28 09:35:45,882 INFO] Step 7500/20000; acc:  87.72; ppl:  1.58; xent: 0.46; lr: 1.00000; 51231/1459 tok/s;   2952 sec
+[2018-11-28 09:36:07,271 INFO] Step 7550/20000; acc:  87.07; ppl:  1.54; xent: 0.43; lr: 1.00000; 44335/1584 tok/s;   2973 sec
+[2018-11-28 09:36:24,515 INFO] Step 7600/20000; acc:  89.20; ppl:  1.54; xent: 0.43; lr: 1.00000; 31676/1269 tok/s;   2990 sec
+[2018-11-28 09:36:44,467 INFO] Step 7650/20000; acc:  88.85; ppl:  1.51; xent: 0.41; lr: 1.00000; 51384/897 tok/s;   3010 sec
+[2018-11-28 09:37:03,488 INFO] Step 7700/20000; acc:  84.82; ppl:  1.70; xent: 0.53; lr: 1.00000; 30021/2054 tok/s;   3029 sec
+[2018-11-28 09:37:22,591 INFO] Step 7750/20000; acc:  89.15; ppl:  1.48; xent: 0.39; lr: 1.00000; 28286/3278 tok/s;   3048 sec
+[2018-11-28 09:37:43,858 INFO] Step 7800/20000; acc:  87.18; ppl:  1.68; xent: 0.52; lr: 1.00000; 42897/850 tok/s;   3070 sec
+[2018-11-28 09:38:01,364 INFO] Step 7850/20000; acc:  84.44; ppl:  1.79; xent: 0.58; lr: 1.00000; 26867/2403 tok/s;   3087 sec
+[2018-11-28 09:38:22,357 INFO] Step 7900/20000; acc:  87.26; ppl:  1.66; xent: 0.50; lr: 1.00000; 41784/1427 tok/s;   3108 sec
+[2018-11-28 09:38:42,641 INFO] Step 7950/20000; acc:  89.16; ppl:  1.51; xent: 0.41; lr: 1.00000; 41040/1327 tok/s;   3129 sec
+[2018-11-28 09:39:01,516 INFO] Step 8000/20000; acc:  89.45; ppl:  1.50; xent: 0.41; lr: 1.00000; 24209/4093 tok/s;   3147 sec
+[2018-11-28 09:39:20,443 INFO] Step 8050/20000; acc:  87.88; ppl:  1.64; xent: 0.49; lr: 1.00000; 37157/2661 tok/s;   3166 sec
+[2018-11-28 09:39:40,014 INFO] Step 8100/20000; acc:  87.48; ppl:  1.57; xent: 0.45; lr: 1.00000; 38283/833 tok/s;   3186 sec
+[2018-11-28 09:39:57,246 INFO] Step 8150/20000; acc:  88.87; ppl:  1.58; xent: 0.46; lr: 1.00000; 32045/2985 tok/s;   3203 sec
+[2018-11-28 09:40:17,982 INFO] Step 8200/20000; acc:  87.41; ppl:  1.56; xent: 0.45; lr: 1.00000; 31971/1375 tok/s;   3224 sec
+[2018-11-28 09:40:38,339 INFO] Step 8250/20000; acc:  89.28; ppl:  1.53; xent: 0.42; lr: 1.00000; 40001/867 tok/s;   3244 sec
+[2018-11-28 09:40:57,824 INFO] Step 8300/20000; acc:  88.13; ppl:  1.78; xent: 0.58; lr: 1.00000; 39253/736 tok/s;   3264 sec
+[2018-11-28 09:41:17,257 INFO] Step 8350/20000; acc:  86.70; ppl:  1.61; xent: 0.48; lr: 1.00000; 39071/1722 tok/s;   3283 sec
+[2018-11-28 09:41:31,244 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:41:45,377 INFO] Step 8400/20000; acc:  84.33; ppl:  1.83; xent: 0.60; lr: 1.00000; 39123/882 tok/s;   3311 sec
+[2018-11-28 09:42:04,189 INFO] Step 8450/20000; acc:  88.34; ppl:  1.54; xent: 0.43; lr: 1.00000; 26339/3509 tok/s;   3330 sec
+[2018-11-28 09:42:24,094 INFO] Step 8500/20000; acc:  90.47; ppl:  1.43; xent: 0.36; lr: 1.00000; 31934/2200 tok/s;   3350 sec
+[2018-11-28 09:42:44,780 INFO] Step 8550/20000; acc:  87.12; ppl:  1.63; xent: 0.49; lr: 1.00000; 21450/1954 tok/s;   3371 sec
+[2018-11-28 09:43:06,638 INFO] Step 8600/20000; acc:  88.53; ppl:  1.63; xent: 0.49; lr: 1.00000; 38305/924 tok/s;   3393 sec
+[2018-11-28 09:43:25,018 INFO] Step 8650/20000; acc:  83.20; ppl:  1.89; xent: 0.64; lr: 1.00000; 36865/614 tok/s;   3411 sec
+[2018-11-28 09:43:43,962 INFO] Step 8700/20000; acc:  85.88; ppl:  1.71; xent: 0.54; lr: 1.00000; 43398/845 tok/s;   3430 sec
+[2018-11-28 09:44:03,285 INFO] Step 8750/20000; acc:  89.64; ppl:  1.68; xent: 0.52; lr: 1.00000; 38737/2263 tok/s;   3449 sec
+[2018-11-28 09:44:22,212 INFO] Step 8800/20000; acc:  90.09; ppl:  1.50; xent: 0.40; lr: 1.00000; 26945/2040 tok/s;   3468 sec
+[2018-11-28 09:44:42,937 INFO] Step 8850/20000; acc:  87.94; ppl:  1.55; xent: 0.44; lr: 1.00000; 19589/2780 tok/s;   3489 sec
+[2018-11-28 09:45:00,559 INFO] Step 8900/20000; acc:  87.46; ppl:  1.62; xent: 0.48; lr: 1.00000; 42954/1233 tok/s;   3506 sec
+[2018-11-28 09:45:21,721 INFO] Step 8950/20000; acc:  82.25; ppl:  1.95; xent: 0.67; lr: 1.00000; 33096/698 tok/s;   3528 sec
+[2018-11-28 09:45:41,655 INFO] Step 9000/20000; acc:  89.63; ppl:  1.52; xent: 0.42; lr: 1.00000; 19388/1946 tok/s;   3548 sec
+[2018-11-28 09:46:00,797 INFO] Step 9050/20000; acc:  87.34; ppl:  1.55; xent: 0.44; lr: 1.00000; 14795/2656 tok/s;   3567 sec
+[2018-11-28 09:46:19,923 INFO] Step 9100/20000; acc:  86.85; ppl:  1.59; xent: 0.46; lr: 1.00000; 47425/1162 tok/s;   3586 sec
+[2018-11-28 09:46:38,945 INFO] Step 9150/20000; acc:  88.79; ppl:  1.51; xent: 0.41; lr: 1.00000; 17477/2901 tok/s;   3605 sec
+[2018-11-28 09:46:57,164 INFO] Step 9200/20000; acc:  88.60; ppl:  1.66; xent: 0.51; lr: 1.00000; 15216/4268 tok/s;   3623 sec
+[2018-11-28 09:47:17,876 INFO] Step 9250/20000; acc:  90.53; ppl:  1.44; xent: 0.36; lr: 1.00000; 42791/1931 tok/s;   3644 sec
+[2018-11-28 09:47:36,979 INFO] Step 9300/20000; acc:  87.29; ppl:  1.60; xent: 0.47; lr: 1.00000; 30269/2567 tok/s;   3663 sec
+[2018-11-28 09:47:56,694 INFO] Step 9350/20000; acc:  88.25; ppl:  1.57; xent: 0.45; lr: 1.00000; 32210/849 tok/s;   3683 sec
+[2018-11-28 09:48:15,931 INFO] Step 9400/20000; acc:  88.70; ppl:  1.54; xent: 0.43; lr: 1.00000; 47442/854 tok/s;   3702 sec
+[2018-11-28 09:48:28,347 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:48:43,718 INFO] Step 9450/20000; acc:  87.18; ppl:  1.73; xent: 0.55; lr: 1.00000; 32538/2373 tok/s;   3730 sec
+[2018-11-28 09:49:01,739 INFO] Step 9500/20000; acc:  90.63; ppl:  1.42; xent: 0.35; lr: 1.00000; 29296/2650 tok/s;   3748 sec
+[2018-11-28 09:49:21,373 INFO] Step 9550/20000; acc:  89.66; ppl:  1.53; xent: 0.42; lr: 1.00000; 38907/978 tok/s;   3767 sec
+[2018-11-28 09:49:41,694 INFO] Step 9600/20000; acc:  86.01; ppl:  1.73; xent: 0.55; lr: 1.00000; 33154/2766 tok/s;   3788 sec
+[2018-11-28 09:50:02,340 INFO] Step 9650/20000; acc:  84.73; ppl:  1.75; xent: 0.56; lr: 1.00000; 27304/2648 tok/s;   3808 sec
+[2018-11-28 09:50:20,639 INFO] Step 9700/20000; acc:  87.25; ppl:  1.61; xent: 0.48; lr: 1.00000; 41156/1563 tok/s;   3827 sec
+[2018-11-28 09:50:39,588 INFO] Step 9750/20000; acc:  87.33; ppl:  1.67; xent: 0.51; lr: 1.00000; 38580/1943 tok/s;   3845 sec
+[2018-11-28 09:50:59,573 INFO] Step 9800/20000; acc:  88.67; ppl:  1.53; xent: 0.42; lr: 1.00000; 35980/1464 tok/s;   3865 sec
+[2018-11-28 09:51:17,805 INFO] Step 9850/20000; acc:  86.96; ppl:  1.69; xent: 0.53; lr: 1.00000; 48476/1118 tok/s;   3884 sec
+[2018-11-28 09:51:38,876 INFO] Step 9900/20000; acc:  85.81; ppl:  1.99; xent: 0.69; lr: 1.00000; 44190/1279 tok/s;   3905 sec
+[2018-11-28 09:51:55,962 INFO] Step 9950/20000; acc:  87.88; ppl:  1.54; xent: 0.43; lr: 1.00000; 30118/2963 tok/s;   3922 sec
+[2018-11-28 09:52:17,590 INFO] Step 10000/20000; acc:  85.28; ppl:  1.66; xent: 0.51; lr: 1.00000; 36684/1983 tok/s;   3943 sec
+[2018-11-28 09:52:17,794 INFO] Loading valid dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.valid.0.pt, number of examples: 1753
+[2018-11-28 09:52:32,807 INFO] Validation perplexity: 1.63212
+[2018-11-28 09:52:32,809 INFO] Validation accuracy: 88.2183
+[2018-11-28 09:52:32,810 INFO] Saving checkpoint /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final-model_step_10000.pt
+[2018-11-28 09:52:54,854 INFO] Step 10050/20000; acc:  86.65; ppl:  1.57; xent: 0.45; lr: 1.00000; 31013/2044 tok/s;   3981 sec
+[2018-11-28 09:53:14,021 INFO] Step 10100/20000; acc:  89.81; ppl:  1.48; xent: 0.39; lr: 1.00000; 48888/1053 tok/s;   4000 sec
+[2018-11-28 09:53:32,941 INFO] Step 10150/20000; acc:  85.59; ppl:  1.70; xent: 0.53; lr: 1.00000; 21690/1481 tok/s;   4019 sec
+[2018-11-28 09:53:51,137 INFO] Step 10200/20000; acc:  88.35; ppl:  1.63; xent: 0.49; lr: 1.00000; 45886/2575 tok/s;   4037 sec
+[2018-11-28 09:54:10,252 INFO] Step 10250/20000; acc:  88.60; ppl:  1.54; xent: 0.43; lr: 1.00000; 25537/3378 tok/s;   4056 sec
+[2018-11-28 09:54:30,498 INFO] Step 10300/20000; acc:  86.87; ppl:  1.58; xent: 0.46; lr: 1.00000; 28367/1113 tok/s;   4076 sec
+[2018-11-28 09:54:49,413 INFO] Step 10350/20000; acc:  88.46; ppl:  1.58; xent: 0.46; lr: 1.00000; 45261/893 tok/s;   4095 sec
+[2018-11-28 09:55:08,724 INFO] Step 10400/20000; acc:  89.35; ppl:  1.62; xent: 0.48; lr: 1.00000; 34618/1777 tok/s;   4115 sec
+[2018-11-28 09:55:28,285 INFO] Step 10450/20000; acc:  88.54; ppl:  1.57; xent: 0.45; lr: 1.00000; 38056/1229 tok/s;   4134 sec
+[2018-11-28 09:55:38,699 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 09:55:56,104 INFO] Step 10500/20000; acc:  89.90; ppl:  1.49; xent: 0.40; lr: 1.00000; 14556/3611 tok/s;   4162 sec
+[2018-11-28 09:56:13,796 INFO] Step 10550/20000; acc:  87.33; ppl:  1.58; xent: 0.46; lr: 1.00000; 43053/931 tok/s;   4180 sec
+[2018-11-28 09:56:33,267 INFO] Step 10600/20000; acc:  87.87; ppl:  1.57; xent: 0.45; lr: 1.00000; 38126/1122 tok/s;   4199 sec
+[2018-11-28 09:56:53,169 INFO] Step 10650/20000; acc:  88.93; ppl:  1.50; xent: 0.40; lr: 1.00000; 35423/2650 tok/s;   4219 sec
+[2018-11-28 09:57:14,237 INFO] Step 10700/20000; acc:  88.54; ppl:  1.55; xent: 0.44; lr: 1.00000; 33025/1444 tok/s;   4240 sec
+[2018-11-28 09:57:33,297 INFO] Step 10750/20000; acc:  87.32; ppl:  1.76; xent: 0.57; lr: 1.00000; 15373/1941 tok/s;   4259 sec
+[2018-11-28 09:57:51,742 INFO] Step 10800/20000; acc:  84.63; ppl:  1.70; xent: 0.53; lr: 1.00000; 44408/1440 tok/s;   4278 sec
+[2018-11-28 09:58:11,978 INFO] Step 10850/20000; acc:  87.59; ppl:  1.72; xent: 0.54; lr: 1.00000; 25959/1418 tok/s;   4298 sec
+[2018-11-28 09:58:31,536 INFO] Step 10900/20000; acc:  85.40; ppl:  1.75; xent: 0.56; lr: 1.00000; 44184/876 tok/s;   4317 sec
+[2018-11-28 09:58:52,085 INFO] Step 10950/20000; acc:  90.80; ppl:  1.44; xent: 0.37; lr: 1.00000; 36532/1903 tok/s;   4338 sec
+[2018-11-28 09:59:10,082 INFO] Step 11000/20000; acc:  87.94; ppl:  1.61; xent: 0.48; lr: 1.00000; 41063/1431 tok/s;   4356 sec
+[2018-11-28 09:59:32,367 INFO] Step 11050/20000; acc:  85.44; ppl:  1.68; xent: 0.52; lr: 1.00000; 30829/2692 tok/s;   4378 sec
+[2018-11-28 09:59:51,384 INFO] Step 11100/20000; acc:  87.17; ppl:  1.64; xent: 0.49; lr: 1.00000; 41032/1285 tok/s;   4397 sec
+[2018-11-28 10:00:10,567 INFO] Step 11150/20000; acc:  86.11; ppl:  1.72; xent: 0.54; lr: 1.00000; 38155/1916 tok/s;   4416 sec
+[2018-11-28 10:00:29,393 INFO] Step 11200/20000; acc:  90.30; ppl:  1.53; xent: 0.43; lr: 1.00000; 26601/3803 tok/s;   4435 sec
+[2018-11-28 10:00:47,611 INFO] Step 11250/20000; acc:  88.08; ppl:  1.53; xent: 0.42; lr: 1.00000; 44490/1644 tok/s;   4453 sec
+[2018-11-28 10:01:06,753 INFO] Step 11300/20000; acc:  90.88; ppl:  1.49; xent: 0.40; lr: 1.00000; 39161/1874 tok/s;   4473 sec
+[2018-11-28 10:01:28,111 INFO] Step 11350/20000; acc:  88.62; ppl:  1.56; xent: 0.44; lr: 1.00000; 44148/1617 tok/s;   4494 sec
+[2018-11-28 10:01:47,044 INFO] Step 11400/20000; acc:  87.19; ppl:  1.62; xent: 0.48; lr: 1.00000; 21813/1945 tok/s;   4513 sec
+[2018-11-28 10:02:06,594 INFO] Step 11450/20000; acc:  88.85; ppl:  1.54; xent: 0.43; lr: 1.00000; 37211/1170 tok/s;   4532 sec
+[2018-11-28 10:02:26,696 INFO] Step 11500/20000; acc:  88.96; ppl:  1.56; xent: 0.44; lr: 1.00000; 17458/2601 tok/s;   4553 sec
+[2018-11-28 10:02:35,585 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:02:54,693 INFO] Step 11550/20000; acc:  86.91; ppl:  1.64; xent: 0.49; lr: 1.00000; 51279/920 tok/s;   4581 sec
+[2018-11-28 10:03:11,925 INFO] Step 11600/20000; acc:  88.27; ppl:  1.58; xent: 0.46; lr: 1.00000; 21074/2756 tok/s;   4598 sec
+[2018-11-28 10:03:32,160 INFO] Step 11650/20000; acc:  88.39; ppl:  1.53; xent: 0.43; lr: 1.00000; 21452/3276 tok/s;   4618 sec
+[2018-11-28 10:03:52,525 INFO] Step 11700/20000; acc:  87.00; ppl:  1.73; xent: 0.55; lr: 1.00000; 40201/921 tok/s;   4638 sec
+[2018-11-28 10:04:13,442 INFO] Step 11750/20000; acc:  91.06; ppl:  1.51; xent: 0.41; lr: 1.00000; 36849/1751 tok/s;   4659 sec
+[2018-11-28 10:04:32,874 INFO] Step 11800/20000; acc:  86.21; ppl:  1.68; xent: 0.52; lr: 1.00000; 28402/2614 tok/s;   4679 sec
+[2018-11-28 10:04:51,509 INFO] Step 11850/20000; acc:  86.25; ppl:  1.66; xent: 0.51; lr: 1.00000; 29015/1420 tok/s;   4697 sec
+[2018-11-28 10:05:10,997 INFO] Step 11900/20000; acc:  90.86; ppl:  1.41; xent: 0.34; lr: 1.00000; 13360/3114 tok/s;   4717 sec
+[2018-11-28 10:05:30,099 INFO] Step 11950/20000; acc:  90.16; ppl:  1.48; xent: 0.39; lr: 1.00000; 31347/1881 tok/s;   4736 sec
+[2018-11-28 10:05:50,777 INFO] Step 12000/20000; acc:  85.69; ppl:  1.87; xent: 0.63; lr: 1.00000; 31317/2101 tok/s;   4757 sec
+[2018-11-28 10:06:08,356 INFO] Step 12050/20000; acc:  87.40; ppl:  1.62; xent: 0.48; lr: 1.00000; 45010/881 tok/s;   4774 sec
+[2018-11-28 10:06:29,460 INFO] Step 12100/20000; acc:  86.61; ppl:  1.70; xent: 0.53; lr: 1.00000; 16459/3914 tok/s;   4795 sec
+[2018-11-28 10:06:50,164 INFO] Step 12150/20000; acc:  87.26; ppl:  1.66; xent: 0.51; lr: 1.00000; 33080/874 tok/s;   4816 sec
+[2018-11-28 10:07:08,534 INFO] Step 12200/20000; acc:  90.24; ppl:  1.49; xent: 0.40; lr: 1.00000; 34524/2450 tok/s;   4834 sec
+[2018-11-28 10:07:27,408 INFO] Step 12250/20000; acc:  88.27; ppl:  1.56; xent: 0.44; lr: 1.00000; 31052/1252 tok/s;   4853 sec
+[2018-11-28 10:07:45,858 INFO] Step 12300/20000; acc:  90.41; ppl:  1.49; xent: 0.40; lr: 1.00000; 31310/1037 tok/s;   4872 sec
+[2018-11-28 10:08:04,460 INFO] Step 12350/20000; acc:  88.77; ppl:  1.47; xent: 0.39; lr: 1.00000; 19173/1600 tok/s;   4890 sec
+[2018-11-28 10:08:26,769 INFO] Step 12400/20000; acc:  89.30; ppl:  1.43; xent: 0.36; lr: 1.00000; 36195/1633 tok/s;   4913 sec
+[2018-11-28 10:08:45,842 INFO] Step 12450/20000; acc:  87.89; ppl:  1.57; xent: 0.45; lr: 1.00000; 36216/1287 tok/s;   4932 sec
+[2018-11-28 10:09:04,797 INFO] Step 12500/20000; acc:  84.79; ppl:  1.69; xent: 0.52; lr: 1.00000; 35912/754 tok/s;   4951 sec
+[2018-11-28 10:09:24,311 INFO] Step 12550/20000; acc:  87.08; ppl:  1.62; xent: 0.48; lr: 1.00000; 38740/1917 tok/s;   4970 sec
+[2018-11-28 10:09:31,694 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:09:52,744 INFO] Step 12600/20000; acc:  85.66; ppl:  1.73; xent: 0.55; lr: 1.00000; 38383/893 tok/s;   4999 sec
+[2018-11-28 10:10:09,468 INFO] Step 12650/20000; acc:  88.72; ppl:  1.63; xent: 0.49; lr: 1.00000; 39791/2000 tok/s;   5015 sec
+[2018-11-28 10:10:29,548 INFO] Step 12700/20000; acc:  86.41; ppl:  1.77; xent: 0.57; lr: 1.00000; 32504/2030 tok/s;   5035 sec
+[2018-11-28 10:10:49,080 INFO] Step 12750/20000; acc:  88.84; ppl:  1.61; xent: 0.48; lr: 1.00000; 45676/1917 tok/s;   5055 sec
+[2018-11-28 10:11:09,212 INFO] Step 12800/20000; acc:  86.82; ppl:  1.68; xent: 0.52; lr: 1.00000; 15060/3149 tok/s;   5075 sec
+[2018-11-28 10:11:28,161 INFO] Step 12850/20000; acc:  91.93; ppl:  1.40; xent: 0.34; lr: 1.00000; 27400/3187 tok/s;   5094 sec
+[2018-11-28 10:11:47,558 INFO] Step 12900/20000; acc:  90.86; ppl:  1.39; xent: 0.33; lr: 1.00000; 25377/2283 tok/s;   5113 sec
+[2018-11-28 10:12:06,911 INFO] Step 12950/20000; acc:  88.89; ppl:  1.50; xent: 0.40; lr: 1.00000; 33103/2470 tok/s;   5133 sec
+[2018-11-28 10:12:25,834 INFO] Step 13000/20000; acc:  89.14; ppl:  1.56; xent: 0.45; lr: 1.00000; 32939/1043 tok/s;   5152 sec
+[2018-11-28 10:12:46,351 INFO] Step 13050/20000; acc:  88.46; ppl:  1.51; xent: 0.41; lr: 1.00000; 15839/3759 tok/s;   5172 sec
+[2018-11-28 10:13:04,387 INFO] Step 13100/20000; acc:  88.89; ppl:  1.52; xent: 0.42; lr: 1.00000; 18009/2217 tok/s;   5190 sec
+[2018-11-28 10:13:26,245 INFO] Step 13150/20000; acc:  87.14; ppl:  1.57; xent: 0.45; lr: 1.00000; 48241/955 tok/s;   5212 sec
+[2018-11-28 10:13:45,461 INFO] Step 13200/20000; acc:  88.26; ppl:  1.57; xent: 0.45; lr: 1.00000; 24755/2438 tok/s;   5231 sec
+[2018-11-28 10:14:03,978 INFO] Step 13250/20000; acc:  86.50; ppl:  1.67; xent: 0.51; lr: 1.00000; 37132/1922 tok/s;   5250 sec
+[2018-11-28 10:14:23,745 INFO] Step 13300/20000; acc:  86.76; ppl:  1.61; xent: 0.48; lr: 1.00000; 40932/1065 tok/s;   5270 sec
+[2018-11-28 10:14:42,551 INFO] Step 13350/20000; acc:  88.99; ppl:  1.56; xent: 0.45; lr: 1.00000; 26390/1292 tok/s;   5288 sec
+[2018-11-28 10:14:59,623 INFO] Step 13400/20000; acc:  84.05; ppl:  1.82; xent: 0.60; lr: 1.00000; 40924/1366 tok/s;   5306 sec
+[2018-11-28 10:15:21,414 INFO] Step 13450/20000; acc:  88.62; ppl:  1.63; xent: 0.49; lr: 1.00000; 43631/2309 tok/s;   5327 sec
+[2018-11-28 10:15:40,957 INFO] Step 13500/20000; acc:  86.14; ppl:  1.62; xent: 0.48; lr: 1.00000; 44380/883 tok/s;   5347 sec
+[2018-11-28 10:15:59,812 INFO] Step 13550/20000; acc:  84.94; ppl:  1.73; xent: 0.55; lr: 1.00000; 51246/887 tok/s;   5366 sec
+[2018-11-28 10:16:25,025 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:16:25,893 INFO] Step 13600/20000; acc:  87.73; ppl:  1.63; xent: 0.49; lr: 1.00000; 37389/1139 tok/s;   5392 sec
+[2018-11-28 10:16:47,139 INFO] Step 13650/20000; acc:  88.37; ppl:  1.47; xent: 0.38; lr: 1.00000; 29861/3145 tok/s;   5413 sec
+[2018-11-28 10:17:04,007 INFO] Step 13700/20000; acc:  89.68; ppl:  1.43; xent: 0.36; lr: 1.00000; 24348/3281 tok/s;   5430 sec
+[2018-11-28 10:17:24,325 INFO] Step 13750/20000; acc:  88.97; ppl:  1.49; xent: 0.40; lr: 1.00000; 38075/1993 tok/s;   5450 sec
+[2018-11-28 10:17:43,400 INFO] Step 13800/20000; acc:  90.02; ppl:  1.50; xent: 0.41; lr: 1.00000; 22906/2151 tok/s;   5469 sec
+[2018-11-28 10:18:03,737 INFO] Step 13850/20000; acc:  89.74; ppl:  1.48; xent: 0.39; lr: 1.00000; 44234/1514 tok/s;   5490 sec
+[2018-11-28 10:18:22,626 INFO] Step 13900/20000; acc:  89.97; ppl:  1.51; xent: 0.41; lr: 1.00000; 34715/1151 tok/s;   5509 sec
+[2018-11-28 10:18:42,145 INFO] Step 13950/20000; acc:  91.01; ppl:  1.45; xent: 0.37; lr: 1.00000; 34688/2046 tok/s;   5528 sec
+[2018-11-28 10:19:01,830 INFO] Step 14000/20000; acc:  89.29; ppl:  1.59; xent: 0.47; lr: 1.00000; 37076/1133 tok/s;   5548 sec
+[2018-11-28 10:19:20,544 INFO] Step 14050/20000; acc:  90.16; ppl:  1.46; xent: 0.38; lr: 1.00000; 39003/876 tok/s;   5566 sec
+[2018-11-28 10:19:40,800 INFO] Step 14100/20000; acc:  86.92; ppl:  1.69; xent: 0.52; lr: 1.00000; 33332/2020 tok/s;   5587 sec
+[2018-11-28 10:19:58,771 INFO] Step 14150/20000; acc:  86.81; ppl:  1.56; xent: 0.45; lr: 1.00000; 48214/985 tok/s;   5605 sec
+[2018-11-28 10:20:20,396 INFO] Step 14200/20000; acc:  88.71; ppl:  1.54; xent: 0.43; lr: 1.00000; 30662/2235 tok/s;   5626 sec
+[2018-11-28 10:20:40,793 INFO] Step 14250/20000; acc:  85.98; ppl:  1.73; xent: 0.55; lr: 1.00000; 50887/772 tok/s;   5647 sec
+[2018-11-28 10:20:59,397 INFO] Step 14300/20000; acc:  90.46; ppl:  1.49; xent: 0.40; lr: 1.00000; 27200/1587 tok/s;   5665 sec
+[2018-11-28 10:21:18,626 INFO] Step 14350/20000; acc:  86.49; ppl:  1.69; xent: 0.53; lr: 1.00000; 34292/832 tok/s;   5685 sec
+[2018-11-28 10:21:36,840 INFO] Step 14400/20000; acc:  89.61; ppl:  1.42; xent: 0.35; lr: 1.00000; 27038/3373 tok/s;   5703 sec
+[2018-11-28 10:21:54,586 INFO] Step 14450/20000; acc:  88.56; ppl:  1.41; xent: 0.34; lr: 1.00000; 43946/2495 tok/s;   5720 sec
+[2018-11-28 10:22:16,054 INFO] Step 14500/20000; acc:  89.52; ppl:  1.42; xent: 0.35; lr: 1.00000; 37405/2348 tok/s;   5742 sec
+[2018-11-28 10:22:35,336 INFO] Step 14550/20000; acc:  91.03; ppl:  1.43; xent: 0.36; lr: 1.00000; 25414/2607 tok/s;   5761 sec
+[2018-11-28 10:22:54,878 INFO] Step 14600/20000; acc:  89.17; ppl:  1.59; xent: 0.46; lr: 1.00000; 37922/1684 tok/s;   5781 sec
+[2018-11-28 10:23:18,681 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:23:20,880 INFO] Step 14650/20000; acc:  88.38; ppl:  1.58; xent: 0.46; lr: 1.00000; 40330/1060 tok/s;   5807 sec
+[2018-11-28 10:23:42,666 INFO] Step 14700/20000; acc:  90.21; ppl:  1.47; xent: 0.39; lr: 1.00000; 42297/1530 tok/s;   5829 sec
+[2018-11-28 10:23:58,980 INFO] Step 14750/20000; acc:  86.94; ppl:  1.65; xent: 0.50; lr: 1.00000; 43335/1542 tok/s;   5845 sec
+[2018-11-28 10:24:20,238 INFO] Step 14800/20000; acc:  87.24; ppl:  1.64; xent: 0.50; lr: 1.00000; 37579/766 tok/s;   5866 sec
+[2018-11-28 10:24:38,766 INFO] Step 14850/20000; acc:  90.14; ppl:  1.55; xent: 0.44; lr: 1.00000; 33174/1007 tok/s;   5885 sec
+[2018-11-28 10:24:59,154 INFO] Step 14900/20000; acc:  90.83; ppl:  1.41; xent: 0.34; lr: 1.00000; 50689/973 tok/s;   5905 sec
+[2018-11-28 10:25:18,511 INFO] Step 14950/20000; acc:  89.05; ppl:  1.53; xent: 0.43; lr: 1.00000; 22572/2560 tok/s;   5924 sec
+[2018-11-28 10:25:37,426 INFO] Step 15000/20000; acc:  84.42; ppl:  1.63; xent: 0.49; lr: 1.00000; 15228/3437 tok/s;   5943 sec
+[2018-11-28 10:25:57,087 INFO] Step 15050/20000; acc:  85.12; ppl:  1.73; xent: 0.55; lr: 1.00000; 43027/1140 tok/s;   5963 sec
+[2018-11-28 10:26:16,722 INFO] Step 15100/20000; acc:  85.88; ppl:  1.78; xent: 0.58; lr: 1.00000; 45016/987 tok/s;   5983 sec
+[2018-11-28 10:26:36,242 INFO] Step 15150/20000; acc:  88.72; ppl:  1.47; xent: 0.39; lr: 1.00000; 26322/2168 tok/s;   6002 sec
+[2018-11-28 10:26:55,204 INFO] Step 15200/20000; acc:  91.10; ppl:  1.44; xent: 0.37; lr: 1.00000; 36339/1253 tok/s;   6021 sec
+[2018-11-28 10:27:16,192 INFO] Step 15250/20000; acc:  88.23; ppl:  1.58; xent: 0.46; lr: 1.00000; 46674/926 tok/s;   6042 sec
+[2018-11-28 10:27:36,160 INFO] Step 15300/20000; acc:  86.98; ppl:  1.59; xent: 0.46; lr: 1.00000; 45150/1080 tok/s;   6062 sec
+[2018-11-28 10:27:55,780 INFO] Step 15350/20000; acc:  88.65; ppl:  1.50; xent: 0.41; lr: 1.00000; 49676/1910 tok/s;   6082 sec
+[2018-11-28 10:28:14,581 INFO] Step 15400/20000; acc:  87.17; ppl:  1.72; xent: 0.54; lr: 1.00000; 28289/2506 tok/s;   6100 sec
+[2018-11-28 10:28:33,203 INFO] Step 15450/20000; acc:  89.11; ppl:  1.52; xent: 0.42; lr: 1.00000; 21029/4023 tok/s;   6119 sec
+[2018-11-28 10:28:51,199 INFO] Step 15500/20000; acc:  85.67; ppl:  1.68; xent: 0.52; lr: 1.00000; 35870/2120 tok/s;   6137 sec
+[2018-11-28 10:29:12,973 INFO] Step 15550/20000; acc:  88.81; ppl:  1.54; xent: 0.43; lr: 1.00000; 27700/2806 tok/s;   6159 sec
+[2018-11-28 10:29:32,351 INFO] Step 15600/20000; acc:  85.09; ppl:  1.81; xent: 0.59; lr: 1.00000; 50064/996 tok/s;   6178 sec
+[2018-11-28 10:29:51,491 INFO] Step 15650/20000; acc:  88.08; ppl:  1.54; xent: 0.43; lr: 1.00000; 27240/2043 tok/s;   6197 sec
+[2018-11-28 10:30:13,962 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:30:18,460 INFO] Step 15700/20000; acc:  82.77; ppl:  1.97; xent: 0.68; lr: 1.00000; 54246/846 tok/s;   6224 sec
+[2018-11-28 10:30:39,250 INFO] Step 15750/20000; acc:  88.53; ppl:  1.53; xent: 0.42; lr: 1.00000; 35690/1830 tok/s;   6245 sec
+[2018-11-28 10:30:56,080 INFO] Step 15800/20000; acc:  85.52; ppl:  1.67; xent: 0.51; lr: 1.00000; 23979/4097 tok/s;   6262 sec
+[2018-11-28 10:31:17,638 INFO] Step 15850/20000; acc:  86.83; ppl:  1.61; xent: 0.48; lr: 1.00000; 40332/2544 tok/s;   6284 sec
+[2018-11-28 10:31:35,947 INFO] Step 15900/20000; acc:  85.58; ppl:  1.61; xent: 0.48; lr: 1.00000; 38247/1386 tok/s;   6302 sec
+[2018-11-28 10:31:56,115 INFO] Step 15950/20000; acc:  90.20; ppl:  1.45; xent: 0.37; lr: 1.00000; 31730/1823 tok/s;   6322 sec
+[2018-11-28 10:32:15,547 INFO] Step 16000/20000; acc:  87.63; ppl:  1.57; xent: 0.45; lr: 1.00000; 46005/1909 tok/s;   6341 sec
+[2018-11-28 10:32:33,737 INFO] Step 16050/20000; acc:  86.96; ppl:  1.57; xent: 0.45; lr: 1.00000; 38104/2172 tok/s;   6360 sec
+[2018-11-28 10:32:54,421 INFO] Step 16100/20000; acc:  85.95; ppl:  1.74; xent: 0.56; lr: 1.00000; 49220/952 tok/s;   6380 sec
+[2018-11-28 10:33:14,187 INFO] Step 16150/20000; acc:  90.51; ppl:  1.46; xent: 0.38; lr: 1.00000; 39163/946 tok/s;   6400 sec
+[2018-11-28 10:33:33,003 INFO] Step 16200/20000; acc:  88.45; ppl:  1.57; xent: 0.45; lr: 1.00000; 27601/3225 tok/s;   6419 sec
+[2018-11-28 10:33:52,402 INFO] Step 16250/20000; acc:  85.09; ppl:  1.81; xent: 0.59; lr: 1.00000; 32976/1267 tok/s;   6438 sec
+[2018-11-28 10:34:13,739 INFO] Step 16300/20000; acc:  87.55; ppl:  1.58; xent: 0.46; lr: 1.00000; 43391/1795 tok/s;   6460 sec
+[2018-11-28 10:34:33,752 INFO] Step 16350/20000; acc:  89.39; ppl:  1.46; xent: 0.38; lr: 1.00000; 31986/3854 tok/s;   6480 sec
+[2018-11-28 10:34:53,222 INFO] Step 16400/20000; acc:  87.98; ppl:  1.55; xent: 0.44; lr: 1.00000; 34546/1999 tok/s;   6499 sec
+[2018-11-28 10:35:12,044 INFO] Step 16450/20000; acc:  90.17; ppl:  1.47; xent: 0.38; lr: 1.00000; 33956/2023 tok/s;   6518 sec
+[2018-11-28 10:35:31,401 INFO] Step 16500/20000; acc:  89.17; ppl:  1.48; xent: 0.40; lr: 1.00000; 35600/884 tok/s;   6537 sec
+[2018-11-28 10:35:49,058 INFO] Step 16550/20000; acc:  87.94; ppl:  1.50; xent: 0.40; lr: 1.00000; 29354/1476 tok/s;   6555 sec
+[2018-11-28 10:36:10,090 INFO] Step 16600/20000; acc:  88.36; ppl:  1.49; xent: 0.40; lr: 1.00000; 24397/2397 tok/s;   6576 sec
+[2018-11-28 10:36:29,377 INFO] Step 16650/20000; acc:  87.96; ppl:  1.58; xent: 0.45; lr: 1.00000; 23102/1788 tok/s;   6595 sec
+[2018-11-28 10:36:48,864 INFO] Step 16700/20000; acc:  89.95; ppl:  1.52; xent: 0.42; lr: 1.00000; 41349/1428 tok/s;   6615 sec
+[2018-11-28 10:37:09,671 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:37:15,674 INFO] Step 16750/20000; acc:  89.57; ppl:  1.47; xent: 0.39; lr: 1.00000; 33900/1767 tok/s;   6642 sec
+[2018-11-28 10:37:37,098 INFO] Step 16800/20000; acc:  88.91; ppl:  1.55; xent: 0.44; lr: 1.00000; 45083/1511 tok/s;   6663 sec
+[2018-11-28 10:37:53,970 INFO] Step 16850/20000; acc:  91.14; ppl:  1.43; xent: 0.35; lr: 1.00000; 46425/1153 tok/s;   6680 sec
+[2018-11-28 10:38:14,769 INFO] Step 16900/20000; acc:  88.87; ppl:  1.61; xent: 0.48; lr: 1.00000; 17635/2546 tok/s;   6701 sec
+[2018-11-28 10:38:34,163 INFO] Step 16950/20000; acc:  90.74; ppl:  1.42; xent: 0.35; lr: 1.00000; 38181/895 tok/s;   6720 sec
+[2018-11-28 10:38:53,436 INFO] Step 17000/20000; acc:  87.46; ppl:  1.63; xent: 0.49; lr: 1.00000; 10611/3755 tok/s;   6739 sec
+[2018-11-28 10:39:13,186 INFO] Step 17050/20000; acc:  87.48; ppl:  1.72; xent: 0.54; lr: 1.00000; 31413/2683 tok/s;   6759 sec
+[2018-11-28 10:39:32,339 INFO] Step 17100/20000; acc:  90.45; ppl:  1.48; xent: 0.39; lr: 1.00000; 41578/1555 tok/s;   6778 sec
+[2018-11-28 10:39:52,366 INFO] Step 17150/20000; acc:  88.94; ppl:  1.53; xent: 0.42; lr: 1.00000; 33750/1345 tok/s;   6798 sec
+[2018-11-28 10:40:12,725 INFO] Step 17200/20000; acc:  86.16; ppl:  1.74; xent: 0.56; lr: 1.00000; 19354/2657 tok/s;   6819 sec
+[2018-11-28 10:40:30,738 INFO] Step 17250/20000; acc:  89.93; ppl:  1.56; xent: 0.45; lr: 1.00000; 39304/2858 tok/s;   6837 sec
+[2018-11-28 10:40:50,566 INFO] Step 17300/20000; acc:  88.51; ppl:  1.53; xent: 0.43; lr: 1.00000; 18230/1910 tok/s;   6856 sec
+[2018-11-28 10:41:12,057 INFO] Step 17350/20000; acc:  90.78; ppl:  1.44; xent: 0.36; lr: 1.00000; 47480/896 tok/s;   6878 sec
+[2018-11-28 10:41:31,391 INFO] Step 17400/20000; acc:  91.42; ppl:  1.49; xent: 0.40; lr: 1.00000; 20462/3919 tok/s;   6897 sec
+[2018-11-28 10:41:50,062 INFO] Step 17450/20000; acc:  88.62; ppl:  1.56; xent: 0.45; lr: 1.00000; 36031/2219 tok/s;   6916 sec
+[2018-11-28 10:42:09,474 INFO] Step 17500/20000; acc:  89.75; ppl:  1.54; xent: 0.43; lr: 1.00000; 24242/2774 tok/s;   6935 sec
+[2018-11-28 10:42:28,435 INFO] Step 17550/20000; acc:  88.82; ppl:  1.54; xent: 0.43; lr: 1.00000; 34468/1731 tok/s;   6954 sec
+[2018-11-28 10:42:46,289 INFO] Step 17600/20000; acc:  87.41; ppl:  1.61; xent: 0.48; lr: 1.00000; 35200/2432 tok/s;   6972 sec
+[2018-11-28 10:43:07,831 INFO] Step 17650/20000; acc:  87.60; ppl:  1.54; xent: 0.43; lr: 1.00000; 12705/3178 tok/s;   6994 sec
+[2018-11-28 10:43:27,099 INFO] Step 17700/20000; acc:  87.22; ppl:  1.57; xent: 0.45; lr: 1.00000; 20376/4112 tok/s;   7013 sec
+[2018-11-28 10:43:46,651 INFO] Step 17750/20000; acc:  86.62; ppl:  1.70; xent: 0.53; lr: 1.00000; 43129/903 tok/s;   7033 sec
+[2018-11-28 10:44:06,141 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:44:14,109 INFO] Step 17800/20000; acc:  88.87; ppl:  1.55; xent: 0.44; lr: 1.00000; 40177/1271 tok/s;   7060 sec
+[2018-11-28 10:44:34,434 INFO] Step 17850/20000; acc:  85.55; ppl:  1.69; xent: 0.53; lr: 1.00000; 26768/3137 tok/s;   7080 sec
+[2018-11-28 10:44:51,573 INFO] Step 17900/20000; acc:  87.25; ppl:  1.63; xent: 0.49; lr: 1.00000; 42646/1604 tok/s;   7097 sec
+[2018-11-28 10:45:12,116 INFO] Step 17950/20000; acc:  89.19; ppl:  1.46; xent: 0.38; lr: 1.00000; 28734/2551 tok/s;   7118 sec
+[2018-11-28 10:45:33,367 INFO] Step 18000/20000; acc:  87.43; ppl:  1.55; xent: 0.44; lr: 1.00000; 32561/782 tok/s;   7139 sec
+[2018-11-28 10:45:50,952 INFO] Step 18050/20000; acc:  91.92; ppl:  1.46; xent: 0.38; lr: 1.00000; 47647/997 tok/s;   7157 sec
+[2018-11-28 10:46:10,268 INFO] Step 18100/20000; acc:  87.79; ppl:  1.57; xent: 0.45; lr: 1.00000; 40761/1652 tok/s;   7176 sec
+[2018-11-28 10:46:29,604 INFO] Step 18150/20000; acc:  89.75; ppl:  1.63; xent: 0.49; lr: 1.00000; 36115/716 tok/s;   7195 sec
+[2018-11-28 10:46:49,370 INFO] Step 18200/20000; acc:  87.13; ppl:  1.68; xent: 0.52; lr: 1.00000; 43983/1526 tok/s;   7215 sec
+[2018-11-28 10:47:09,806 INFO] Step 18250/20000; acc:  87.61; ppl:  1.67; xent: 0.51; lr: 1.00000; 40735/1860 tok/s;   7236 sec
+[2018-11-28 10:47:27,941 INFO] Step 18300/20000; acc:  91.16; ppl:  1.38; xent: 0.32; lr: 1.00000; 36395/2014 tok/s;   7254 sec
+[2018-11-28 10:47:47,940 INFO] Step 18350/20000; acc:  87.16; ppl:  1.71; xent: 0.54; lr: 1.00000; 38638/1525 tok/s;   7274 sec
+[2018-11-28 10:48:08,217 INFO] Step 18400/20000; acc:  87.40; ppl:  1.63; xent: 0.49; lr: 1.00000; 17595/2004 tok/s;   7294 sec
+[2018-11-28 10:48:27,624 INFO] Step 18450/20000; acc:  92.49; ppl:  1.39; xent: 0.33; lr: 1.00000; 18387/3133 tok/s;   7314 sec
+[2018-11-28 10:48:46,733 INFO] Step 18500/20000; acc:  86.51; ppl:  1.65; xent: 0.50; lr: 1.00000; 32875/2627 tok/s;   7333 sec
+[2018-11-28 10:49:05,735 INFO] Step 18550/20000; acc:  89.15; ppl:  1.48; xent: 0.40; lr: 1.00000; 33725/2543 tok/s;   7352 sec
+[2018-11-28 10:49:24,669 INFO] Step 18600/20000; acc:  87.44; ppl:  1.62; xent: 0.48; lr: 1.00000; 44443/819 tok/s;   7371 sec
+[2018-11-28 10:49:42,890 INFO] Step 18650/20000; acc:  85.64; ppl:  1.65; xent: 0.50; lr: 1.00000; 43283/885 tok/s;   7389 sec
+[2018-11-28 10:50:03,903 INFO] Step 18700/20000; acc:  88.91; ppl:  1.55; xent: 0.44; lr: 1.00000; 34573/3097 tok/s;   7410 sec
+[2018-11-28 10:50:24,195 INFO] Step 18750/20000; acc:  86.96; ppl:  1.57; xent: 0.45; lr: 1.00000; 35831/2199 tok/s;   7430 sec
+[2018-11-28 10:50:42,914 INFO] Step 18800/20000; acc:  87.95; ppl:  1.61; xent: 0.48; lr: 1.00000; 18564/3609 tok/s;   7449 sec
+[2018-11-28 10:51:00,942 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:51:11,078 INFO] Step 18850/20000; acc:  91.91; ppl:  1.42; xent: 0.35; lr: 1.00000; 21350/1711 tok/s;   7477 sec
+[2018-11-28 10:51:30,618 INFO] Step 18900/20000; acc:  89.36; ppl:  1.52; xent: 0.42; lr: 1.00000; 23052/3101 tok/s;   7496 sec
+[2018-11-28 10:51:49,247 INFO] Step 18950/20000; acc:  87.15; ppl:  1.53; xent: 0.43; lr: 1.00000; 38418/1723 tok/s;   7515 sec
+[2018-11-28 10:52:09,611 INFO] Step 19000/20000; acc:  87.16; ppl:  1.60; xent: 0.47; lr: 1.00000; 43200/1055 tok/s;   7535 sec
+[2018-11-28 10:52:30,935 INFO] Step 19050/20000; acc:  90.72; ppl:  1.43; xent: 0.36; lr: 1.00000; 39978/972 tok/s;   7557 sec
+[2018-11-28 10:52:47,900 INFO] Step 19100/20000; acc:  90.16; ppl:  1.46; xent: 0.38; lr: 1.00000; 33125/924 tok/s;   7574 sec
+[2018-11-28 10:53:07,528 INFO] Step 19150/20000; acc:  86.81; ppl:  1.62; xent: 0.48; lr: 1.00000; 46128/944 tok/s;   7593 sec
+[2018-11-28 10:53:26,917 INFO] Step 19200/20000; acc:  86.91; ppl:  1.66; xent: 0.51; lr: 1.00000; 42473/1674 tok/s;   7613 sec
+[2018-11-28 10:53:46,762 INFO] Step 19250/20000; acc:  87.25; ppl:  1.56; xent: 0.44; lr: 1.00000; 25095/1979 tok/s;   7633 sec
+[2018-11-28 10:54:07,717 INFO] Step 19300/20000; acc:  85.56; ppl:  1.70; xent: 0.53; lr: 1.00000; 47901/865 tok/s;   7654 sec
+[2018-11-28 10:54:25,910 INFO] Step 19350/20000; acc:  87.66; ppl:  1.59; xent: 0.47; lr: 1.00000; 35582/1135 tok/s;   7672 sec
+[2018-11-28 10:54:46,836 INFO] Step 19400/20000; acc:  90.70; ppl:  1.44; xent: 0.36; lr: 1.00000; 37118/2000 tok/s;   7693 sec
+[2018-11-28 10:55:06,591 INFO] Step 19450/20000; acc:  84.77; ppl:  1.68; xent: 0.52; lr: 1.00000; 42250/1918 tok/s;   7712 sec
+[2018-11-28 10:55:26,262 INFO] Step 19500/20000; acc:  88.64; ppl:  1.47; xent: 0.39; lr: 1.00000; 38777/3038 tok/s;   7732 sec
+[2018-11-28 10:55:45,843 INFO] Step 19550/20000; acc:  86.70; ppl:  1.68; xent: 0.52; lr: 1.00000; 36415/926 tok/s;   7752 sec
+[2018-11-28 10:56:04,987 INFO] Step 19600/20000; acc:  88.49; ppl:  1.53; xent: 0.43; lr: 1.00000; 46582/907 tok/s;   7771 sec
+[2018-11-28 10:56:23,875 INFO] Step 19650/20000; acc:  88.43; ppl:  1.50; xent: 0.41; lr: 1.00000; 27555/1358 tok/s;   7790 sec
+[2018-11-28 10:56:42,298 INFO] Step 19700/20000; acc:  90.84; ppl:  1.36; xent: 0.31; lr: 1.00000; 23470/2109 tok/s;   7808 sec
+[2018-11-28 10:57:03,265 INFO] Step 19750/20000; acc:  87.97; ppl:  1.63; xent: 0.49; lr: 1.00000; 36393/1580 tok/s;   7829 sec
+[2018-11-28 10:57:22,610 INFO] Step 19800/20000; acc:  88.49; ppl:  1.61; xent: 0.48; lr: 1.00000; 23291/2168 tok/s;   7848 sec
+[2018-11-28 10:57:42,275 INFO] Step 19850/20000; acc:  87.22; ppl:  1.69; xent: 0.53; lr: 1.00000; 40302/1466 tok/s;   7868 sec
+[2018-11-28 10:57:58,251 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
+[2018-11-28 10:58:09,303 INFO] Step 19900/20000; acc:  87.45; ppl:  1.56; xent: 0.44; lr: 1.00000; 37969/1899 tok/s;   7895 sec
+[2018-11-28 10:58:28,631 INFO] Step 19950/20000; acc:  90.81; ppl:  1.44; xent: 0.37; lr: 1.00000; 37645/2247 tok/s;   7915 sec
+[2018-11-28 10:58:46,622 INFO] Step 20000/20000; acc:  90.83; ppl:  1.43; xent: 0.36; lr: 1.00000; 39695/1742 tok/s;   7932 sec
+[2018-11-28 10:58:46,839 INFO] Loading valid dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.valid.0.pt, number of examples: 1753
+[2018-11-28 10:59:02,269 INFO] Validation perplexity: 1.61465
+[2018-11-28 10:59:02,270 INFO] Validation accuracy: 88.0851
+[2018-11-28 10:59:02,272 INFO] Saving checkpoint /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final-model_step_20000.pt
+[2018-11-28 10:59:09,311 INFO] Loading train dataset from /s/chopin/l/grad/steveko/p/codrep/seq2seq4repair-experiments/data/s3b/final.train.0.pt, number of examples: 33469
