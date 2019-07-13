@@ -1,11 +1,11 @@
 #! /bin/bash
 
-echo "end-to-end.sh start"
+echo "sequencer-predict.sh start"
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT_DIR="$(dirname "$CURRENT_DIR")"
 
-HELP_MESSAGE=$'Usage: ./end-to-end.sh --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
+HELP_MESSAGE=$'Usage: ./sequencer-predict.sh --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
 buggy_file: Absolute path to the buggy file
 buggy_line: Line number of buggy line
 beam_size: Beam size used in seq2seq model
@@ -145,6 +145,6 @@ rm -rf $CURRENT_DIR/tmp
 echo
 
 echo "Found $(ls $OUTPUT | wc -l | awk '{print $1}') patches for $BUGGY_FILE_NAME stored in $OUTPUT"
-echo "end-to-end.sh done"
+echo "sequencer-predict.sh done"
 echo
 exit 0

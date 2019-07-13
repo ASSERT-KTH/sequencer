@@ -32,9 +32,9 @@ First run `src/setup_env.sh` to setup enviroment and clone/compile project. Plea
 
 ### Usage
 
-Then run `src/end-to-end.sh` with the following parameters:
+Then run `src/sequencer-predict.sh` with the following parameters:
 ```bash
-./end-to-end.sh --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
+./sequencer-predict.sh --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
 ```
 * --buggy_file: Absolute path to buggy file
 * --buggy_line: Line number indicating where the bug is, or just want it get changed.
