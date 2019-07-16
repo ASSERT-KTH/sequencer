@@ -60,27 +60,36 @@ http://opennmt.net/OpenNMT-py/
 ## Setup
 
 Choose a directory and:
+```bash
 git clone https://github.com/OpenNMT/OpenNMT-py
 git clone https://github.com/kth-tcs/seq2seq4repair-experiments.git
+```
+When testing a new configuration, copy a working data directory and modify *sh files as desired.
 
 Set up environment variables:
 
+```bash
 export CUDA_VISIBLE_DEVICES=0
 export THC_CACHING_ALLOCATOR=0
 export seq2seq4repair=.../seq2seq4repair-experiments
 export OpenNMT_py=.../OpenNMT-py
 export data_path=.../results/Golden  # Or a new directory path as desired
+```
 
 ## Train
 
 For details on model training, refer to OpenNMT documentation. To run SequenceR training:
 
+```bash
 cd src
 sequencer-train.sh
+```
 
 ## Test
 
 For details on model usage (translation), refer to OpenNMT documentation. To run SequenceR testing:
 
+```bash
 cd src
 sequencer-test.sh
+```
