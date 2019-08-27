@@ -24,6 +24,10 @@ docker run -it sequencer
 
 And now all dependecies are installed (including defects4j).
 
+### existing image
+
+Right now we have one reliable third-party golden image available at [DockerHub](https://cloud.docker.com/repository/docker/ycaxgjd/sequencer), in case that you only plan to invoke SequenceR.
+
 ## Without docker
 
 ### Install dependencies
@@ -56,6 +60,10 @@ To rerun our experiment of SequenceR over [Defects4J](https://github.com/rjust/d
 SequenceR uses the OpenNMT library to set up program repair as a translation from buggy code to fixed code. Documentation on OpenNMT including parameter setup is at:
 
 http://opennmt.net/OpenNMT-py/
+
+## GitLFS
+
+We use GitLFS to sync model files, so please visit [GitLFS homepage](https://git-lfs.github.com) before following steps. Usually, after the installation, remember to run `git lfs install` before other git commands.
 
 ## Setup
 

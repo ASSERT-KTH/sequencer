@@ -112,7 +112,13 @@ fi
 echo
 
 echo "Generating predictions"
-python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $ROOT_DIR/model/model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE &>/dev/null
+python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $ROOT_DIR/model/model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE #&>/dev/null
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Error in generating predictions"
+  rm -rf $CURRENT_DIR/tmp
+  exit 1
+fi
 echo
 
 echo "Post process predictions"
@@ -131,6 +137,12 @@ echo
 
 echo "Generating patches"
 python3 $CURRENT_DIR/Patch_Preparation/generatePatches.py $BUGGY_FILE_PATH $BUGGY_LINE $CURRENT_DIR/tmp/predictions_JavaSource.txt $OUTPUT
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Error in generating patches"
+  rm -rf $CURRENT_DIR/tmp
+  exit 1
+fi
 echo
 
 echo "Generating diffs"

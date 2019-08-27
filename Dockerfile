@@ -1,5 +1,6 @@
 # docker build -t ubuntu1604py36
-FROM ubuntu:16.04
+# FROM ubuntu:16.04
+FROM pytorch/pytorch:latest
 
 RUN apt-get update
 
