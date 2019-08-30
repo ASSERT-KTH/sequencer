@@ -24,6 +24,8 @@ docker run -it sequencer
 
 And now all dependecies are installed (including defects4j).
 
+Or, use our [this version](https://cloud.docker.com/repository/docker/zimin/sequencer) from the Docker Hub.
+
 ## Without docker
 
 ### Install dependencies
