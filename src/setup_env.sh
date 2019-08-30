@@ -48,8 +48,7 @@ fi
 
 if [ ! -d $CURRENT_DIR/lib/OpenNMT-py ]; then
   echo "Cloning OpenNMT-py"
-  # git clone https://github.com/chenzimin/OpenNMT-py.git $CURRENT_DIR/lib/OpenNMT-py
-  git clone https://github.com/OpenNMT/OpenNMT-py.git $CURRENT_DIR/lib/OpenNMT-py
+  git clone https://github.com/chenzimin/OpenNMT-py.git $CURRENT_DIR/lib/OpenNMT-py
   echo "Installing requirements for OpenNMT-py"
   cd $CURRENT_DIR/lib/OpenNMT-py
   pip install -r requirements.txt
