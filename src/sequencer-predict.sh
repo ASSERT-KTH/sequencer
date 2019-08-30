@@ -82,6 +82,7 @@ mkdir -p $CURRENT_DIR/tmp
 echo
 
 echo "Abstracting the source file"
+# the code of abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar is in https://github.com/KTH/sequencer/tree/master/src/Buggy_Context_Abstraction/abstraction
 java -jar $CURRENT_DIR/lib/abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar $BUGGY_FILE_PATH $BUGGY_LINE $CURRENT_DIR/tmp
 retval=$?
 if [ $retval -ne 0 ]; then
