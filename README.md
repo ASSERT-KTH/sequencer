@@ -32,6 +32,8 @@ Or, use our [this version](https://cloud.docker.com/repository/docker/zimin/sequ
 
 First run `src/setup_env.sh` to setup enviroment and clone/compile project. Please view `src/setup_env.sh` for more details.
 
+All models are versioned using [git-lfs](https://git-lfs.github.com/), make sure to configure it and correctly fetch the models before using.
+
 ### Usage
 
 Then run `src/sequencer-predict.sh` with the following parameters:
