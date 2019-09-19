@@ -6,3 +6,6 @@ vocab.txt:
 
 pass.txt:
   This includes the input and output to the golden model (../../model/model.pt) for the 950 passing cases from the 4711 CodRep4 tests. The <BUG2FIX> string separates the buggy input from the fixed output.
+
+correct_predictions:
+  This directory contains the diff version of pass.txt.
