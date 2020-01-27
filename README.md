@@ -1,6 +1,6 @@
 # SequenceR: SequenceR: Sequence-to-Sequence Learning for End-to-End Program Repair
 
-SequenceR is a seq2seq model designed to predict source code change on line level. The [paper](http://arxiv.org/pdf/1901.01808) explains the approach.
+SequenceR is a seq2seq model designed to predict source code change on line level. The [paper](http://arxiv.org/pdf/1901.01808) ([doi:10.1109/TSE.2019.2940179](https://doi.org/10.1109/TSE.2019.2940179)) explains the approach.
 
 If you use SequenceR for academic purposes, please cite the following publication:
 ```
