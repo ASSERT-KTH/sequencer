@@ -54,6 +54,8 @@ RUN ./src/setup_env.sh
 RUN apt-get install -y libcam-pdf-perl
 ENV PERL_MM_USE_DEFAULT 1
 
+RUN apt-get install -y sshpass
+
 RUN git clone https://github.com/rjust/defects4j /SequenceR/src/lib/defects4j
 RUN cpan App::cpanminus
 RUN cpanm --installdeps /SequenceR/src/lib/defects4j/

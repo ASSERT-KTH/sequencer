@@ -26,6 +26,11 @@ if ! command -v java &>/dev/null; then
   exit 1
 fi
 
+if ! command -v sshpass &>/dev/null; then
+  echo "sshpass is not installed"
+  exit 1
+fi
+
 echo "Create lib folder"
 mkdir -p $CURRENT_DIR/lib
 echo

@@ -16,6 +16,8 @@ def main(argv):
     val_src_file = io.open(argv[1] + "/src-val.txt", "w", encoding="utf-8")
     val_tgt_file = io.open(argv[1] + "/tgt-val.txt", "w", encoding="utf-8")
 
+    train_tmp_file = io.open(argv[1] + "/train-tmp.txt", "w", encoding="utf-8")
+    val_tmp_file = io.open(argv[1] + "/val-tmp.txt", "w", encoding="utf-8")
 
     file_count = 0
     for file in files:
@@ -62,6 +64,19 @@ def main(argv):
 
         # print(source_tokens + '\n')
         # print(target_tokens + '\n')
+
+        # we need transactional behavior
+        # assume if write to tmp doesnt fail
+        # then write to real file wont fail either
+
+        try:
+            train_tmp_file.write(target_tokens.strip() + '\n')
+            val_tmp_file.write(source_tokens.strip() + '\n')
+        except Exception as e:
+            sys.stderr.write("Tokenization failed for file " + file + "\n")
+            continue
+
+
         if(file_count % 20 == 0):
             val_src_file.write(source_tokens.strip() + '\n')
             val_tgt_file.write(target_tokens.strip() + '\n')
@@ -77,6 +92,13 @@ def main(argv):
     val_tgt_file.close()
     train_src_file.close()
     train_tgt_file.close()
+
+    train_tmp_file.close()
+    val_tmp_file.close()
+    
+    os.remove(argv[1] + "/train-tmp.txt")
+    os.remove(argv[1] + "/val-tmp.txt")
+    
     sys.exit(0)
 
 

@@ -1,0 +1,23 @@
+#!/bin/bash
+# Project to run under
+#SBATCH -A SNIC2019-3-453
+# Name of the job 
+#SBATCH -J Sequencer-train
+# name of the output file
+#SBATCH --output=/pfs/nobackup/home/j/javierro/seq-train.out
+# name of the error file
+#SBATCH --error=/pfs/nobackup/home/j/javierro/seq-train.err
+
+# asking for 1 core
+#SBATCH -n 1
+# the job can use up to 6 hours minutes to run
+# this might be reduced for the coderep test wich does not runs test suites
+#SBATCH --time=360
+#SBATCH --gres=gpu:v100:1,gpuexcl
+
+
+# uncommnent to activate virtualenv
+# source $HOME/sequencer/env.sh
+
+# run the program
+$HOME/sequencer/src/Continuous_Learning/continuous-learning-train-and-test.sh > $HOME/sequencer/src/Continuous_Learning/training.log 2>&1
