@@ -47,11 +47,11 @@ Then run `src/sequencer-predict.sh` with the following parameters:
 
 ## Experiments
 
-### Data
+### CodRep experiment
 
 The training data consists of `results/Golden/src-train.txt` and `results/Golden/tgt-train.txt` (line to line correspondence).
 
-The testing data consists of `results/Golden/src-test.txt` and `results/Golden/tgt-test.txt` (line to line correspondence).
+The CodRep4 testing data consists of `results/Golden/src-test.txt` and `results/Golden/tgt-test.txt` (line to line correspondence).
 
 ### Defects4J experiment
 
