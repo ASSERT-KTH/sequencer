@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+<body>
+
+    <canvas id="myChart"></canvas>
+<script>
+
+(() => {
+  $.get("http://localhost:8000/data.csv")
+    .done(function( data ) {
+
+    
+    const lines = data.split("\n");
+    lines.shift();
+    
+    const trainingData = lines.map(line => {
+      const values = line.split(",");
+      return {
+        patchesCreated: values[0],
+        patchesCompiled: values[1],
+        patchesPassed: values[2],
+        timestamp: values[3]
+      }
+    })
+
+    var firstTimestamp = trainingData[0].timestamp;
+
+    var labels = trainingData.map( item => {
+        return item.timestamp - firstTimestamp;
+    })
+
+    var data = trainingData.map( item => {
+        return item.patchesPassed;
+    })
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'passing patches over time',
+                borderColor: 'rgb(255, 99, 132)',
+                data
+            }]
+        },
+        options: {}
+    });
+  });
+})();
+
+</script>
+ 
+</body>
+</html>
