@@ -19,7 +19,7 @@ echo "Defects4J_oneLinerFix.sh start"
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DEFECTS4J_DIR=$CURRENT_DIR/Defects4J_projects
-CONTINUOUS_LEARNING_DATA=$CURRENT_DIR/../Continuous_Learning/monitor/data.json
+CONTINUOUS_LEARNING_DATA=$CURRENT_DIR/../Continuous_Learning/public/single_run_data
 
 echo "Creating directory 'Defects4J_projects'"
 mkdir -p $DEFECTS4J_DIR
@@ -66,7 +66,7 @@ if [ $LOG_RESULT -eq 1 ]; then
   CREATED=`find $DEFECTS4J_PATCHES_DIR -name '*' -type d | wc -l | awk '{print $1}'`
   COMPILED=`find $DEFECTS4J_PATCHES_DIR -name '*_compiled' | wc -l | awk '{print $1}'`
   PASSED=`find $DEFECTS4J_PATCHES_DIR -name '*_passed' | wc -l | awk '{print $1}'`
-  echo "{\"created\":$CREATED,\"compiled\":$COMPILED,\"passed\":$PASSED,\"timestamp\":\"$TIMESTAMP\"}" > $CONTINUOUS_LEARNING_DATA
+  echo "$CREATED,$COMPILED,$PASSED,$TIMESTAMP" > $CONTINUOUS_LEARNING_DATA
 fi
 
 echo "Found $(find $DEFECTS4J_PATCHES_DIR -name '*_passed' | wc -l | awk '{print $1}') test-suite adequate patches in total."

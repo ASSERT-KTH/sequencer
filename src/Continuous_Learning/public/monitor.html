@@ -12,11 +12,10 @@
 <script>
 
 (() => {
-  $.get("http://localhost:8000/data.csv")
-    .done(function( data ) {
-
+  $.get("http://sequencer.westeurope.cloudapp.azure.com:8080/data.csv")
+    .done( data => {
     
-    const lines = data.split("\n");
+    const lines = data.trim().split("\n");
     lines.shift();
     
     const trainingData = lines.map(line => {
@@ -29,10 +28,9 @@
       }
     })
 
-    var firstTimestamp = trainingData[0].timestamp;
 
     var labels = trainingData.map( item => {
-        return item.timestamp - firstTimestamp;
+        return item.timestamp;
     })
 
     var data = trainingData.map( item => {
