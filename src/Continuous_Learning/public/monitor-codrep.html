@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+<body>
+
+    <canvas id="myChart"></canvas>
+<script>
+
+(() => {
+  $.get("http://sequencer.westeurope.cloudapp.azure.com:8080/data-codrep.csv")
+    .done( data => {
+    
+    const lines = data.trim().split("\n");
+    lines.shift();
+    
+    const trainingData = lines.map(line => {
+      const values = line.split(",");
+      return {
+        total_matches: values[0],
+        bugs_fixed: values[1],
+        total_lines_compared: values[2],
+        timestamp: values[3]
+      }
+    })
+
+
+    var labels = trainingData.map( item => {
+        return item.timestamp;
+    })
+
+    var data = trainingData.map( item => {
+        return item.total_matches;
+    })
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'passing patches over time',
+                borderColor: 'rgb(255, 99, 132)',
+                data
+            }]
+        },
+        options: {}
+    });
+  });
+})();
+
+</script>
+ 
+</body>
+</html>

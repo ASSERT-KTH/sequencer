@@ -25,7 +25,17 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             content = fo.read()
             response = content.encode('utf-8')
             fo.close()
-        elif(self.path == '/data.csv'):
+        elif(self.path == '/monitor-coderep'):
+            fo = io.open(f"{self.path[1:]}.html", 'r', encoding='utf-8')
+            content = fo.read()
+            response = content.encode('utf-8')
+            fo.close()
+        elif(self.path == '/data-df4.csv'):
+            fo = io.open(f"{self.path[1:]}", 'r', encoding='utf-8')
+            content = fo.read()
+            response = content.encode('utf-8')
+            fo.close()
+        elif(self.path == '/data-codrep.csv'):
             fo = io.open(f"{self.path[1:]}", 'r', encoding='utf-8')
             content = fo.read()
             response = content.encode('utf-8')
@@ -44,14 +54,22 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         body = self.rfile.read(content_length)
 
-        if(self.path == '/data'):
-            data_file = io.open("data.csv", "a", encoding="utf-8")
+        if(self.path == '/data-d4j'):
+            data_file = io.open("data-df4.csv", "a", encoding="utf-8")
             data_file.write(body.decode('utf-8') + '\n')
+            data_file.close()
 
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b'OK')
+        elif(self.path == '/data-codrep')
+            data_file = io.open("data-codrep.csv", "a", encoding="utf-8")
+            data_file.write(body.decode('utf-8') + '\n')
+            data_file.close()
 
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b'OK')
         else:
             self.send_response(400)
             self.end_headers()

@@ -3,14 +3,23 @@ import sys
 import os
 import glob
 import io
+import json
+from datetime import datetime
 
 def main(argv):
 
     if(len(argv) < 2 or argv[0] == "-h" or argv[0] == "--help"):
         print("Usage: python tokenize.py /path/to/source/dir /path/to/target/files")
         exit(0)
+    
+    commits = os.lsdir(argv[0])
+    number_of_commits = commits.size
 
     files = glob.glob(argv[0] +  "/*/*.java-*")
+    number_of_files = files.size
+    number_of_processed_files = 0
+    number_of_discarded_files = 0
+
     train_src_file = io.open(argv[1] + "/src-train.txt", "w", encoding="utf-8")
     train_tgt_file = io.open(argv[1] + "/tgt-train.txt", "w", encoding="utf-8")
     val_src_file = io.open(argv[1] + "/src-val.txt", "w", encoding="utf-8")
@@ -57,6 +66,7 @@ def main(argv):
 
         except Exception as e:
             sys.stderr.write("Tokenization failed for file " + file + "\n")
+            number_of_discarded_files += 1
             continue
 
         source_tokens = source_tokens.replace("SEQUENCER_TOKENIZER_START_BUG", "<START_BUG>")
@@ -85,6 +95,7 @@ def main(argv):
             train_tgt_file.write(target_tokens.strip() + '\n')
 
         file_count = file_count + 1
+        number_of_processed_files += 1
 
         fo.close()
     
@@ -99,6 +110,18 @@ def main(argv):
     os.remove(argv[1] + "/train-tmp.txt")
     os.remove(argv[1] + "/val-tmp.txt")
     
+    metadata = {
+        "total_files" : number_of_files,
+        "discarded_files" : number_of_files,
+        "processed_files" : number_of_files,
+        "commits" : number_of_files,
+        "date": datetime.now().strftime("%d-%m-%Y %H-%M")
+    }
+
+    with open(argv[1] + "/metadata.json", "w") as metadata_file:
+        json.dump(data, metadata_file)
+
+
     sys.exit(0)
 
 
