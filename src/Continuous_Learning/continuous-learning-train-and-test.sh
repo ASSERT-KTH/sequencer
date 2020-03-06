@@ -32,8 +32,8 @@ TRAIN_TARGET_FILE="$DATA_PATH/tgt-train.txt"
 VALIDATION_SOURCE_FILE="$DATA_PATH/src-val.txt"
 VALIDATION_TARGET_FILE="$DATA_PATH/tgt-val.txt"
 
-TRAIN_SOURCE_LINES=`wc -l $TRAIN_SOURCE_FILE`
-TRAIN_TARGET_LINES=`wc -l $TRAIN_TARGET_FILE`
+TRAIN_SOURCE_LINES=`wc -l < $TRAIN_SOURCE_FILE`
+TRAIN_TARGET_LINES=`wc -l < $TRAIN_TARGET_FILE`
 
 TRAINING_STEPS=500
 LEARNING_RATE=0.25
@@ -43,8 +43,8 @@ if [ $TRAIN_SOURCE_LINES -ne $TRAIN_TARGET_LINES ]; then
     exit
 fi
 
-VALIDATION_SOURCE_LINES=`wc -l $VALIDATION_SOURCE_FILE`
-VALIDATION_TARGET_LINES=`wc -l $VALIDATION_TARGET_FILE`
+VALIDATION_SOURCE_LINES=`wc -l < $VALIDATION_SOURCE_FILE`
+VALIDATION_TARGET_LINES=`wc -l < $VALIDATION_TARGET_FILE`
 
 if [ $VALIDATION_SOURCE_LINES -ne $VALIDATION_TARGET_LINES ]; then
     echo "Validation dataset files do not match!"
@@ -79,15 +79,13 @@ cp $NEW_MODEL $MODEL_PATH/model-$DATE.pt
 
 ./codrep-test.sh
 
-echo ",$DATE\n" >> $CONTINUOUS_LEARNING_PATH/Codrep_results/$DATE/result.txt
+echo ",$DATE\n" >> $CONTINUOUS_LEARNING_PATH/Codrep_Results/$DATE/result.txt
 
-curl -X POST -d @$CONTINUOUS_LEARNING_PATH/Codrep_results/$DATE/result.txt $FILE_SERVER_URL/data-codrep
+curl -X POST -d @$CONTINUOUS_LEARNING_PATH/Codrep_Results/$DATE/result.txt $FILE_SERVER_URL/data-codrep
 
 
-cd $DEFECTS4J_EXPERMENT_PATH
-
-./Defects4J_experiment.sh -l -t
-
-curl -X POST -d @$CONTINUOUS_LEARNING_PATH/public/single_run_data $FILE_SERVER_URL/data
+# cd $DEFECTS4J_EXPERMENT_PATH
+# ./Defects4J_experiment.sh -l -t
+# curl -X POST -d @$CONTINUOUS_LEARNING_PATH/public/single_run_data $FILE_SERVER_URL/data
 
 

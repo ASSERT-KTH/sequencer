@@ -16,7 +16,7 @@ def main(argv):
     number_of_commits = commits.size
 
     files = glob.glob(argv[0] +  "/*/*.java-*")
-    number_of_files = files.size
+    number_of_files = len(files)
     number_of_processed_files = 0
     number_of_discarded_files = 0
 

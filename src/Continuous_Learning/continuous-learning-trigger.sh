@@ -13,11 +13,17 @@ DIFFS_DIR="$HOME/continuous-learning-data"
 DATA_PATH="$CONTINUOUS_LEARNING_PATH/public"
 TRAIN_SOURCE_FILE="$DATA_PATH/src-train.txt"
 VALIDATION_SOURCE_FILE="$DATA_PATH/src-val.txt"
+DATA_POINT_THRESHOLD=10000
 
 mkdir -p $DATA_PATH
 
 while :
 do
+  
+  NUMBER_OF_DATA_POINTS=`find ~/continuous-learning-data -name "*.java-*" | wc -l`
+
+  if [ "$NUMBER_OF_DATA_POINTS" -gt $DATA_POINT_THRESHOLD ] ; then
+
     cd $CONTINUOUS_LEARNING_PATH
     python3 tokenize.py $DIFFS_DIR $DATA_PATH
 
@@ -32,8 +38,8 @@ do
 
         rm -rf $DIFFS_DIR/*
     fi
-
-
-    sleep 8h
+  
+  fi
+  sleep 20m
 
 done

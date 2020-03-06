@@ -12,7 +12,7 @@ def main(argv):
     n = 50
     path_to_predictions = argv[0]
     path_to_test_data = argv[1]
-    path_to_output = argv[3]
+    path_to_output = argv[2]
 
     target_file = io.open(path_to_test_data, "r", encoding="utf-8")
     patches_file = io.open(path_to_predictions, "r", encoding="utf-8")
@@ -39,7 +39,7 @@ def main(argv):
     print("analized " + str(len(target_lines)) + " total changes")
 
     with open(path_to_output, "w") as result_file:
-        result_file.write(str(matches_found_total) + "," + str(matches_found_no_repeat) + "," + str(len(target_lines)), end='')
+        result_file.write(str(matches_found_total) + "," + str(matches_found_no_repeat) + "," + str(len(target_lines)))
 
 
 if __name__=="__main__":

@@ -1,42 +1,28 @@
 import io
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-
-src_train_path = "src-train.txt"
-src_val_path = "src-val.txt"
-tgt_train_path = "tgt-train.txt"
-tgt_val_path = "tgt-val.txt"
-
-
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+
+    txt_paths = ['/src-train', '/src-val', '/tgt-train', '/tgt-val']
+    html_paths = ['/monitor-d4j', '/monitor-codrep']
+    csv_paths = ['/data-df4', '/data-codrep']
 
     def do_GET(self):
         response_code = 200
         response = ""
 
-        if(self.path == '/src-train' or self.path == '/src-val' or 
-           self.path == '/tgt-train' or self.path == '/tgt-val'):
+        if(self.path in self.txt_paths):
             fo = io.open(f"{self.path[1:]}.txt", 'r', encoding='utf-8')
             content = fo.read()
             response = content.encode('utf-8')
             fo.close()
-        elif(self.path == '/monitor'):
+        elif(self.path in self.html_paths):
             fo = io.open(f"{self.path[1:]}.html", 'r', encoding='utf-8')
             content = fo.read()
             response = content.encode('utf-8')
             fo.close()
-        elif(self.path == '/monitor-coderep'):
-            fo = io.open(f"{self.path[1:]}.html", 'r', encoding='utf-8')
-            content = fo.read()
-            response = content.encode('utf-8')
-            fo.close()
-        elif(self.path == '/data-df4.csv'):
-            fo = io.open(f"{self.path[1:]}", 'r', encoding='utf-8')
-            content = fo.read()
-            response = content.encode('utf-8')
-            fo.close()
-        elif(self.path == '/data-codrep.csv'):
-            fo = io.open(f"{self.path[1:]}", 'r', encoding='utf-8')
+        elif(self.path in self.csv_paths):
+            fo = io.open(f"{self.path[1:]}.csv", 'r', encoding='utf-8')
             content = fo.read()
             response = content.encode('utf-8')
             fo.close()
@@ -54,16 +40,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['Content-Length'])
         body = self.rfile.read(content_length)
 
-        if(self.path == '/data-d4j'):
-            data_file = io.open("data-df4.csv", "a", encoding="utf-8")
-            data_file.write(body.decode('utf-8') + '\n')
-            data_file.close()
-
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(b'OK')
-        elif(self.path == '/data-codrep')
-            data_file = io.open("data-codrep.csv", "a", encoding="utf-8")
+        if(self.path in csv_paths):
+            data_file = io.open(f"{self.path[1:]}.csv", "a", encoding="utf-8")
             data_file.write(body.decode('utf-8') + '\n')
             data_file.close()
 
