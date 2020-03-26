@@ -13,7 +13,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:jonathonf/python-3.6
+RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update
 RUN apt-get install -y python3.6
 RUN apt-get install -y python3-pip
@@ -43,6 +43,10 @@ RUN apt-get install -y wget
 
 RUN apt-get install -y subversion
 
+RUN apt-get install -y sshpass
+
+RUN apt-get install -y curl
+
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
 
 WORKDIR /SequenceR
@@ -54,7 +58,6 @@ RUN ./src/setup_env.sh
 RUN apt-get install -y libcam-pdf-perl
 ENV PERL_MM_USE_DEFAULT 1
 
-RUN apt-get install -y sshpass
 
 RUN git clone https://github.com/rjust/defects4j /SequenceR/src/lib/defects4j
 RUN cpan App::cpanminus
