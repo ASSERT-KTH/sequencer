@@ -1,6 +1,8 @@
 #! /bin/bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT_DIR="$(dirname "$CURRENT_DIR")"
+
 if ! command -v python3 &>/dev/null; then
   echo "Python 3 is not installed"
   exit 1
@@ -49,6 +51,7 @@ if [ $? -ne 0 ]; then
   echo "Removing javalang repo"
   rm -rf $CURRENT_DIR/lib/javalang
   echo
+  cd $CURRENT_DIR
 fi
 
 if [ ! -d $CURRENT_DIR/lib/OpenNMT-py ]; then
@@ -57,6 +60,7 @@ if [ ! -d $CURRENT_DIR/lib/OpenNMT-py ]; then
   echo "Installing requirements for OpenNMT-py"
   pip3 install -r $CURRENT_DIR/lib/OpenNMT-py/requirements.txt
   echo
+  cd $CURRENT_DIR
 fi
 
 if [ ! -d $CURRENT_DIR/lib/abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar ]; then
@@ -65,7 +69,11 @@ if [ ! -d $CURRENT_DIR/lib/abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar ];
   mvn clean package
   cp target/abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar $CURRENT_DIR/lib
   echo
+  cd $CURRENT_DIR
 fi
+
+export data_path="$ROOT_DIR/data"
+export OpenNMT_py="$ROOT_DIR/src/lib/OpenNMT-py"
 
 echo "Done"
 echo

@@ -31,21 +31,7 @@ RUN apt-get install -y openjdk-8-jdk
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV PATH="${PATH}:$JAVA_HOME/bin"
 
-RUN apt-get install -y git
-
-RUN apt-get install -y maven
-
-RUN apt-get install -y nano
-
-RUN apt-get install -y unzip
-
-RUN apt-get install -y wget
-
-RUN apt-get install -y subversion
-
-RUN apt-get install -y sshpass
-
-RUN apt-get install -y curl
+RUN apt-get install -y git maven nano unzip wget subversion sshpass curl
 
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
 
@@ -53,11 +39,12 @@ WORKDIR /SequenceR
 
 COPY . /SequenceR
 
-RUN ./src/setup_env.sh
+RUN /SequenceR/src/setup_env.sh
+ENV data_path=/SequenceR/data
+ENV OpenNMT_py=/SequenceR/src/lib/OpenNMT-py
 
 RUN apt-get install -y libcam-pdf-perl
 ENV PERL_MM_USE_DEFAULT 1
-
 
 RUN git clone https://github.com/rjust/defects4j /SequenceR/src/lib/defects4j
 RUN cpan App::cpanminus

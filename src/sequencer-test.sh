@@ -2,7 +2,7 @@
 
 echo "sequencer-test.sh start"
 
-HELP_MESSAGE=$'Usage: ./sequencer-test.sh 
+HELP_MESSAGE=$'Usage: ./sequencer-test.sh
 Depends on environment variable settings
 export OpenNMT_py=.../OpenNMT-py
 export data_path=.../results/Golden  # Or a new directory path as desired'
@@ -21,7 +21,7 @@ fi
 cd $data_path
 echo "Starting test data translation"
 # Change code in translate.sh to adjust OpenNMT parameters (like beam width)
-translate.sh
+./translate.sh
 
 echo "sequencer-test.sh done"
 echo
