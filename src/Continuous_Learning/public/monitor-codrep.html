@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
+  
 </head>
 <body>
 
@@ -12,7 +13,7 @@
 <script>
 
 (() => {
-  $.get("http://sequencer.westeurope.cloudapp.azure.com:8080/data.csv")
+  $.get("http://sequencer.westeurope.cloudapp.azure.com:8080/data-codrep.csv")
     .done( data => {
     
     const lines = data.trim().split("\n");
@@ -21,10 +22,10 @@
     const trainingData = lines.map(line => {
       const values = line.split(",");
       return {
-        patchesCreated: values[0],
-        patchesCompiled: values[1],
-        patchesPassed: values[2],
-        timestamp: values[3]
+        total_matches: values[0],
+        bugs_fixed: values[1],
+        total_lines_compared: values[2],
+        timestamp: moment(values[3], "DDMMYYYY-HHmm")
       }
     })
 
@@ -34,7 +35,7 @@
     })
 
     var data = trainingData.map( item => {
-        return item.patchesPassed;
+        return item.total_matches;
     })
 
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -48,7 +49,19 @@
                 data
             }]
         },
-        options: {}
+        options: {
+          scales: {
+              xAxes: [{
+                type: 'time',
+                time: {
+                    displayFormats: {
+                        day: 'MMM D'
+                    }
+                },
+                distribution: 'linear'
+              }]
+          }
+        }
     });
   });
 })();
