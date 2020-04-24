@@ -29,6 +29,10 @@ case $i in
     OUTPUT="${i#*=}"
     shift # past argument=value
     ;;
+    --model=*)
+    MODEL="${i#*=}"
+    shift # past argument=value
+    ;;
     *)
           # unknown option
     ;;
@@ -63,6 +67,16 @@ if [ -z "$OUTPUT" ]; then
   exit 1
 elif [[ "$OUTPUT" != /* ]]; then
   echo "OUTPUT must be absolute path"
+  echo "$HELP_MESSAGE"
+  exit 1
+fi
+
+if [ -z "$MODEL" ]; then
+  echo "MODEL unset!"
+  echo "$HELP_MESSAGE"
+  exit 1
+elif [[ "$MODEL" != /* ]]; then
+  echo "MODEL must be absolute path"
   echo "$HELP_MESSAGE"
   exit 1
 fi
@@ -113,7 +127,7 @@ fi
 echo
 
 echo "Generating predictions"
-python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $ROOT_DIR/model/model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE 1>/dev/null
+python3 $CURRENT_DIR/lib/OpenNMT-py/translate.py -model $MODEL -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE 1>/dev/null
 echo
 
 echo "Post process predictions"
