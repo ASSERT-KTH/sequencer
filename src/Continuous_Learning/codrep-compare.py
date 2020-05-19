@@ -4,9 +4,8 @@ import sys
 
 def main(argv):
 
-    if(len(argv) < 1 or argv[0] == "-h" or argv[0] == "--help"):
-        print("Usage: python codrep-compare.py /path/to/predictions /path/to/test/data /path/to/output")
-        print("this program will look for predictions in the file: Codrep_Results/<date>/codrep-result.txt")
+    if(len(argv) < 3 or argv[0] == "-h" or argv[0] == "--help"):
+        print("Usage: python codrep-compare.py /path/to/predictions /path/to/test_data /path/to/output")
         exit(0)
 
     n = 50

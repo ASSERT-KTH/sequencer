@@ -11,8 +11,7 @@
 # asking for 1 core
 #SBATCH -n 1
 # the job can use up to 6 hours minutes to run
-# this might be reduced for the coderep test wich does not runs test suites
-#SBATCH --time=360
+#SBATCH --time=600
 #SBATCH --gres=gpu:v100:1,gpuexcl
 
 
@@ -20,4 +19,4 @@
 # source $HOME/sequencer/env.sh
 
 # run the program
-$HOME/sequencer/src/Continuous_Learning/continuous-learning-train-and-test.sh > $HOME/sequencer/src/Continuous_Learning/training.log 2>&1
+$HOME/sequencer/src/Continuous_Learning/continuous-learning-train-and-test.sh -l $LEARNING_RATE > $HOME/sequencer/src/Continuous_Learning/training.log 2>&1

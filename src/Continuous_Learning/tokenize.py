@@ -11,19 +11,19 @@ def main(argv):
     if(len(argv) < 2 or argv[0] == "-h" or argv[0] == "--help"):
         print("Usage: python tokenize.py /path/to/source/dir /path/to/target/files")
         exit(0)
-    
-    commits = os.lsdir(argv[0])
-    number_of_commits = commits.size
+
+    commits = os.listdir(argv[0])
+    number_of_commits = len(commits)
 
     files = glob.glob(argv[0] +  "/*/*.java-*")
     number_of_files = len(files)
     number_of_processed_files = 0
     number_of_discarded_files = 0
 
-    train_src_file = io.open(argv[1] + "/src-train.txt", "w", encoding="utf-8")
-    train_tgt_file = io.open(argv[1] + "/tgt-train.txt", "w", encoding="utf-8")
-    val_src_file = io.open(argv[1] + "/src-val.txt", "w", encoding="utf-8")
-    val_tgt_file = io.open(argv[1] + "/tgt-val.txt", "w", encoding="utf-8")
+    train_src_file = io.open(argv[1] + "/src-train-acc.txt", "a", encoding="utf-8")
+    train_tgt_file = io.open(argv[1] + "/tgt-train-acc.txt", "a", encoding="utf-8")
+    val_src_file = io.open(argv[1] + "/src-val-acc.txt", "a", encoding="utf-8")
+    val_tgt_file = io.open(argv[1] + "/tgt-val-acc.txt", "a", encoding="utf-8")
 
     train_tmp_file = io.open(argv[1] + "/train-tmp.txt", "w", encoding="utf-8")
     val_tmp_file = io.open(argv[1] + "/val-tmp.txt", "w", encoding="utf-8")
@@ -33,7 +33,7 @@ def main(argv):
         fo = io.open(file, "r", encoding="utf-8")
         fo.readline()
         hunk_file_lines = fo.readlines()
-        
+
         source_hunk = []
         target_line = ""
 
@@ -98,7 +98,7 @@ def main(argv):
         number_of_processed_files += 1
 
         fo.close()
-    
+
     val_src_file.close()
     val_tgt_file.close()
     train_src_file.close()
@@ -106,20 +106,20 @@ def main(argv):
 
     train_tmp_file.close()
     val_tmp_file.close()
-    
+
     os.remove(argv[1] + "/train-tmp.txt")
     os.remove(argv[1] + "/val-tmp.txt")
-    
+
     metadata = {
         "total_files" : number_of_files,
-        "discarded_files" : number_of_files,
-        "processed_files" : number_of_files,
-        "commits" : number_of_files,
+        "discarded_files" : number_of_discarded_files,
+        "processed_files" : number_of_processed_files,
+        "commits" : number_of_commits,
         "date": datetime.now().strftime("%d-%m-%Y %H-%M")
     }
 
-    with open(argv[1] + "/metadata.json", "w") as metadata_file:
-        json.dump(data, metadata_file)
+    with open(argv[1] + "/metadata-" + datetime.now().strftime("%d%m%Y-%H%M") + ".json", "w") as metadata_file:
+        json.dump(metadata, metadata_file)
 
 
     sys.exit(0)
