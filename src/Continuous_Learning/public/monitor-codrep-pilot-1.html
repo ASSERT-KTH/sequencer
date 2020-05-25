@@ -5,7 +5,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
+  
 </head>
 <body>
 
@@ -13,18 +13,18 @@
 <script>
 
 (() => {
-  $.get("http://localhost:8080/data-d4j")
+  $.get("http://localhost:8080/data-codrep-pilot-1")
     .done( data => {
     
     const lines = data.trim().split("\n");
-    //lines.shift();
+    lines.shift();
     
     const trainingData = lines.map(line => {
       const values = line.split(",");
       return {
-        patchesCreated: values[0],
-        patchesCompiled: values[1],
-        patchesPassed: values[2],
+        total_matches: values[0],
+        bugs_fixed: values[1],
+        total_lines_compared: values[2],
         timestamp: moment(values[3], "DDMMYYYY-HHmm")
       }
     })
@@ -35,11 +35,7 @@
     })
 
     var data = trainingData.map( item => {
-        return item.patchesPassed;
-    })
-
-    var data2 = trainingData.map( item => {
-        return item.patchesCompiled;
+        return item.total_matches;
     })
 
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -47,16 +43,15 @@
         type: 'line',
         data: {
             labels,
-            datasets: [
-            {
-                label: 'compiling patches over time',
-                borderColor: 'rgb(99, 255, 132)',
-                data: data2
-            },
-            {
-                label: 'passing patches over time',
+            datasets: [{
+                label: 'Pilot #1',
                 borderColor: 'rgb(255, 99, 132)',
                 data
+            },
+            {
+              label: 'Sequencer golden model baseline',
+              data: new Array(trainingData.length).fill(950),
+              borderColor: 'rgb(99, 255, 132)',
             }]
         },
         options: {
@@ -78,7 +73,7 @@
               {
                 scaleLabel: {
                   display: true,
-                  labelString: 'patches'
+                  labelString: 'Fixes found'
                 }
               }]
           }

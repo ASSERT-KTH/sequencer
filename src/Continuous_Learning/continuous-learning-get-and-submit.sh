@@ -1,16 +1,29 @@
-#! /bin/bash
+#!/bin/bash
 
-set -e
 set -x
 
 export DATE=`date +"%d%m%Y-%H%M"`
-# export HOME=/pfs/nobackup$HOME
+export HOME=/pfs/nobackup$HOME
+
+while [ "$1" != "" ]; do
+  case $1 in
+    -t | --thread-id )
+      THREAD_ID=$2
+      shift
+      ;;
+    -l | --learning-rate )
+      LEARNING_RATE=$2
+      shift
+      ;;
+  esac
+  shift
+done
 
 OpenNMT_py="$HOME/OpenNMT-py"
 CONTINUOUS_LEARNING_PATH="$HOME/sequencer/src/Continuous_Learning"
 DEFECTS4J_EXPERMENT_PATH="$HOME/sequencer/src/Defects4J_Experiment"
 
-export DATA_PATH="$CONTINUOUS_LEARNING_PATH/processed/$DATE"
+export DATA_PATH="$CONTINUOUS_LEARNING_PATH/processed/$DATE/$THREAD_ID"
 VOCABULARY="$HOME/sequencer/results/Golden/vocab.txt"
 
 MODEL_PATH="$CONTINUOUS_LEARNING_PATH/models"
@@ -25,6 +38,19 @@ VALIDATION_SOURCE_FILE="$DATA_PATH/src-val.txt"
 VALIDATION_TARGET_FILE="$DATA_PATH/tgt-val.txt"
 
 SNIC_JOB_FILE="$CONTINUOUS_LEARNING_PATH/jobscript"
+
+if [ -z "$THREAD_ID" ]; then
+    echo "THREAD_ID must be set through '-t'"
+    exit 1
+fi
+
+if [ -z "$LEARNING_RATE" ]; then
+    echo "LEARNING_RATE must be set through '-l'"
+    exit 1
+fi
+
+export LEARNING_RATE=$LEARNING_RATE
+export THREAD_ID=$THREAD_ID
 
 mkdir -p $DATA_PATH
 
@@ -74,6 +100,27 @@ if [ $VALIDATION_SOURCE_LINES -ne $VALIDATION_TARGET_LINES ]; then
 fi
 
 
+JOBS=`squeue -u javierro | tail -n +2`
 
-sbatch $SNIC_JOB_FILE
+if ! [ -z "$JOBS" ]; then
+
+  touch last_"$THREAD_ID"_job
+  LAST_THREAD_ID_JOB=`cat last_"$THREAD_ID"_job | head -n1`
+
+  if ! [ -z "$LAST_THREAD_ID_JOB" ]; then
+      FOUND=`echo $JOBS | grep -o -w $LAST_THREAD_ID_JOB`
+
+      if ! [ -z "$FOUND" ]; then
+          echo $FOUND
+          DEPENDENCY_PARAM="--dependency=afterok:$FOUND"
+      fi
+  fi
+
+fi
+
+echo "executing: sbatch $DEPENDENCY_PARAM jobscript"
+
+RET=`sbatch $DEPENDENCY_PARAM $SNIC_JOB_FILE`
+JOB_ID=`echo $RET | sed 's/Submitted batch job \([0-9]*\)/\1/'`
+echo $JOB_ID > last_"$THREAD_ID"_job
 

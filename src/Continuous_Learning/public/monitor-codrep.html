@@ -13,7 +13,7 @@
 <script>
 
 (() => {
-  $.get("http://sequencer.westeurope.cloudapp.azure.com:8080/data-codrep.csv")
+  $.get("http://localhost:8080/data-codrep")
     .done( data => {
     
     const lines = data.trim().split("\n");
@@ -25,18 +25,35 @@
         total_matches: values[0],
         bugs_fixed: values[1],
         total_lines_compared: values[2],
-        timestamp: moment(values[3], "DDMMYYYY-HHmm")
+        timestamp: moment(values[3], "DDMMYYYY-HHmm"),
+        thread: values[4]
       }
     })
 
+    var data1 = trainingData.filter(item => {
+      return item.thread == 1;
+    }).map( item => {
+        return item.total_matches;
+    })
 
-    var labels = trainingData.map( item => {
+    var data2 = trainingData.filter(item => {
+      return item.thread == 2;
+    }).map( item => {
+        return item.total_matches;
+    })
+
+    var data3 = trainingData.filter(item => {
+      return item.thread == 3;
+    }).map( item => {
+        return item.total_matches;
+    })
+
+    var labels = trainingData.filter(item => {
+      return item.thread == 1;
+    }).map( item => {
         return item.timestamp;
     })
 
-    var data = trainingData.map( item => {
-        return item.total_matches;
-    })
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -44,14 +61,26 @@
         data: {
             labels,
             datasets: [{
-                label: 'passing patches over time',
+                label: 'Learning rate 0.03125',
                 borderColor: 'rgb(255, 99, 132)',
-                data
+                data: data1
+            },{
+                label: 'Learning rate 0.0625',
+                borderColor: 'rgb(132, 99, 255)',
+                data: data2
+            },{
+                label: 'Learning rate 0.09375',
+                borderColor: 'rgb(99, 255, 132)',
+                data: data3
             }]
         },
         options: {
           scales: {
               xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Training increments by date'
+                },
                 type: 'time',
                 time: {
                     displayFormats: {
@@ -59,6 +88,13 @@
                     }
                 },
                 distribution: 'linear'
+              }],
+              yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Fixes found'
+                }
               }]
           }
         }
