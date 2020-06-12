@@ -12,7 +12,7 @@ cp ../../Patch_Preparation/postProcessPredictions.py tools
 mkdir -p models
 cp ../../../results/Golden/golden-model.pt models/
 
-docker build . --tag javier/sequencer:2.0
+docker build . --tag repairnator/sequencer:2.0
 
 rm -rf tools/
 rm -rf models/
