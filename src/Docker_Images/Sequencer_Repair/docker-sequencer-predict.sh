@@ -5,9 +5,10 @@ echo "sequencer-predict.sh start"
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT_DIR="$(dirname "$CURRENT_DIR")"
 
-HELP_MESSAGE=$'Usage: ./sequencer-predict.sh --model=[model path]--buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
+HELP_MESSAGE=$'Usage: ./sequencer-predict.sh --buggy_file=[absolute path] --buggy_line=[int] --models_dir=[absolute path] --beam_size=[int] --output=[absolute path]
 buggy_file: Absolute path to the buggy file
 buggy_line: Line number of buggy line
+models_dir: Absolute path to the models direcotry
 beam_size: Beam size used in seq2seq model
 output: Absolute path for output'
 for i in "$@"
@@ -19,6 +20,10 @@ case $i in
     ;;
     --buggy_line=*)
     BUGGY_LINE="${i#*=}"
+    shift # past argument=value
+    ;;
+    --models_dir=*)
+    MODELS_DIR="${i#*=}"
     shift # past argument=value
     ;;
     --beam_size=*)
@@ -55,6 +60,16 @@ if [ -z "$BUGGY_LINE" ]; then
   exit 1
 fi
 
+if [ -z "$MODELS_DIR" ]; then
+  echo "MODELS_DIR unset!"
+  echo "$HELP_MESSAGE"
+  exit 1
+elif [[ "$MODELS_DIR" != /* ]]; then
+  echo "MODELS_DIR must be absolute path"
+  echo "$HELP_MESSAGE"
+  exit 1
+fi
+
 if [ -z "$BEAM_SIZE" ]; then
   echo "BEAM_SIZE unset!"
   echo "$HELP_MESSAGE"
@@ -74,6 +89,7 @@ fi
 echo "Input parameter:"
 echo "BUGGY_FILE_PATH = ${BUGGY_FILE_PATH}"
 echo "BUGGY_LINE = ${BUGGY_LINE}"
+echo "MODELS_DIR = ${MODELS_DIR}"
 echo "BEAM_SIZE = ${BEAM_SIZE}"
 echo "OUTPUT = ${OUTPUT}"
 echo
@@ -116,19 +132,18 @@ if [ $retval -ne 0 ]; then
 fi
 echo
 
-echo "Generating predictions"
-python3 ./tools/OpenNMT-py/translate.py -model ./models/golden-model.pt -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE 1>/dev/null
-echo
+for MODEL_PATH in ${MODELS_DIR}/*.pt;
+do
+  rm -f $CURRENT_DIR/tmp/predictions.txt
 
-echo "Post process predictions"
-python3 ./tools/postProcessPredictions.py $CURRENT_DIR/tmp/predictions.txt $CURRENT_DIR/tmp
-retval=$?
-if [ $retval -ne 0 ]; then
-  echo "Post process generates none valid predictions"
-  rm -rf $CURRENT_DIR/tmp
-  exit 1
-fi
-echo
+  echo "Generating predictions from ${MODEL_PATH}"
+  python3 ./tools/OpenNMT-py/translate.py -model $MODEL_PATH -src $CURRENT_DIR/tmp/${BUGGY_FILE_BASENAME}_abstract_tokenized_truncated.txt -output $CURRENT_DIR/tmp/predictions.txt -beam_size $BEAM_SIZE -n_best $BEAM_SIZE 1>/dev/null
+  echo
+
+  echo "Post process predictions from ${MODEL_PATH}"
+  python3 ./tools/postProcessPredictions.py $CURRENT_DIR/tmp/predictions.txt $CURRENT_DIR/tmp
+  echo
+done
 
 echo "Creating output directory ${OUTPUT}"
 mkdir -p $OUTPUT
