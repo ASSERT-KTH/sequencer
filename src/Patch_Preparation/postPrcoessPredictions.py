@@ -15,9 +15,16 @@ def main(argv):
         sys.stderr.write("All predictions contains <unk> token")
         sys.exit(1)
 
-    predictions_asCodeLines_file = open(os.path.join(argv[1], "predictions_JavaSource.txt"), "w")
+    output_file_path = os.path.join(argv[1], "predictions_JavaSource.txt")
+    previous_asCodeLines_set = set()
+    if os.path.exists(output_file_path):
+        with open(output_file_path) as f:
+            previous_asCodeLines_set = set(f.read().splitlines())
+
+    predictions_asCodeLines_file = open(output_file_path, "a")
     for predictions_asCodeLine in predictions_asCodeLines:
-        predictions_asCodeLines_file.write(predictions_asCodeLine + "\n")
+        if predictions_asCodeLine not in previous_asCodeLines_set:
+            predictions_asCodeLines_file.write(predictions_asCodeLine + "\n")
     predictions_asCodeLines_file.close()
     sys.exit(0)
 
