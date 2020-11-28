@@ -38,8 +38,9 @@ All models are versioned using [git-lfs](https://git-lfs.github.com/), make sure
 
 Then run `src/sequencer-predict.sh` with the following parameters:
 ```bash
-./sequencer-predict.sh --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
+./sequencer-predict.sh --model=[model path] --buggy_file=[abs path] --buggy_line=[int] --beam_size=[int] --output=[abs path]
 ```
+* --model: Absolute path to the model
 * --buggy_file: Absolute path to buggy file
 * --buggy_line: Line number indicating where the bug is, or just want it get changed.
 * --beam_size: Beam size for prediction
