@@ -1,4 +1,5 @@
 #! /bin/bash
+set -e
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT_DIR="$(dirname "$CURRENT_DIR")"
@@ -37,8 +38,8 @@ echo "Create lib folder"
 mkdir -p $CURRENT_DIR/lib
 echo
 
-python3 -c "import javalang"
-if [ $? -ne 0 ]; then
+
+if ! python3 -c "import javalang" 2>/dev/null ; then
   echo "javalang module not installed"
   echo "Cloning javalang"
   git clone https://github.com/c2nes/javalang.git $CURRENT_DIR/lib/javalang
