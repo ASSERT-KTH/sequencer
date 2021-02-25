@@ -39,6 +39,7 @@ WORKDIR /SequenceR
 
 COPY . /SequenceR
 
+RUN pip3 install --upgrade pip==19.1
 RUN /SequenceR/src/setup_env.sh
 ENV data_path=/SequenceR/data
 ENV OpenNMT_py=/SequenceR/src/lib/OpenNMT-py
