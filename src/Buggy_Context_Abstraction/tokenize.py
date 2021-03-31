@@ -11,7 +11,7 @@ def main(argv):
             break
 
     if(buggy_line == -1):
-        sys.stderr.write("Count not find buggy line ('// ONLY FOR TOKENIZATION, BUGGY LINE BELOW' missing)\n")
+        sys.stderr.write("Could not find buggy line ('// ONLY FOR TOKENIZATION, BUGGY LINE BELOW' missing)\n")
         sys.exit(1)
 
     tokens_string = ""
