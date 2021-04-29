@@ -66,6 +66,10 @@ public class ContextAbstraction {
 		if(topLevelmethod == null) {
 			throw new NotInsideMethodException("Buggy ctElement is not inside a CtMethod. Bugs outside methods are not supported");
 		}
+		// Sometimes methods are in constructors :-/
+		if(buggy_ctElement.getParent(CtConstructor.class) != null) {
+			throw new NotInsideMethodException("This buggy element is inside a constructor. Bugs in constructors are not supported.");
+		}
 
 		// Remove method body except diff
 		List<CtMethod> all_methods = model.getElements(new TypeFilter(CtMethod.class));
