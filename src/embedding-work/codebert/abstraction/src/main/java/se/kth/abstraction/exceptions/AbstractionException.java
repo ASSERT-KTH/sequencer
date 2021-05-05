@@ -4,4 +4,8 @@ public class AbstractionException extends Exception {
 	public AbstractionException(String message) {
 		super(message);
 	}
+
+	public AbstractionException() {
+		super();
+	}
 }

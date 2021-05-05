@@ -1,18 +1,15 @@
-from torch.utils.data import Dataset
 import logging
-from collections import namedtuple
-from .utils import download, SingleLineFixExample
-from typing import List
 import pickle
-from pathlib import Path, PurePosixPath
 import zipfile
+from pathlib import Path, PurePosixPath
+from typing import List
+
+from torch.utils.data import Dataset
 from tqdm import tqdm
 
-logger = logging.getLogger(__name__)
+from .utils import SingleLineFixExample, download
 
-CodRepExample = namedtuple(
-    "CodRepExample", ["id", "buggy_code", "fixed_line", "lineno"]
-)
+logger = logging.getLogger(__name__)
 
 
 class CodRep(Dataset):
@@ -70,7 +67,9 @@ class CodRep(Dataset):
                     lineno = int(solutionfile.read().decode())
                 id_ = taskpath.stem
 
-                self.examples.append(SingleLineFixExample(id_, buggy_code, fixed_line, lineno))
+                self.examples.append(
+                    SingleLineFixExample(id_, buggy_code, fixed_line, lineno)
+                )
 
         logger.info(f"Writing examples to {cache_path}")
         with open(cache_path, "wb") as cachefile:
@@ -81,3 +80,6 @@ class CodRep(Dataset):
 
     def __len__(self):
         return len(self.examples)
+
+    def __iter__(self):
+        yield from self.examples

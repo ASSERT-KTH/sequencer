@@ -1,15 +1,15 @@
-import pdb
-from tqdm import tqdm
-from torch.utils.data import Dataset
 import logging
-import gdown
-from .utils import SingleLineFixExample
-from pathlib import Path, PurePosixPath
-import zipfile
-from typing import List
-from unidiff import PatchSet
-from difflib import unified_diff
 import pickle
+import zipfile
+from difflib import unified_diff
+from pathlib import Path, PurePosixPath
+from typing import List
+
+from torch.utils.data import Dataset
+from tqdm import tqdm
+from unidiff import PatchSet
+
+from .utils import SingleLineFixExample
 
 logger = logging.getLogger(__name__)
 
@@ -80,7 +80,7 @@ def extract_single_line_patches(zip_path):
         info_pairs = get_buggy_pairs(rawzip)
 
         logger.info(f"Found {len(info_pairs)} buggy java files.")
-        logger.info(f"Filtering single line patches...")
+        logger.info("Filtering single line patches...")
         for buggyinfo, fixedinfo in tqdm(
             info_pairs,
             desc="Progress",
@@ -107,6 +107,8 @@ def extract_single_line_patches(zip_path):
                 examples.append(
                     SingleLineFixExample(id_, buggy_code, fixed_line, lineno)
                 )
+    # Hopefully this frees some memory
+    del rawzip
     return examples
 
 
@@ -152,3 +154,6 @@ class Bug2FixSingleLine(Dataset):
 
     def __len__(self):
         return len(self.examples)
+
+    def __iter__(self):
+        yield from self.examples

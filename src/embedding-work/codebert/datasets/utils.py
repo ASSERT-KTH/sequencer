@@ -1,8 +1,9 @@
-import requests
-from pathlib import Path
 import logging
-from tqdm import tqdm
 from collections import namedtuple
+from pathlib import Path
+
+import requests
+from tqdm import tqdm
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +15,7 @@ SingleLineFixExample = namedtuple(
 def download(url, out_path, *, size_estimate=None):
     out_path = Path(out_path)
     if out_path.exists():
-        logger.warn(f"File {out_path} already exists, skipping.")
+        logger.warning(f"File {out_path} already exists, skip download.")
         return
 
     try:
@@ -34,7 +35,7 @@ def download(url, out_path, *, size_estimate=None):
             for chunk in response.iter_content(chunk_size=2 ** 18):
                 out_file.write(chunk)
                 progress.update(len(chunk))
-        logger.info(f"Done!")
+        logger.info("Done!")
     except BaseException as e:
         logger.error(f"Something went wrong, deleting {out_path}.")
         if out_path.exists():
