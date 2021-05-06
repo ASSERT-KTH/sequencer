@@ -35,9 +35,9 @@ def is_buggy_file(info):
     return not info.is_dir() and "P_dir" in PurePosixPath(info.filename).parts
 
 
-def is_single_line(patch):
-    if len(patch) == 1 and len(patch[0]) == 1:
-        hunk = patch[0][0]
+def is_single_line(file_patch):
+    if len(file_patch) == 1:
+        hunk = file_patch[0]
         removed_lines = [line for line in hunk if line.is_removed]
         added_lines = [line for line in hunk if line.is_added]
         if len(removed_lines) == 1 and len(added_lines) == 1:
@@ -47,8 +47,8 @@ def is_single_line(patch):
     return False
 
 
-def get_fixed_line(patch):
-    hunk = patch[0][0]
+def get_fixed_line(file_patch):
+    hunk = file_patch[0]
     added = next(line for line in hunk if line.is_added)
     return added.value, added.target_line_no
 
@@ -101,12 +101,13 @@ def extract_single_line_patches(zip_path):
                 )
             )
             patch = PatchSet(diff)
-            if is_single_line(patch):
-                fixed_line, lineno = get_fixed_line(patch)
-                id_ = str(PurePosixPath(buggyinfo.filename).relative_to(base_path))
-                examples.append(
-                    SingleLineFixExample(id_, buggy_code, fixed_line, lineno)
-                )
+            for file_patch in patch:
+                if is_single_line(file_patch):
+                    fixed_line, lineno = get_fixed_line(file_patch)
+                    id_ = str(PurePosixPath(buggyinfo.filename).relative_to(base_path))
+                    examples.append(
+                        SingleLineFixExample(id_, buggy_code, fixed_line, lineno)
+                    )
     # Hopefully this frees some memory
     del rawzip
     return examples
