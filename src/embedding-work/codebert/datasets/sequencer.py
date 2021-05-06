@@ -31,7 +31,7 @@ class SequenceRDataset(Dataset):
     CACHED_FILE_TEMPLATE = "sequencer-{split}.pkl"
     SPLITS = ("train", "test")
     PREPROCESSED_URL = (
-        "https://users.dcc.uchile.cl/~gchapero/datasets/sequencer-data.tar.gz"
+        "https://zenodo.org/record/4739410/files/sequencer-data.tar.gz?download=1"
     )
     PREPROCESSED_FNAME = "sequencer-preprocessed.tar.gz"
 
