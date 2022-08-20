@@ -64,6 +64,13 @@ if [ ! -d $CURRENT_DIR/lib/OpenNMT-py ]; then
   cd $CURRENT_DIR
 fi
 
+if [ -d $CURRENT_DIR/lib/OpenNMT-py ]; then    
+  echo "Installing requirements for OpenNMT-py"
+  pip3 install -r $CURRENT_DIR/lib/OpenNMT-py/requirements.txt
+  echo
+  cd $CURRENT_DIR
+fi
+
 if [ ! -d $CURRENT_DIR/lib/abstraction-1.0-SNAPSHOT-jar-with-dependencies.jar ]; then
   echo "Building jar for abstraction and copy it to lib/"
   cd $CURRENT_DIR/Buggy_Context_Abstraction/abstraction
