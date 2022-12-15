@@ -9,6 +9,12 @@ def main(argv):
         if(abstract_file_lines[i].strip().startswith("// ONLY FOR TOKENIZATION, BUGGY LINE BELOW")):
             buggy_line = i+2
             break
+    elif(abstract_file_lines[i].strip().endswith("// ONLY FOR TOKENIZATION, BUGGY LINE BELOW")):
+        if abstract_file_lines[i + 1].strip() == "":
+            buggy_line = i + 3
+        else:
+            buggy_line = i + 2
+        break
 
     if(buggy_line == -1):
         sys.stderr.write("Could not find buggy line ('// ONLY FOR TOKENIZATION, BUGGY LINE BELOW' missing)\n")
