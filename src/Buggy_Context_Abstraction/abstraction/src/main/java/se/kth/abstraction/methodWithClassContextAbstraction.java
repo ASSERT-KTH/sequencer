@@ -26,6 +26,7 @@ import gumtree.spoon.diff.Diff;
 import gumtree.spoon.diff.support.SpoonSupport;
 import spoon.Launcher;
 import spoon.reflect.CtModel;
+import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.path.CtPath;
 import spoon.reflect.declaration.CtAnonymousExecutable;
 import spoon.reflect.declaration.CtConstructor;
@@ -143,20 +144,23 @@ public static void generateAbstraction(File buggy_file, int buggy_line, File wor
             }
         }
 }
-public static CtMethod getTopLevelMethod(CtMethod ctMethod) {
-        CtMethod topLevelMethod = ctMethod;
-        while(topLevelMethod.getParent(CtMethod.class) != null) {
-                topLevelMethod = topLevelMethod.getParent(CtMethod.class);
-        }
-        return topLevelMethod;
-}
 
-public static CtMethod getTopLevelMethod(CtElement ctElement) {
+public static CtExecutable getTopLevelMethod(CtElement ctElement) {
         CtMethod topLevelMethod = null;
         topLevelMethod = ctElement.getParent(CtMethod.class);
-        while(topLevelMethod != null && topLevelMethod.getParent(CtMethod.class) != null) {
+        while (topLevelMethod != null && topLevelMethod.getParent(CtMethod.class) != null) {
                 topLevelMethod = topLevelMethod.getParent(CtMethod.class);
         }
-        return topLevelMethod;
-}
+        if (topLevelMethod != null) {
+                return topLevelMethod;
+        }
+
+        CtConstructor topLevelConstructor = null;
+        topLevelConstructor = ctElement.getParent(CtConstructor.class);
+        while (topLevelConstructor != null && topLevelConstructor.getParent(CtConstructor.class) != null) {
+                topLevelConstructor = topLevelConstructor.getParent(CtConstructor.class);
+        }
+        return topLevelConstructor;
+} // end function
+
 }
